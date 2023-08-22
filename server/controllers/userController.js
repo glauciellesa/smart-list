@@ -1,13 +1,16 @@
 import express from "express";
+import userService from "../services/userService.js";
 
 const router = express.Router();
 
-router.get("/", (req, res) => {
-  console.log(req);
+router.post("/api/register", async (req, res) => {
   try {
-    return res.status(200).json("hello from user route");
+    const createdUserId = userService.register(req.body);
+    res.status(201).json({ id: createdUserId });
   } catch (error) {
-    console.log(error);
+    res
+      .status(500)
+      .json({ message: "Registration failed", error: error.message });
   }
 });
 

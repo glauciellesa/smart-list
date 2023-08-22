@@ -1,5 +1,4 @@
 import mongoose from "mongoose";
-import validator from "../validators/validator.js";
 import Item from "./ItemsModel.js";
 
 const Schema = mongoose.Schema;
