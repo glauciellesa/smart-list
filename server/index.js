@@ -2,11 +2,13 @@ import express from "express";
 import userController from "./controllers/userController.js";
 import middleware from "./middlewares/middleware.js";
 import config from "./config/config.js";
+import apiDocs from "./swagger/swagger.js";
 
 const app = express();
 
 app.use(middleware);
 app.use(userController);
+apiDocs(app);
 
 app.listen(config.port, (err, res) => {
   if (err) {
