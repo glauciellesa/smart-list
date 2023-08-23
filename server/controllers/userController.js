@@ -38,7 +38,7 @@ router.post("/api/register", async (req, res) => {
 router.post("/api/login", async (req, res) => {
   try {
     const userLoginTokken = await userService.login(req.body);
-    console.log({ userLoginTokken });
+
     /* return res.redirect('/users/' + req.user.username); */
     res.status(200).send({ userLoginTokken }).end();
   } catch (error) {
@@ -56,7 +56,7 @@ router.post("/api/login", async (req, res) => {
 
 router.use(verifyToken);
 
-router.get("/api/users", async (req, res) => {
+router.get("/api/users", verifyToken, async (req, res) => {
   res.status(200).json("hello").end();
 });
 

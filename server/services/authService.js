@@ -6,21 +6,15 @@ import userRepository from "../repositories/userRepository.js";
 export const verifyToken = (req, res, next) => {
   const authorization = req.headers["authorization"];
 
-  /*   const token = authorization.replace("Bearer ", "");
-  console.log({ token }); */
+  const token = authorization?.replace("Bearer ", "");
 
   jwt.verify(token, config.jwtKey, async (err, authorizedData) => {
+    console.log(authorizedData);
     if (err) {
-      res.sendStatus(401); //Unautohorized
+      res.sendStatus(403); //Forbidden
     } else {
-      console.log(authorizedData.user);
-      console.log(req.user);
-      /* req.user = await userRepository.existUser(
-        authorizedData.user.email,
-        authorizedData.user.password
-      ); 
+      req.email = await userRepository.getUserByEmail(authorizedData.email);
       next();
-      */
     }
   });
 };

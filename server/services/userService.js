@@ -49,11 +49,11 @@ const login = async ({ email, password }) => {
   if (!isUserExists) {
     throw new InvalidInputError("Email or password do not exist.");
   }
-
+  console.log({ isUserExists });
   // Generate a JWT token
   return new Promise((resolve, rejects) => {
     jwt.sign(
-      { email, password },
+      { email },
       config.jwtKey,
       { expiresIn: "1h" },
       //when we have calback we need convert to promisse if not the value will be undefined

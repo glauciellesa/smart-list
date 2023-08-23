@@ -30,8 +30,13 @@ const existUser = async (email, password) => {
   return false;
 };
 
+const getUserByEmail = async (email) => {
+  return await User.findOne({ email: email }).exec();
+};
+
 export default {
   checkIfEmailExists,
   registerUser,
   existUser,
+  getUserByEmail,
 };
