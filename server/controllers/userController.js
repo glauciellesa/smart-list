@@ -5,10 +5,10 @@ import { InvalidInputError } from "../errors/invalidInputError.js";
 const router = express.Router();
 /**
  * @swagger
- * /users:
- *   get:
- *     summary: Retrieve a list of JSONPlaceholder users
- *     description: Retrieve a list of users from JSONPlaceholder. Can be used to populate a list of fake users when prototyping or testing an API.
+ * /api/register:
+ *   post:
+ *     summary: Creates a user
+ *     description: insert a new user to the db.
  */
 router.post("/api/register", async (req, res) => {
   try {

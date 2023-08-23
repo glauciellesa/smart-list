@@ -2,7 +2,7 @@ import express from "express";
 import userController from "./controllers/userController.js";
 import middleware from "./middlewares/middleware.js";
 import config from "./config/config.js";
-import apiDocs from "./swagger/swagger.js";
+import apiDocs from "./documentation/apidoc.js";
 
 const app = express();
 
