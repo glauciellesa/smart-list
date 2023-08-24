@@ -1,8 +1,6 @@
 import express from "express";
 import userService from "../services/userService.js";
-import { InvalidInputError } from "../errors/invalidInputError.js";
 import { verifyToken } from "../services/authService.js";
-import userRepository from "../repositories/userRepository.js";
 
 const router = express.Router();
 /**
