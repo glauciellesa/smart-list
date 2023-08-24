@@ -18,15 +18,6 @@ router.post("/api/register", async (req, res, next) => {
     res.status(201).json({ id: createdUserId });
   } catch (error) {
     return next(error);
-    /*  if (error instanceof InvalidInputError) {
-      res
-        .status(400)
-        .json({ message: "Registration failed", error: error.message });
-    } else {
-      res
-        .status(500)
-        .json({ message: "Registration failed", error: error.message });
-    } */
   }
 });
 
@@ -45,15 +36,6 @@ router.post("/api/login", async (req, res) => {
     res.status(200).send({ userLoginTokken }).end();
   } catch (error) {
     return next(error);
-    /* if (error instanceof InvalidInputError) {
-      res
-        .status(400)
-        .json({ message: "No Access Token", error: error.message });
-    } else {
-      res
-        .status(500)
-        .json({ message: "Registration failed", error: error.message });
-    } */
   }
 });
 
