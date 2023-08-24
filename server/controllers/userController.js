@@ -2,6 +2,7 @@ import express from "express";
 import userService from "../services/userService.js";
 import { InvalidInputError } from "../errors/invalidInputError.js";
 import { verifyToken } from "../services/authService.js";
+import userRepository from "../repositories/userRepository.js";
 
 const router = express.Router();
 /**
@@ -11,12 +12,13 @@ const router = express.Router();
  *     summary: Creates a user
  *     description: insert a new user to the db.
  */
-router.post("/api/register", async (req, res) => {
+router.post("/api/register", async (req, res, next) => {
   try {
     const createdUserId = await userService.register(req.body);
     res.status(201).json({ id: createdUserId });
   } catch (error) {
-    if (error instanceof InvalidInputError) {
+    return next(error);
+    /*  if (error instanceof InvalidInputError) {
       res
         .status(400)
         .json({ message: "Registration failed", error: error.message });
@@ -24,7 +26,7 @@ router.post("/api/register", async (req, res) => {
       res
         .status(500)
         .json({ message: "Registration failed", error: error.message });
-    }
+    } */
   }
 });
 
@@ -42,7 +44,8 @@ router.post("/api/login", async (req, res) => {
     /* return res.redirect('/users/' + req.user.username); */
     res.status(200).send({ userLoginTokken }).end();
   } catch (error) {
-    if (error instanceof InvalidInputError) {
+    return next(error);
+    /* if (error instanceof InvalidInputError) {
       res
         .status(400)
         .json({ message: "No Access Token", error: error.message });
@@ -50,7 +53,7 @@ router.post("/api/login", async (req, res) => {
       res
         .status(500)
         .json({ message: "Registration failed", error: error.message });
-    }
+    } */
   }
 });
 
