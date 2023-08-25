@@ -1,6 +1,6 @@
 import { Outlet } from "react-router-dom";
 import { styled } from "styled-components";
-import Footer from "../footer";
+import myfooter from "../footer";
 import Navbar from "../navbar";
 
 const RootLayout = () => {
@@ -13,7 +13,7 @@ const RootLayout = () => {
         <Outlet />
       </main>
       <footer>
-        <Footer />
+        <myfooter />
       </footer>
     </StyledRootLayout>
   );
