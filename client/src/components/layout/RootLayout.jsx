@@ -1,14 +1,12 @@
 import { Outlet } from "react-router-dom";
 import { styled } from "styled-components";
-import Navbar from "../navbar";
+/* import Navbar from "../navbar"; */
 /* import myFooter from "../myFooter"; */
 
 const RootLayout = () => {
   return (
     <StyledRootLayout>
-      <header>
-        <Navbar />
-      </header>
+      <header>{/*  <Navbar /> */}</header>
       <main>
         <Outlet />
       </main>
