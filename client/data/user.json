@@ -1,0 +1,23 @@
+[
+  {
+    "first_name": "Camila",
+    "last_name": "Assunção",
+    "picture": "CamilaFAssuncao",
+    "email": "cami@test.com",
+    "password": "123abc"
+  },
+  {
+    "first_name": "Glaucielle",
+    "last_name": "Sa",
+    "picture": "glauciellesa",
+    "email": "glau@test.com",
+    "password": "123abc"
+  },
+  {
+    "first_name": "Leila",
+    "last_name": "leila",
+    "picture": "leilaZ1111",
+    "email": "leila@test.com",
+    "password": "123abc"
+  }
+]

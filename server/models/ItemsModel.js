@@ -12,6 +12,11 @@ const itemsSchema = new Schema({
     required: true,
     validate: [validator.isNotEmpty, "Item name is empty"],
   },
+  image: {
+    type: String,
+    trim: true,
+    required: false,
+  },
   category: {
     type: String,
     trim: true,
