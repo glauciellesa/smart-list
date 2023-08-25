@@ -1,4 +1,5 @@
 import User from "../models/UsersModel.js";
+import bcrypt from "bcrypt";
 
 const checkIfEmailExists = async (email) => {
   const query = await User.findOne({ email: email }).exec();
@@ -19,7 +20,23 @@ const registerUser = (user) => {
   });
 };
 
+const existUser = async (email, password) => {
+  const user = await User.findOne({ email });
+
+  if (user && (await bcrypt.compare(password, user.password))) {
+    return true;
+  }
+
+  return false;
+};
+
+const getUserByEmail = async (email) => {
+  return await User.findOne({ email: email }).exec();
+};
+
 export default {
   checkIfEmailExists,
   registerUser,
+  existUser,
+  getUserByEmail,
 };

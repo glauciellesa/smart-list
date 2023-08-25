@@ -1,5 +1,6 @@
 import mongoose from "mongoose";
 import validator from "../services/validator.js";
+import connection from "../repositories/connection.js";
 
 const Schema = mongoose.Schema;
 
@@ -35,6 +36,6 @@ const usersSchema = new Schema({
   },
 });
 
-const User = mongoose.model("User", usersSchema);
+const User = connection.model("User", usersSchema);
 
 export default User;

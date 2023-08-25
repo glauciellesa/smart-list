@@ -1,5 +1,9 @@
 import bcrypt from "bcrypt";
-import repository from "../repositories/userRepository.js";
+import jwt from "jsonwebtoken";
+import userRepository from "../repositories/userRepository.js";
+import validator from "./validator.js";
+import { InvalidInputError } from "../errors/invalidInputError.js";
+import config from "../config/config.js";
 
 const register = async ({
   first_name,
@@ -8,18 +12,17 @@ const register = async ({
   email,
   password,
 }) => {
-  if (!first_name || !last_name || password || !email || !password) {
-    throw new Error("All user data is required");
+  if (!first_name || !last_name || !password || !email || !password) {
+    throw new InvalidInputError("All user data is required");
   }
 
-  const isEmailDuplicate = await repository.checkIfEmailExists(email);
+  const isEmailDuplicate = await userRepository.checkIfEmailExists(email);
 
   if (isEmailDuplicate) {
-    throw new Error("Email already exists, go to login page");
+    throw new InvalidInputError("Email already exists, go to login page");
   }
 
   const hashedPassword = await bcrypt.hash(password, 10);
-  console.log(hashedPassword);
 
   const newUser = {
     first_name,
@@ -29,8 +32,41 @@ const register = async ({
     password: hashedPassword,
   };
 
-  const userId = await repository.registerUser(newUser);
+  const userId = await userRepository.registerUser(newUser);
   return userId;
 };
 
-export default { register };
+const login = async ({ email, password }) => {
+  if (!email || !password) {
+    throw new InvalidInputError("Email or password are missing.");
+  }
+
+  if (!validator.validateEmail(email)) {
+    throw new InvalidInputError("Email not valid.");
+  }
+
+  const isUserExists = await userRepository.existUser(email, password);
+  if (!isUserExists) {
+    throw new InvalidInputError("Email or password do not exist.");
+  }
+  console.log({ isUserExists });
+  // Generate a JWT token
+  return new Promise((resolve, rejects) => {
+    jwt.sign(
+      { email },
+      config.jwtKey,
+      { expiresIn: "1h" },
+      //when we have calback we need convert to promisse if not the value will be undefined
+      (err, token) => {
+        if (err) {
+          console.error(err);
+          rejects(new InvalidInputError("Internal Server Error"));
+        } else {
+          resolve(token);
+        }
+      }
+    );
+  });
+};
+
+export default { register, login };
