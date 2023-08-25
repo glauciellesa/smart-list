@@ -1,17 +1,21 @@
 import { NavLink } from "react-router-dom";
 import styled from "styled-components";
+import Recipes from "../../components/Recipes";
 
 const Home = () => {
   return (
     <StyledHome>
-      <p>
-        Lorem ipsum, dolor sit amet consectetur adipisicing elit. Neque delectus
-        rem, praesentium magnam nostrum corporis velit assumenda, recusandae
-        iure, incidunt vitae facilis asperiores. Eius autem eum ipsum maxime
-        facilis suscipit?
-      </p>
-      <div className="home_button">
-        <NavLink to="list">List</NavLink>
+      <div className="recipes">
+        <h1>
+          <NavLink to="recipes">Explore All Recipes</NavLink>
+        </h1>
+        three recipe carousel limiter
+        <Recipes />
+      </div>
+      <div className="shoppingList">
+        <h1>
+          <NavLink to="list">Shopping List</NavLink>
+        </h1>
       </div>
     </StyledHome>
   );
@@ -23,13 +27,8 @@ const StyledHome = styled.div`
   padding: 2rem;
   display: flex;
   flex-direction: column;
-  justify-content: center;
-  align-items: center;
 
   @media (min-width: 600px) {
     padding: 1rem;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
   }
 `;
