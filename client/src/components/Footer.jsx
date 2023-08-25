@@ -1,6 +1,6 @@
 import { styled } from "styled-components";
 
-const myFooter = () => {
+const Footer = () => {
   return (
     <StyledFooter>
       <p>Copyight © 2023 </p>
@@ -8,9 +8,8 @@ const myFooter = () => {
   );
 };
 
-export default myFooter;
+export default Footer;
 
-// eslint-disable-next-line react-refresh/only-export-components
 const StyledFooter = styled.div`
   height: 3rem;
   display: flex;

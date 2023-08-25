@@ -1,7 +1,7 @@
 import { Outlet } from "react-router-dom";
 import { styled } from "styled-components";
 /* import Navbar from "../navbar"; */
-/* import myFooter from "../myFooter"; */
+import Footer from "/../footer";
 
 const RootLayout = () => {
   return (
@@ -10,7 +10,9 @@ const RootLayout = () => {
       <main>
         <Outlet />
       </main>
-      <footer>{/*  <myFooter /> */}</footer>
+      <footer>
+        <Footer />
+      </footer>
     </StyledRootLayout>
   );
 };
