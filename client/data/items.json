@@ -1,0 +1,25 @@
+{
+  "fruits": [
+    {
+      "item_name": "banana",
+      "image": "fczCr7MdE7U"
+    },
+    {
+      "item_name": "orange",
+      "image": "nibgG33H0F8"
+    },
+    {
+      "item_name": "apple",
+      "image": "zLCR7RsxYGs"
+    },
+    {
+      "item_name": "strawberry",
+      "image": "xnRg3xDcNnE"
+    },
+    {
+      "item_name": "pineapple",
+      "image": "yx3-a7ualMM"
+    }
+  ],
+  "condiments": []
+}
