@@ -26,7 +26,7 @@ router.post("/api/register", async (req, res, next) => {
  *     summary: User login
  *     description: User are able to do login.
  */
-router.post("/api/login", async (req, res) => {
+router.post("/api/login", async (req, res, next) => {
   try {
     const userLoginTokken = await userService.login(req.body);
 
@@ -39,7 +39,7 @@ router.post("/api/login", async (req, res) => {
 
 router.use(verifyToken);
 
-router.get("/api/users", verifyToken, async (req, res) => {
+router.get("/api/users", async (req, res) => {
   res.status(200).json("hello").end();
 });
 
