@@ -1,15 +1,12 @@
 import { Link } from "react-router-dom";
 import styled from "styled-components";
-import Button from "../components/Button";
 
 const PageNotFound = () => {
   return (
     <StyledPageNotFound>
       <p>Sorry, the page you were looking for was not found.</p>
       <div className="error_button">
-        <Button>
-          <Link to="/"> Return to home</Link>.
-        </Button>
+        <Link to="/"> Return to home</Link>.
       </div>
     </StyledPageNotFound>
   );
