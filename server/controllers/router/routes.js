@@ -9,8 +9,8 @@ routes.get("/", async function (req, res) {
   res.send(`Reached home!`);
 });
 
-routes.use("/", user);
-routes.use("/", item);
-routes.use("/", recipe);
+routes.use(user);
+routes.use(item);
+routes.use(recipe);
 
 export default routes;
