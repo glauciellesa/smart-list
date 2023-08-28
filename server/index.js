@@ -9,7 +9,7 @@ import routes from "./controllers/router/routes.js";
 const app = express();
 
 app.use(middleware);
-app.use("/", routes);
+app.use(routes);
 apiDocs(app);
 app.use(errorHandler);
 

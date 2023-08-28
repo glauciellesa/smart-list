@@ -15,8 +15,9 @@ item.post("/api/items/newItem", async (req, res, next) => {
   res.send("Hello World!");
 });
 
-item.get("/api/items/", async (req, res, next) => {});
-item.get("/api/items", async (req, res, next) => {});
+item.get("/api/items", async (req, res, next) => {
+  res.status(200).json("items").end();
+});
 item.get("/api/items/:itemId", async (req, res, next) => {});
 
 export default item;

@@ -36,11 +36,10 @@ user.post("/api/login", async (req, res, next) => {
     return next(error);
   }
 });
-
-/* user.use(verifyToken);
+/* user.use(verifyToken); */
 
 user.get("/api/users", async (req, res) => {
   res.status(200).json("hello").end();
-}); */
+});
 
 export default user;
