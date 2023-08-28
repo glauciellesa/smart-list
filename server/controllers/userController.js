@@ -37,10 +37,10 @@ router.post("/api/login", async (req, res, next) => {
   }
 });
 
-router.use(verifyToken);
+/* router.use(verifyToken);
 
 router.get("/api/users", async (req, res) => {
   res.status(200).json("hello").end();
-});
+}); */
 
 export default router;

@@ -2,21 +2,21 @@
   {
     "first_name": "Camila",
     "last_name": "Assunção",
-    "picture": "CamilaFAssuncao",
+    "gitHubAccount": "CamilaFAssuncao",
     "email": "cami@test.com",
     "password": "123abc"
   },
   {
     "first_name": "Glaucielle",
     "last_name": "Sa",
-    "picture": "glauciellesa",
+    "gitHubAccount": "glauciellesa",
     "email": "glau@test.com",
     "password": "123abc"
   },
   {
     "first_name": "Leila",
     "last_name": "leila",
-    "picture": "leilaZ1111",
+    "gitHubAccount": "leilaZ1111",
     "email": "leila@test.com",
     "password": "123abc"
   }
