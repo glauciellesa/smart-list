@@ -1,6 +1,6 @@
 import express from "express";
 
-const router = express.Router();
+const item = express.Router();
 
 /**
  * @swagger
@@ -10,13 +10,13 @@ const router = express.Router();
  *     description: insert a new user to the db.
  */
 
-router.post("/api/items/newItem", async (req, res, next) => {
+item.post("/api/items/newItem", async (req, res, next) => {
   console.log("item", req.body);
   res.send("Hello World!");
 });
 
-router.get("/api/items/", async (req, res, next) => {});
-router.get("/api/items", async (req, res, next) => {});
-router.get("/api/items/:itemId", async (req, res, next) => {});
+item.get("/api/items/", async (req, res, next) => {});
+item.get("/api/items", async (req, res, next) => {});
+item.get("/api/items/:itemId", async (req, res, next) => {});
 
-export default router;
+export default item;
