@@ -1,5 +1,7 @@
 import express from "express";
 import userController from "./controllers/userController.js";
+import itemController from "./controllers/itemController.js";
+import recipeController from "./controllers/recipeController.js";
 import middleware from "./middlewares/middleware.js";
 import config from "./config/config.js";
 import apiDocs from "./documentation/apidoc.js";
@@ -9,6 +11,8 @@ const app = express();
 
 app.use(middleware);
 app.use(userController);
+app.use(itemController);
+app.use(recipeController);
 apiDocs(app);
 app.use(errorHandler);
 

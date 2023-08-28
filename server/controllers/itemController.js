@@ -1,9 +1,7 @@
 import express from "express";
-import { verifyToken } from "../services/authService.js";
 
 const router = express.Router();
 
-router.use(verifyToken);
 /**
  * @swagger
  * /api/items:
@@ -12,6 +10,13 @@ router.use(verifyToken);
  *     description: insert a new user to the db.
  */
 
-router.put("/api/items", async (req, resp, next) => {});
+router.post("/api/items/newItem", async (req, res, next) => {
+  console.log("item", req.body);
+  res.send("Hello World!");
+});
 
-router.get("/api/items", async (req, resp, next) => {});
+router.get("/api/items/", async (req, res, next) => {});
+router.get("/api/items", async (req, res, next) => {});
+router.get("/api/items/:itemId", async (req, res, next) => {});
+
+export default router;
