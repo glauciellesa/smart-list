@@ -21,5 +21,130 @@
       "image": "yx3-a7ualMM"
     }
   ],
-  "condiments": []
+  "vegetables": [
+    {
+      "item_name": "Carrots",
+      "image": "qrdbYqxnets"
+    },
+    {
+      "item_name": "Tomatoes",
+      "image": "UD_j10SKj5g"
+    },
+    {
+      "item_name": "Potatoes",
+      "image": "B0s3Xndk6tw"
+    },
+    {
+      "item_name": "Broccoli",
+      "image": "l55IGtwI8mI"
+    },
+    {
+      "item_name": "Spinach",
+      "image": "6AAptb2kBak"
+    },
+    {
+      "item_name": "Garlic clove",
+      "image": "PR79IfX9Hi8"
+    }
+  ],
+  "condiments": [
+    {
+      "item_name": "Soy sauce",
+      "image": "McP48IRa7Mo"
+    },
+    {
+      "item_name": "Salt",
+      "image": "u_Mwofs_zu0"
+    },
+    {
+      "item_name": "onion",
+      "image": "bC1fXU1v98U"
+    },
+    {
+      "item_name": "basil",
+      "image": "rICRgergpIc"
+    },
+    {
+      "item_name": "ginger",
+      "image": "1q4IIdEnIWA"
+    },
+    {
+      "item_name": "olive oil",
+      "image": "iCgfwfqgdzo"
+    },
+    {
+      "item_name": "Sesame",
+      "image": "k-JORnd7LnY"
+    },
+    {
+      "item_name": "Mustard",
+      "image": "LBPpGIKzXok"
+    },
+    {
+      "item_name": "Honey",
+      "image": "Asj5DFw8UAw"
+    },
+    {
+      "item_name": "Paprica",
+      "image": "LvHMwt0pNJE"
+    },
+    {
+      "item_name": "black pepper",
+      "image": "jtKNexfk33c"
+    }
+  ],
+  "pasta": [
+    {
+      "item_name": "Spaghetti",
+      "image": "SJ7uORconic"
+    }
+  ],
+  "Cheeses": [
+    {
+      "item_name": "Romano cheese",
+      "image": "KaK2jp8ie8s"
+    },
+    {
+      "item_name": "mozzarella",
+      "image": "i6DmdS7kVVc"
+    }
+  ],
+  "proteins:": [
+    {
+      "item_name": "eggs",
+      "image": "eIzzzwtkBjU"
+    },
+    {
+      "item_name": "pancetta",
+      "image": "Ov17i1UtCCU"
+    },
+    {
+      "item_name": "chicken breasts",
+      "image": "9zLa37VNL38"
+    }
+  ],
+  "health and beauty": [
+    {
+      "item_name": "Deodorant",
+      "image": "Uirh8KpGMrU"
+    },
+    {
+      "item_name": "Soap",
+      "image": "WeEaKXZkBsQ"
+    },
+    {
+      "item_name": "Shampoo",
+      "image": "X2BZgaPkQRs"
+    }
+  ],
+  "Household": [
+    {
+      "item_name": "Hangers",
+      "image": "Jbh7Q32I5so"
+    },
+    {
+      "item_name": "Laundry detergent",
+      "image": "TyBnT0wowmw"
+    }
+  ]
 }
