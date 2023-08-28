@@ -9,7 +9,7 @@ export const verifyToken = (req, res, next) => {
   const token = authorization?.replace("Bearer ", "");
 
   jwt.verify(token, config.jwtKey, async (err, authorizedData) => {
-    console.log(authorizedData);
+    console.log("auth", authorizedData);
     if (err) {
       res.sendStatus(403); //Forbidden
     } else {

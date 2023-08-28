@@ -12,7 +12,7 @@ const register = async ({
   email,
   password,
 }) => {
-  if (!first_name || !last_name || !password || !email || !password) {
+  if (!first_name || !last_name || !picture || !email || !password) {
     throw new InvalidInputError("All user data is required");
   }
 

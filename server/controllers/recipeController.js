@@ -12,11 +12,31 @@ recipe.use(verifyToken);
  *     description: insert a new user to the db.
  */
 
-recipe.post("/api/recipes/newRecipe", async (req, resp, next) => {});
-recipe.get("/api/recipes", async (req, resp, next) => {});
-recipe.get("/api/recipes/:recipeId", async (req, resp, next) => {});
+recipe.post("/api/recipes/newRecipe", async (req, resp, next) => {
+  try {
+  } catch (error) {
+    return next(error);
+  }
+});
+recipe.get("/api/recipes", async (req, resp, next) => {
+  try {
+  } catch (error) {
+    return next(error);
+  }
+});
+recipe.get("/api/recipes/:recipeId", async (req, resp, next) => {
+  try {
+  } catch (error) {
+    return next(error);
+  }
+});
 
 //I think just the person that has created the recipe are able to delete it.
-recipe.delete("/api/recipes/:recipeId", async (req, resp, next) => {});
+recipe.delete("/api/recipes/:recipeId", async (req, resp, next) => {
+  try {
+  } catch (error) {
+    return next(error);
+  }
+});
 
 export default recipe;
