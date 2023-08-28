@@ -1,0 +1,121 @@
+{
+  "recipes": [
+    {
+      "recipe_photo": "mVwQrsnnbHg",
+      "recipe_name": "Spaghetti Carbonara",
+      "prep_time": "30 minutes",
+      "ingredients": [
+        "8 oz (225g) spaghetti",
+        "2 large eggs",
+        "1 cup grated Pecorino Romano cheese",
+        "4 oz (115g) pancetta, diced",
+        "2 cloves garlic, minced",
+        "Salt and black pepper to taste",
+        "Fresh parsley for garnish"
+      ],
+      "instructions": [
+        "Cook the spaghetti in boiling salted water until al dente. Drain and set aside.",
+        "In a bowl, whisk together the eggs and grated Pecorino Romano cheese. Season with black pepper.",
+        "In a skillet, cook the diced pancetta until crispy. Add minced garlic and sauté for 1 minute.",
+        "Add the cooked spaghetti to the skillet with the pancetta and garlic. Toss to combine.",
+        "Remove the skillet from heat and quickly pour the egg and cheese mixture over the pasta. Toss vigorously to coat the pasta and create a creamy sauce.",
+        "Serve immediately, garnished with chopped fresh parsley."
+      ]
+    },
+    {
+      "recipe_photo": "9SUHKYVcLpI",
+      "recipe_name": "Chicken Stir-Fry",
+      "prep_time": "20 minutes",
+      "ingredients": [
+        "1 lb (450g) boneless, skinless chicken breasts, sliced into thin strips",
+        "2 cups mixed vegetables (bell peppers, broccoli, carrots, snap peas)",
+        "3 cloves garlic, minced",
+        "1 tablespoon ginger, minced",
+        "3 tablespoons soy sauce",
+        "1 tablespoon honey",
+        "2 tablespoons vegetable oil",
+        "Cooked rice for serving"
+      ],
+      "instructions": [
+        "In a small bowl, whisk together soy sauce and honey. Set aside.",
+        "Heat vegetable oil in a large skillet or wok over high heat.",
+        "Add minced garlic and ginger, and stir-fry for about 30 seconds until fragrant.",
+        "Add chicken strips and cook until no longer pink, then remove from the skillet.",
+        "Add mixed vegetables to the skillet and stir-fry until crisp-tender.",
+        "Return the cooked chicken to the skillet, pour the soy sauce and honey mixture over everything, and stir-fry for 2-3 minutes.",
+        "Serve hot over cooked rice."
+      ]
+    },
+    {
+      "recipe_photo": "_GM0Zvw3PzY",
+      "recipe_name": "Caprese Salad",
+      "prep_time": "10 minutes",
+      "ingredients": [
+        "4 large tomatoes, sliced",
+        "1/2 lb (225g) fresh mozzarella cheese, sliced",
+        "1/4 cup fresh basil leaves",
+        "2 tablespoons extra virgin olive oil",
+        "Balsamic glaze for drizzling (optional)",
+        "Salt and black pepper to taste"
+      ],
+      "instructions": [
+        "Alternate slices of tomato and mozzarella on a serving platter.",
+        "Tuck fresh basil leaves between the slices.",
+        "Drizzle extra virgin olive oil over the salad.",
+        "Season with salt and black pepper to taste.",
+        "Optional: Drizzle balsamic glaze over the top for extra flavor.",
+        "Serve immediately."
+      ]
+    },
+    {
+      "recipe_photo": "rjCusxrJg7k",
+      "recipe_name": "Vegetable Curry",
+      "prep_time": "45 minutes",
+      "ingredients": [
+        "2 cups mixed vegetables (e.g., potatoes, carrots, bell peppers, peas)",
+        "1 onion, chopped",
+        "2 cloves garlic, minced",
+        "1-inch piece of ginger, minced",
+        "2 tablespoons curry powder",
+        "1 can (14 oz) coconut milk",
+        "2 tablespoons vegetable oil",
+        "Salt and chili powder to taste",
+        "Fresh cilantro for garnish"
+      ],
+      "instructions": [
+        "In a large pan, heat vegetable oil over medium heat.",
+        "Add chopped onion, minced garlic, and minced ginger. Sauté until fragrant and onion is translucent.",
+        "Add curry powder and cook for another 2 minutes, stirring constantly.",
+        "Add mixed vegetables and sauté for 5 minutes.",
+        "Pour in the coconut milk and season with salt and chili powder. Bring to a simmer and cook until vegetables are tender.",
+        "Garnish with fresh cilantro and serve with rice or naan bread."
+      ]
+    },
+    {
+      "recipe_photo": "qczubsyHofQ",
+      "recipe_name": "Chocolate Chip Cookies",
+      "prep_time": "15 minutes",
+      "ingredients": [
+        "1 cup (2 sticks) unsalted butter, softened",
+        "3/4 cup granulated sugar",
+        "3/4 cup brown sugar, packed",
+        "2 large eggs",
+        "1 teaspoon vanilla extract",
+        "2 1/4 cups all-purpose flour",
+        "1 teaspoon baking soda",
+        "1/2 teaspoon salt",
+        "2 cups semisweet chocolate chips"
+      ],
+      "instructions": [
+        "Preheat the oven to 375°F (190°C).",
+        "In a mixing bowl, cream together the softened butter, granulated sugar, and brown sugar until smooth.",
+        "Beat in the eggs one at a time, then stir in the vanilla.",
+        "In a separate bowl, whisk together the flour, baking soda, and salt. Gradually add this dry mixture to the wet ingredients, mixing just until combined.",
+        "Stir in the chocolate chips.",
+        "Drop rounded tablespoons of cookie dough onto ungreased baking sheets.",
+        "Bake for 9 to 11 minutes in the preheated oven, or until the edges are golden brown.",
+        "Allow cookies to cool on baking sheets for a few minutes before transferring to wire racks to cool completely."
+      ]
+    }
+  ]
+}

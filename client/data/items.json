@@ -21,5 +21,80 @@
       "image": "yx3-a7ualMM"
     }
   ],
-  "condiments": []
+  "Vegetables": [
+    {
+      "item_name": "Carrots",
+      "image": "qrdbYqxnets"
+    },
+    {
+      "item_name": "Tomatoes",
+      "image": "UD_j10SKj5g"
+    },
+    {
+      "item_name": "Potatoes",
+      "image": "B0s3Xndk6tw"
+    },
+    {
+      "item_name": "Broccoli",
+      "image": "l55IGtwI8mI"
+    },
+    {
+      "item_name": "Spinach",
+      "image": "6AAptb2kBak"
+    },
+    {
+      "item_name": "Garlic clove",
+      "image": "PR79IfX9Hi8"
+    }
+  ],
+  "condiments": [
+    {
+      "item_name": "olive oil",
+      "image": "iCgfwfqgdzo"
+    },
+    {
+      "item_name": "Sesame",
+      "image": "k-JORnd7LnY"
+    },
+    {
+      "item_name": "Mustard",
+      "image": "LBPpGIKzXok"
+    },
+    {
+      "item_name": "Honey",
+      "image": "Asj5DFw8UAw"
+    },
+    {
+      "item_name": "Paprica",
+      "image": "LvHMwt0pNJE"
+    },
+    {
+      "item_name": "black pepper",
+      "image": "jtKNexfk33c"
+    }
+  ],
+  "Health and beauty": [
+    {
+      "item_name": "Deodorant",
+      "image": "Uirh8KpGMrU"
+    },
+    {
+      "item_name": "Soap",
+      "image": "WeEaKXZkBsQ"
+    },
+    {
+      "item_name": "Shampoo",
+      "image": "X2BZgaPkQRs"
+    }
+  ],
+  "Household": [
+    {
+      "item_name": "Hangers",
+      "image": "Jbh7Q32I5so"
+    },
+    {
+      "item_name": "Laundry detergent",
+      "image": "TyBnT0wowmw"
+    }
+  ]
 }
