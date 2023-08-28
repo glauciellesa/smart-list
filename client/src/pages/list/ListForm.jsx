@@ -1,15 +1,15 @@
 import React, { useState } from 'react';
 
-const CreateListForm = ({ addItem }) => {
-  const [value, setValue] = useState("");
-  const [category, setCategory] = useState("");
+const ListForm = ({ addItem, categories }) => {
+  const [value, setValue] = useState('');
+  const [category, setCategory] = useState('');
 
   const handleSubmit = (e) => {
     e.preventDefault();
     if (!value) return;
     addItem(value, category);
-    setValue("");
-    setCategory("");
+    setValue('');
+    setCategory('');
   };
 
   return (
@@ -18,20 +18,18 @@ const CreateListForm = ({ addItem }) => {
       <form onSubmit={handleSubmit}>
         <input
           type="text"
-          placeholder='Add your items'
+          placeholder="Add your items"
           value={value}
           onChange={(e) => setValue(e.target.value)}
         />
         <select value={category} onChange={(e) => setCategory(e.target.value)}>
           <option value="">Select a category</option>
-          <option value="fruits">Fruits</option>
-          <option value="vegetables">Vegetables</option>
-          <option value="dairy">Dairy</option>
-          <option value="cereals">Cereals and Bread</option>
-          <option value="meat">Meat, Chicken and Fish</option>
-          <option value="cleaning">Cleaning Products</option>
-          <option value="beauty">Beauty Products</option>
-          <option value="drinks">Drinks</option>
+          {categories.map((cat) => (
+            <option key={cat} value={cat}>
+              {cat}
+            </option>
+          ))}
+          <option value="undefined">Create a new category</option>
         </select>
         <button type="submit">Create your list</button>
       </form>
@@ -39,5 +37,5 @@ const CreateListForm = ({ addItem }) => {
   );
 };
 
-export default CreateListForm;
+export default ListForm;
 
