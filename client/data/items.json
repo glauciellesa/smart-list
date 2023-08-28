@@ -21,7 +21,7 @@
       "image": "yx3-a7ualMM"
     }
   ],
-  "Vegetables": [
+  "vegetables": [
     {
       "item_name": "Carrots",
       "image": "qrdbYqxnets"
@@ -49,6 +49,26 @@
   ],
   "condiments": [
     {
+      "item_name": "Soy sauce",
+      "image": "McP48IRa7Mo"
+    },
+    {
+      "item_name": "Salt",
+      "image": "u_Mwofs_zu0"
+    },
+    {
+      "item_name": "onion",
+      "image": "bC1fXU1v98U"
+    },
+    {
+      "item_name": "basil",
+      "image": "rICRgergpIc"
+    },
+    {
+      "item_name": "ginger",
+      "image": "1q4IIdEnIWA"
+    },
+    {
       "item_name": "olive oil",
       "image": "iCgfwfqgdzo"
     },
@@ -73,7 +93,37 @@
       "image": "jtKNexfk33c"
     }
   ],
-  "Health and beauty": [
+  "pasta": [
+    {
+      "item_name": "Spaghetti",
+      "image": "SJ7uORconic"
+    }
+  ],
+  "Cheeses": [
+    {
+      "item_name": "Romano cheese",
+      "image": "KaK2jp8ie8s"
+    },
+    {
+      "item_name": "mozzarella",
+      "image": "i6DmdS7kVVc"
+    }
+  ],
+  "proteins:": [
+    {
+      "item_name": "eggs",
+      "image": "eIzzzwtkBjU"
+    },
+    {
+      "item_name": "pancetta",
+      "image": "Ov17i1UtCCU"
+    },
+    {
+      "item_name": "chicken breasts",
+      "image": "9zLa37VNL38"
+    }
+  ],
+  "health and beauty": [
     {
       "item_name": "Deodorant",
       "image": "Uirh8KpGMrU"
