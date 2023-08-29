@@ -2,8 +2,6 @@ import categoryRepository from "../repositories/categoryRepository.js";
 import { InvalidInputError } from "../errors/invalidInputError.js";
 
 const addNewCategory = async (newCategory) => {
-  console.log(!newCategory.category);
-  console.log(newCategory.category);
   if (!newCategory.category) {
     throw new InvalidInputError(
       "You need to provide the category name in order to create a new one"

@@ -1,7 +1,7 @@
 import Category from "../models/CategoryModel.js";
+import { NoContentError } from "../errors/NoContentError.js";
 
 const categoryExist = async (category) => {
-  console.log(" repo", category);
   const query = await Category.findOne({ category_name: category }).exec();
   if (query) {
     return true;
@@ -11,8 +11,28 @@ const categoryExist = async (category) => {
 };
 
 const createNewCategory = (category) => {
-  console.log("reposs", category);
   return Category.create(category);
 };
 
-export default { categoryExist, createNewCategory };
+const getCategories = () => {
+  return Category.find({});
+};
+
+const getCategorybyName = async (name) => {
+  return Category.find({ category_name: new RegExp(name, "i") });
+
+  /* console.log("cat", category.category);
+
+  if (category) {
+    return category;
+  } else {
+    throw new NoContentError("Data does not exist in our database.");
+  } */
+};
+
+export default {
+  categoryExist,
+  createNewCategory,
+  getCategories,
+  getCategorybyName,
+};

@@ -1,32 +1,29 @@
 import express from "express";
 import categoryService from "../services/categoryService.js";
+import categoryRepository from "../repositories/categoryRepository.js";
 
 const category = express.Router();
 
 category.post("/api/categories", async (req, res, next) => {
-  console.log("work", req.body);
   try {
     const createdCategory = await categoryService.addNewCategory(req.body);
-    console.log({ createdCategory });
+
     res.status(201).json({ createdCategory });
   } catch (error) {
     return next(error);
   }
 });
 
-category.get(
-  "/api/categories?categoryName=:categoryName",
-  async (req, res, next) => {
-    try {
-      res.status(200).json("categorys").end();
-    } catch (error) {
-      return next(error);
-    }
-  }
-);
-
-category.post("/api/categories", async (req, res, next) => {
+category.get("/api/categories", async (req, res, next) => {
   try {
+    const categoryName = req.query.name;
+    if (categoryName) {
+      const category = await categoryRepository.getCategorybyName(categoryName);
+      res.status(200).json({ category }).end();
+    } else {
+      const categories = await categoryRepository.getCategories();
+      res.status(200).json({ categories }).end();
+    }
   } catch (error) {
     return next(error);
   }
