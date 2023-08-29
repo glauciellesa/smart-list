@@ -1,5 +1,4 @@
 import Category from "../models/CategoryModel.js";
-import { NoContentError } from "../errors/NoContentError.js";
 
 const categoryExist = async (category) => {
   const query = await Category.findOne({ category_name: category }).exec();
