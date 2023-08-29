@@ -1,4 +1,6 @@
 import { useState } from 'react';
+import { styled } from 'styled-components';
+import { Link } from 'react-router-dom';
 
 /* 
 https://github.com/glauciellesa.png
@@ -9,38 +11,93 @@ alt="Perfil image "
 src={`https://github.com/${props.imgProfile}.png`}
 /> */
 const Login = () => {
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
+  const [email, enterEmail] = useState('');
+  const [password, enterPassword] = useState('');
+
+  const loginData = {
+    email: email,
+    password: password,
+  };
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log(email);
+    console.log(loginData);
   };
 
   return (
-    <div className="authentification-form-container">
-      <form onSubmit={handleSubmit}>
-        <label htmlFor="email">email</label>
+    <StyleLogin>
+      <form>
+        <h1>WELCOME BACK!</h1>
+        {/* <label htmlFor="email">email</label> */}
         <input
           value={email}
           type="email"
-          placeholder="yourEmail@example.com"
+          placeholder="Email Address"
           id="email"
-          name="email"
+          onChange={(event) => enterEmail(event.target.value)}
         />
-        <label htmlFor="password">password</label>
+        {/* <label htmlFor="password">password</label> */}
         <input
           value={password}
           type="password"
-          placeholder="*********"
+          placeholder="Password"
           id="password"
-          name="password"
+          onChange={(event) => enterPassword(event.target.value)}
         />
-        <button>Log In</button>
+        <p>Forgot Password?</p>
+        <button onClick={handleSubmit}>LOGIN</button>
+        <p className="registerHere">
+          Don't yet have an account? <Link to="/register">Register here</Link>
+        </p>
       </form>
-      <button>Don't yet have an account? Register here.</button>
-    </div>
+    </StyleLogin>
   );
 };
 
 export default Login;
+
+const StyleLogin = styled.div`
+  form {
+    margin-top: 5rem;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    align-items: center;
+    font-family: 'Montserrat', sans-serif;
+    color: #161616;
+  }
+  input {
+    text-align: left;
+    padding: 0.7rem 0.7rem;
+    background-color: white;
+    margin: 0.5rem 0;
+    width: 300px;
+    border-radius: 5px;
+    border: none;
+    box-shadow: 5px 5px 5px #5e503f;
+  }
+  button {
+    background-color: #ed6d5a;
+    color: white;
+    padding: 0.5rem 1rem;
+    border: none;
+    box-shadow: 5px 5px 5px #5e503f;
+    margin: 1.5rem 0;
+    cursor: pointer;
+    width: 200px;
+    border-radius: 5px;
+  }
+  h1 {
+    font-size: 1.5rem;
+    margin: 1rem 0;
+    font-weight: 300;
+  }
+  p {
+    font-size: 0.8rem;
+    margin: 0.5rem 0;
+  }
+  .registerHere {
+    font-size: 1rem;
+  }
+`;

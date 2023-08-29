@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { styled } from 'styled-components';
 import { Link } from 'react-router-dom';
+// import imageTest from '../img/imageTest.png';
 
 const Register = () => {
   const [email, setEmail] = useState('');
@@ -26,6 +27,12 @@ const Register = () => {
     <StyledRegister>
       <form>
         <h1>REGISTER</h1>
+        {/* <div className="image">
+          <img src={imageTest} alt="Image test" />
+        </div> */}
+        <div className="image">
+          <img src="../img/imageTest.png" alt="Image test" />
+        </div>
         {/* <label htmlFor="first_name">First name</label> */}
         <input
           value={first_name}
@@ -72,7 +79,7 @@ const Register = () => {
         />
         <button onClick={handleSubmit}>SIGN UP</button>
         <p>
-          Already have an account? <Link to="/login">Login here.</Link>
+          Already have an account? <Link to="/login">Login here</Link>
         </p>
       </form>
     </StyledRegister>
@@ -83,22 +90,25 @@ export default Register;
 
 const StyledRegister = styled.div`
   form {
+    margin-top: 5rem;
     text-align: center;
     display: flex;
     flex-direction: column;
     min-height: 100vh;
     align-items: center;
-    justify-content: center;
     font-family: 'Montserrat', sans-serif;
     color: #161616;
   }
 
   input {
     text-align: left;
-    padding: 0.5rem 0.7rem;
+    padding: 0.7rem 0.7rem;
     background-color: white;
     margin: 0.5rem 0;
-    width: 70%;
+    width: 300px;
+    border-radius: 5px;
+    border: none;
+    box-shadow: 5px 5px 5px #5e503f;
   }
 
   button {
@@ -106,14 +116,26 @@ const StyledRegister = styled.div`
     color: white;
     padding: 0.5rem 1rem;
     border: none;
+    box-shadow: 5px 5px 5px #5e503f;
     margin: 1.5rem 0;
     cursor: pointer;
-    width: 50%;
+    width: 200px;
+    border-radius: 5px;
   }
 
   h1 {
     font-size: 1.5rem;
     margin: 1rem 0;
     font-weight: 300;
+  }
+
+  .image {
+    display: none;
+
+  @media (min-width: 600px) {
+    .image {
+      display: block;
+    }
+    
   }
 `;
