@@ -9,26 +9,16 @@ const productExist = async (productName) => {
   }
 };
 
-const categoryExist = async (category) => {
-  const query = await Product.findOne({ category }).exec();
-  if (query) {
-    return true;
-  } else {
-    return false;
-  }
-};
-
-const createNewCategory = (product) => {
-  return Product.create({
-    category,
-  });
-};
-
-const addNewProductToCategory = (product) => {
+const addNewProduct = (product) => {
   return Product.create({
     product_name: product.product_name,
     image: product.image,
+    category_id: product.categoryId,
   });
 };
 
-export default { productExist, addNewProductToCategory };
+const getProductbyName = async (name) => {
+  return await Product.findOne({ name }).exec();
+};
+
+export default { productExist, addNewProduct, getProductbyName };

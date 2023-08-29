@@ -3,10 +3,12 @@ import categoryService from "../services/categoryService.js";
 
 const category = express.Router();
 
-category.post("/api/categorys", async (req, res, next) => {
+category.post("/api/categories", async (req, res, next) => {
+  console.log("work", req.body);
   try {
-    const createdCategory = await categoryService.addCategory(req.body);
-    res.status(201).json({ createdUser });
+    const createdCategory = await categoryService.addNewCategory(req.body);
+    console.log({ createdCategory });
+    res.status(201).json({ createdCategory });
   } catch (error) {
     return next(error);
   }

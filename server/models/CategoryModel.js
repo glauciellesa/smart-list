@@ -1,5 +1,6 @@
 import mongoose from "mongoose";
 import validator from "../services/validator.js";
+import connection from "../repositories/connection.js";
 
 const Schema = mongoose.Schema;
 
@@ -19,6 +20,6 @@ const categorySchema = new Schema({
   },
 });
 
-const Category = mongoose.model("categorySchema", categorySchema);
+const Category = connection.model("Category", categorySchema);
 
 export default Category;
