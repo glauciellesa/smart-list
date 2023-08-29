@@ -129,13 +129,43 @@ const StyledRegister = styled.div`
     font-weight: 300;
   }
 
-  .image {
-    display: none;
-
-  @media (min-width: 600px) {
+  @media only screen and (max-width: 480px) {
     .image {
       display: block;
     }
-    
+
+    StyledRegister {
+      background-color: #ed6d5a;
+    }
+  }
+
+  @media only screen and (min-width: 481px) and (max-width: 768px) {
+    .image {
+      display: block;
+    }
+
+    StyledRegister {
+      background-color: #d5bcf0;
+    }
+  }
+
+  @media only screen and (min-width: 769px) and (max-width: 1024px) {
+    .image {
+      display: block;
+    }
+
+    StyledRegister {
+      background-color: #ffefc2;
+    }
+  }
+
+  @media only screen and (min-width: 1025px) {
+    .image {
+      display: block;
+    }
+
+    StyledRegister {
+      background-color: #ffefc2;
+    }
   }
 `;
