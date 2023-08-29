@@ -1,7 +1,9 @@
 import productRepository from "../repositories/productRepository.js";
+import { InvalidInputError } from "../errors/invalidInputError.js";
 
-const addProduct = async ({ product_name, image, categoryId }) => {
-  if (!product_name) {
+const addProduct = async ({ product_name, image, category_id }) => {
+  console.log(product_name, image, category_id);
+  if (!product_name || !category_id) {
     throw new InvalidInputError(
       "You need to provide at least the name of the product"
     );
@@ -17,12 +19,12 @@ const addProduct = async ({ product_name, image, categoryId }) => {
   const newProduct = {
     product_name,
     image,
-    categoryId,
+    category_id,
   };
 
   const productCreated = await productRepository.addNewProduct(newProduct);
 
-  console.log({ productCreated });
+  return productCreated;
 };
 
 export default { addProduct };

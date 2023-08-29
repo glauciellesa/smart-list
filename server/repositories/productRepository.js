@@ -13,12 +13,16 @@ const addNewProduct = (product) => {
   return Product.create({
     product_name: product.product_name,
     image: product.image,
-    category_id: product.categoryId,
+    category_id: product.category_id,
   });
 };
 
 const getProductbyName = async (name) => {
-  return await Product.findOne({ name }).exec();
+  return await Product.find({ product_name: new RegExp(name, "i") }).exec();
 };
 
-export default { productExist, addNewProduct, getProductbyName };
+const getProducts = async (name) => {
+  return await Product.find({}).exec();
+};
+
+export default { productExist, addNewProduct, getProductbyName, getProducts };

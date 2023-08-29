@@ -1,6 +1,7 @@
 import mongoose from "mongoose";
 import validator from "../services/validator.js";
-import Category from "./CategoryModel.js";
+import connection from "../repositories/connection.js";
+import Category from "../models/CategoryModel.js";
 
 const Schema = mongoose.Schema;
 
@@ -24,6 +25,6 @@ const productSchema = new Schema({
   },
 });
 
-const Product = mongoose.model("productSchema", productSchema);
+const Product = connection.model("Product", productSchema);
 
 export default Product;
