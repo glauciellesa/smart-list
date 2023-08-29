@@ -25,50 +25,56 @@ const Register = () => {
   return (
     <StyledRegister>
       <form>
-        <h1>Register</h1>
-        <label htmlFor="first_name">First name</label>
+        <h1>REGISTER</h1>
+        {/* <label htmlFor="first_name">First name</label> */}
         <input
           value={first_name}
           id="first_name"
-          placeholder="First name"
+          placeholder="First Name"
           onChange={(event) => setFirstName(event.target.value)}
         />
-        <label htmlFor="last_name">Last name</label>
+        {/* <label htmlFor="last_name">Last name</label> */}
         <input
           value={last_name}
           id="last_name"
-          placeholder="Last name"
+          placeholder="Last Name"
           onChange={(event) => setLastName(event.target.value)}
         />
-        <label htmlFor="gitHubAccount">GitHub Account</label>
+        {/* <label htmlFor="gitHubAccount">GitHub Account</label> */}
         <input
           value={gitHubAccount}
           id="gitHubAccount"
           placeholder="GitHub Account"
           onChange={(event) => setGitHubAccount(event.target.value)}
         />
-        <label htmlFor="email">Email</label>
+        {/* <label htmlFor="email">Email</label> */}
         <input
           value={email}
           type="email"
-          placeholder="yourEmail@example.com"
+          placeholder="Email Address"
           onChange={(event) => setEmail(event.target.value)}
           id="email"
         />
-        <label htmlFor="password">Password</label>
+        {/* <label htmlFor="password">Password</label> */}
         <input
           value={password}
           type="password"
-          placeholder="*********"
+          placeholder="Password"
           onChange={(event) => setPassword(event.target.value)}
           id="password"
         />
-        <button onClick={handleSubmit}>Log In</button>
+        <input
+          value={password}
+          type="password"
+          placeholder="Confirm Password"
+          onChange={(event) => setPassword(event.target.value)}
+          id="password"
+        />
+        <button onClick={handleSubmit}>SIGN UP</button>
+        <p>
+          Already have an account? <Link to="/login">Login here.</Link>
+        </p>
       </form>
-
-      <p>
-        Already have an account? <Link to="/login">Login here.</Link>
-      </p>
     </StyledRegister>
   );
 };
@@ -87,9 +93,27 @@ const StyledRegister = styled.div`
     color: #161616;
   }
 
-  label {
+  input {
     text-align: left;
-    padding: 0.25rem 0;
-    background-color: red;
+    padding: 0.5rem 0.7rem;
+    background-color: white;
+    margin: 0.5rem 0;
+    width: 70%;
+  }
+
+  button {
+    background-color: #ed6d5a;
+    color: white;
+    padding: 0.5rem 1rem;
+    border: none;
+    margin: 1.5rem 0;
+    cursor: pointer;
+    width: 50%;
+  }
+
+  h1 {
+    font-size: 1.5rem;
+    margin: 1rem 0;
+    font-weight: 300;
   }
 `;
