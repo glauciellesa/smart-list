@@ -1,7 +1,8 @@
 import express from "express";
 import user from "../userController.js";
-import item from "../itemController.js";
+import product from "../productController.js";
 import recipe from "../recipeController.js";
+import category from "../categoryController.js";
 
 const routes = express.Router();
 
@@ -10,7 +11,8 @@ routes.get("/", async function (req, res) {
 });
 
 routes.use(user);
-routes.use(item);
+routes.use(category);
+routes.use(product);
 routes.use(recipe);
 
 export default routes;

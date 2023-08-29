@@ -12,7 +12,7 @@ const register = async ({
   email,
   password,
 }) => {
-  if (!first_name || !last_name || !password || !email || !password) {
+  if (!first_name || !last_name || !picture || !email || !password) {
     throw new InvalidInputError("All user data is required");
   }
 
@@ -45,11 +45,11 @@ const login = async ({ email, password }) => {
     throw new InvalidInputError("Email not valid.");
   }
 
-  const isUserExists = await userRepository.existUser(email, password);
-  if (!isUserExists) {
+  const isUser = await userRepository.existUser(email, password);
+  if (!isUser) {
     throw new InvalidInputError("Email or password do not exist.");
   }
-  console.log({ isUserExists });
+  console.log({ isUser });
   // Generate a JWT token
   return new Promise((resolve, rejects) => {
     jwt.sign(

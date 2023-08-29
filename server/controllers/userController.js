@@ -12,8 +12,8 @@ const user = express.Router();
  */
 user.post("/api/register", async (req, res, next) => {
   try {
-    const createdUserId = await userService.register(req.body);
-    res.status(201).json({ id: createdUserId });
+    const createdUser = await userService.register(req.body);
+    res.status(201).json({ createdUser });
   } catch (error) {
     return next(error);
   }
@@ -36,7 +36,7 @@ user.post("/api/login", async (req, res, next) => {
     return next(error);
   }
 });
-/* user.use(verifyToken); */
+user.use(verifyToken);
 
 user.get("/api/users", async (req, res) => {
   res.status(200).json("hello").end();
