@@ -3,26 +3,29 @@ import ListForm from './ListForm';
 import List from './List';
 import items from '../../../data/items.json';
 
-
 const EditList = () => {
-    const initialCategories = [
-      'fruits',
-      'vegetables',
-      'dairy',
-      'cereals',
-      'meat',
-      'cleaning',
-      'beauty',
-      'drinks'
-    ];
-  
-    const [listItems, setListItems] = useState(items);
-  
-    const addItem = (text, category) => {
+  const initialCategories = [
+    'fruits',
+    'vegetables',
+    'dairy',
+    'seasoning and condiments',
+    'breads and pasta',
+    'proteins',
+    'household',
+    'health and beauty',
+    'drinks'
+  ];
+
+  console.log('listItems:', listItems);
+
+  const [listItems, setListItems] = useState(items);
+
+  const addItem = (text, category) => {
+    if (typeof text === 'string') {
       const existingItem = listItems.find(
         (item) => item.text === text && item.category === category
       );
-  
+    
       if (existingItem) {
         const updatedItems = listItems.map((item) =>
           item.id === existingItem.id
@@ -39,24 +42,29 @@ const EditList = () => {
         };
         setListItems([...listItems, newItem]);
       }
-    };
-  
-    const removeItem = (id) => {
-      const newItems = listItems.filter((item) => item.id !== id);
-      setListItems(newItems);
-    };
-  
-    return (
-      <div>
-        <h1>Smart List App</h1>
-        <ListForm addItem={addItem} categories={initialCategories} />
-        <div className="create-list">
-          {listItems.map((item) => (
-            <List key={item.id} item={item} removeItem={removeItem} />
-          ))}
-        </div>
-      </div>
-    );
+    } else {
+      console.log('Invalid text property:', text);
+      // Handle the case where text is not a string
+    }
   };
-  
-  export default EditList;
+
+  const removeItem = (id) => {
+    const newItems = listItems.filter((item) => item.id !== id);
+    setListItems(newItems);
+  };
+
+  return (
+    <div>
+      <h1>Smart List App</h1>
+      <ListForm addItem={addItem} categories={initialCategories} />
+      <div className="create-list">
+        {listItems.map((item) => (
+          <List key={item.id} item={item} removeItem={removeItem} />
+        ))}
+      </div>
+    </div>
+  );
+};
+
+export default EditList;
+

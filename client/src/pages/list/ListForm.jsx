@@ -29,7 +29,6 @@ const ListForm = ({ addItem, categories }) => {
               {cat}
             </option>
           ))}
-          <option value="undefined">Create a new category</option>
         </select>
         <button type="submit">Create your list</button>
       </form>
