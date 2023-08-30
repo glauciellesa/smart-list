@@ -2,6 +2,7 @@ import { useState } from "react";
 import { styled } from "styled-components";
 import { Link } from "react-router-dom";
 import imageTest from "../../img/imageTest.png";
+import handleUserPost from "../../../repository/userRepo";
 
 /* 
 https://github.com/glauciellesa.png
@@ -11,18 +12,25 @@ https://github.com/leilaZ1111.png
 alt="Perfil image "
 src={`https://github.com/${props.imgProfile}.png`}
 /> */
-const Login = () => {
-  const [email, enterEmail] = useState("");
-  const [password, enterPassword] = useState("");
+const initialState = {
+  email: "",
+  password: "",
+};
 
-  const loginData = {
-    email: email,
-    password: password,
+const Login = () => {
+  const [form, setForm] = useState(initialState);
+
+  const handleChange = (event) => {
+    setForm({
+      ...form,
+      [event.target.id]: event.target.value,
+    });
   };
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log(loginData);
+    handleUserPost("http://localhost:8000/api/login", form);
+    setForm(initialState);
   };
 
   return (
@@ -34,19 +42,21 @@ const Login = () => {
         <h1>WELCOME BACK!</h1>
         {/* <label htmlFor="email">email</label> */}
         <input
-          value={email}
           type="email"
-          placeholder="Email Address"
           id="email"
-          onChange={(event) => enterEmail(event.target.value)}
+          placeholder="Email Address"
+          onChange={handleChange}
+          value={form.email}
+          required
         />
         {/* <label htmlFor="password">password</label> */}
         <input
-          value={password}
           type="password"
-          placeholder="Password"
           id="password"
-          onChange={(event) => enterPassword(event.target.value)}
+          placeholder="Password"
+          onChange={handleChange}
+          value={form.password}
+          required
         />
         <p>Forgot Password?</p>
         <button onClick={handleSubmit}>LOGIN</button>

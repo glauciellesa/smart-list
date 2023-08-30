@@ -2,6 +2,7 @@ import { useState } from "react";
 import { styled } from "styled-components";
 import { Link } from "react-router-dom";
 import imageTest from "../../img/imageTest.png";
+import handleUserPost from "../../../repository/userRepo";
 
 const initialState = {
   first_name: "",
@@ -11,7 +12,8 @@ const initialState = {
   password: "",
   /* confirmPassword: "", */
 };
-const Register = (props) => {
+
+const Register = () => {
   const [form, setForm] = useState(initialState);
 
   const handleChange = (event) => {
@@ -23,7 +25,7 @@ const Register = (props) => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    props.onRegister(form);
+    handleUserPost("http://localhost:8000/api/register", form);
     setForm(initialState);
   };
 
