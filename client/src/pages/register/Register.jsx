@@ -6,10 +6,10 @@ import imageTest from "../../img/imageTest.png";
 const initialState = {
   first_name: "",
   last_name: "",
-  gitHubAccount: "",
+  githubAccount: "",
   email: "",
   password: "",
-  confirmPassword: "",
+  /* confirmPassword: "", */
 };
 const Register = (props) => {
   const [form, setForm] = useState(initialState);
@@ -54,10 +54,10 @@ const Register = (props) => {
 
         <input
           type="text"
-          id="gitHubAccount"
+          id="githubAccount"
           placeholder="GitHub Account"
           onChange={handleChange}
-          value={form.gitHubAccount}
+          value={form.githubAccount}
         />
 
         <input
@@ -77,14 +77,14 @@ const Register = (props) => {
           value={form.password}
           required
         />
-        <input
+        {/* <input
           type="password"
           id="confirmPassword"
           placeholder="Confirm Password"
           onChange={handleChange}
           value={form.confirmPassword}
           required
-        />
+        /> */}
 
         <button onClick={handleSubmit}>SIGN UP</button>
 

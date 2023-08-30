@@ -17,7 +17,7 @@ const usersSchema = new Schema({
     required: true,
     validate: [validator.isNotEmpty, "Last name is empty"],
   },
-  picture: {
+  githubAccount: {
     type: String,
   },
   email: {

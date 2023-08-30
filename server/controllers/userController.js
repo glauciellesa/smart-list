@@ -3,13 +3,7 @@ import userService from "../services/userService.js";
 import { verifyToken } from "../services/authService.js";
 
 const user = express.Router();
-/**
- * @swagger
- * /api/register:
- *   post:
- *     summary: Creates a user
- *     description: insert a new user to the db.
- */
+
 user.post("/api/register", async (req, res, next) => {
   try {
     const createdUser = await userService.register(req.body);
@@ -19,13 +13,6 @@ user.post("/api/register", async (req, res, next) => {
   }
 });
 
-/**
- * @swagger
- * /api/login:
- *   post:
- *     summary: User login
- *     description: User are able to do login.
- */
 user.post("/api/login", async (req, res, next) => {
   try {
     const userLoginTokken = await userService.login(req.body);
