@@ -1,5 +1,5 @@
 import { InvalidInputError } from "../errors/invalidInputError.js";
-import { NoContentError } from "../errors/NoContentError.js";
+import { NoContentError } from "../errors/noContentError.js";
 
 const errorHandler = (error, req, res, next) => {
   // Logging the error here
