@@ -1,29 +1,29 @@
-import React, { useState } from 'react';
-import ListForm from './ListForm';
-import List from './List';
-import items from '../../../data/items.json';
+import { useState } from "react";
+import ListForm from "./ShoppingListForm";
+import List from "./List";
+import items from "../../../data/items.json";
 
 const EditList = () => {
   const initialCategories = [
-    'fruits',
-    'vegetables',
-    'dairy',
-    'seasoning and condiments',
-    'breads and pasta',
-    'proteins',
-    'household',
-    'health and beauty',
-    'drinks'
+    "fruits",
+    "vegetables",
+    "dairy",
+    "seasoning and condiments",
+    "breads and pasta",
+    "proteins",
+    "household",
+    "health and beauty",
+    "drinks",
   ];
 
   const [listItems, setListItems] = useState(items);
 
   const addItem = (text, category) => {
-    if (typeof text === 'string') {
+    if (typeof text === "string") {
       const existingItem = listItems.find(
         (item) => item.text === text && item.category === category
       );
-    
+
       if (existingItem) {
         const updatedItems = listItems.map((item) =>
           item.id === existingItem.id
@@ -41,7 +41,7 @@ const EditList = () => {
         setListItems([...listItems, newItem]);
       }
     } else {
-      console.log('Invalid text property:', text);
+      console.log("Invalid text property:", text);
       // Handle the case where text is not a string
     }
   };
@@ -103,7 +103,7 @@ export default EditList;
 //       const existingItem = listItems.find(
 //         (item) => item.text === text && item.category === category
 //       );
-    
+
 //       if (existingItem) {
 //         const updatedItems = listItems.map((item) =>
 //           item.id === existingItem.id
@@ -145,4 +145,3 @@ export default EditList;
 // };
 
 // export default EditList;
-

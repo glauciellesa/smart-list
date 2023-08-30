@@ -9,11 +9,10 @@ import Home from "./pages/home/Home";
 import PageNotFound from "./pages/PageNotFound";
 import Recipes from "./components/Recipes";
 import Login from "./pages/login/Login";
-import List from "./pages/list/List";
+import List from "./pages/shoppingList/ShoppingList";
 import Register from "./pages/register/Register";
 
 function App() {
-  const [listItems, setListItems] = useState(items);
   const router = createBrowserRouter(
     createRoutesFromElements(
       <Route path="/" element={<RootLayout />}>
