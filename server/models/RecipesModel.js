@@ -1,6 +1,7 @@
 import mongoose from "mongoose";
-import validator from "../validators/validator.js";
-import Item from "./ItemsModel.js";
+import validator from "../services/validator.js";
+import User from "./UsersModel.js";
+import connection from "../repositories/connection.js";
 
 const Schema = mongoose.Schema;
 
@@ -10,41 +11,29 @@ const recipesSchema = new Schema({
     ref: User,
     unique: true,
   },
-  recipe: [
+  userRecipes: [
     {
-      tile: {
+      photo: {
+        type: String,
+      },
+      name: {
         type: String,
         trim: true,
         required: true,
         validate: [validator.isNotEmpty, "Recipe title can not be empty"],
       },
-      photo: {
+
+      timeToPrepare: {
         type: String,
       },
-      portion: {
-        type: Number,
+      ingredients: [String],
+      instructions: {
+        type: String,
       },
-      timeToPrepare: {
-        type: Number,
-      },
-      Ingredients: [
-        {
-          item_id: {
-            type: mongoose.Types.ObjectId,
-            ref: Item,
-            unique: true,
-            required: true,
-          },
-          quantity: {
-            type: Number,
-            required: true,
-          },
-        },
-      ],
     },
   ],
 });
 
-const recipe = mongoose.model("recipe", recipesSchema);
+const Recipe = connection.model("Recipe", recipesSchema);
 
-export default recipe;
+export default Recipe;

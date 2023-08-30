@@ -11,7 +11,7 @@ const connection = await mongoose
     return connection;
   })
   .catch((error) => {
-    console.log(error);
+    console.log("err", error);
   });
 
 export default connection;

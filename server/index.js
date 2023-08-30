@@ -1,14 +1,15 @@
 import express from "express";
-import userController from "./controllers/userController.js";
+
 import middleware from "./middlewares/middleware.js";
 import config from "./config/config.js";
 import apiDocs from "./documentation/apidoc.js";
 import errorHandler from "./middlewares/errorHandler.js";
+import routes from "./controllers/router/routes.js";
 
 const app = express();
 
 app.use(middleware);
-app.use(userController);
+app.use(routes);
 apiDocs(app);
 app.use(errorHandler);
 
