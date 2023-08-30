@@ -1,6 +1,9 @@
 import { styled } from 'styled-components';
+import { useState } from 'react';
+import { styled } from 'styled-components';
 
 const Footer = () => {
+  const [test, setTest] = useState();
   return (
     <StyledFooter>
       <p>Copyight © 2023 </p>

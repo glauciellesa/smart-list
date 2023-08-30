@@ -2,7 +2,7 @@ import express from "express";
 import userService from "../services/userService.js";
 import { verifyToken } from "../services/authService.js";
 
-const router = express.Router();
+const user = express.Router();
 /**
  * @swagger
  * /api/register:
@@ -10,10 +10,10 @@ const router = express.Router();
  *     summary: Creates a user
  *     description: insert a new user to the db.
  */
-router.post("/api/register", async (req, res, next) => {
+user.post("/api/register", async (req, res, next) => {
   try {
-    const createdUserId = await userService.register(req.body);
-    res.status(201).json({ id: createdUserId });
+    const createdUser = await userService.register(req.body);
+    res.status(201).json({ createdUser });
   } catch (error) {
     return next(error);
   }
@@ -26,7 +26,7 @@ router.post("/api/register", async (req, res, next) => {
  *     summary: User login
  *     description: User are able to do login.
  */
-router.post("/api/login", async (req, res, next) => {
+user.post("/api/login", async (req, res, next) => {
   try {
     const userLoginTokken = await userService.login(req.body);
 
@@ -36,11 +36,10 @@ router.post("/api/login", async (req, res, next) => {
     return next(error);
   }
 });
+user.use(verifyToken);
 
-router.use(verifyToken);
-
-router.get("/api/users", async (req, res) => {
+user.get("/api/users", async (req, res) => {
   res.status(200).json("hello").end();
 });
 
-export default router;
+export default user;
