@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { styled } from 'styled-components';
 import { Link } from 'react-router-dom';
+import imageTest from '../../img/imageTest.png';
 
 /* 
 https://github.com/glauciellesa.png
@@ -26,6 +27,9 @@ const Login = () => {
 
   return (
     <StyleLogin>
+      <div className="image">
+        <img src={imageTest} alt="Image test" />
+      </div>
       <form>
         <h1>WELCOME BACK!</h1>
         {/* <label htmlFor="email">email</label> */}
@@ -57,12 +61,14 @@ const Login = () => {
 export default Login;
 
 const StyleLogin = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
   form {
-    margin-top: 5rem;
-    text-align: center;
     display: flex;
+    text-align: center;
     flex-direction: column;
-    min-height: 100vh;
     align-items: center;
     font-family: 'Montserrat', sans-serif;
     color: #161616;
@@ -75,29 +81,55 @@ const StyleLogin = styled.div`
     width: 300px;
     border-radius: 5px;
     border: none;
-    box-shadow: 5px 5px 5px #5e503f;
+    box-shadow: 5px 5px 5px #d6cdc2;
   }
   button {
     background-color: #ed6d5a;
     color: white;
     padding: 0.5rem 1rem;
     border: none;
-    box-shadow: 5px 5px 5px #5e503f;
+    box-shadow: 5px 5px 5px #d6cdc2;
     margin: 1.5rem 0;
     cursor: pointer;
     width: 200px;
     border-radius: 5px;
   }
+
+  a {
+    color: #704869;
+  }
+
+  a:hover {
+    color: #ed6d5a;
+  }
+
   h1 {
     font-size: 1.5rem;
     margin: 1rem 0;
     font-weight: 300;
   }
+
+  .image img {
+    display: none;
+  }
+
   p {
     font-size: 0.8rem;
     margin: 0.5rem 0;
   }
   .registerHere {
     font-size: 1rem;
+  }
+
+  @media only screen and (min-width: 600px) {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 3rem;
+
+    .image img {
+      display: block;
+      width: 33rem;
+    }
   }
 `;

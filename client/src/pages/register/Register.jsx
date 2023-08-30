@@ -137,7 +137,6 @@ const StyledRegister = styled.div`
 
   .image img {
     display: none;
-    width: 33rem;
   }
 
   @media only screen and (min-width: 600px) {
@@ -148,6 +147,7 @@ const StyledRegister = styled.div`
 
     .image img {
       display: block;
+      width: 33rem;
     }
   }
 `;
