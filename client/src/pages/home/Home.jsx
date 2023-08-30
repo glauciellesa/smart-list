@@ -2,6 +2,7 @@ import { NavLink } from "react-router-dom";
 import styled from "styled-components";
 import Recipes from "../../components/Recipes";
 
+
 const Home = () => {
   return (
     <StyledHome>
