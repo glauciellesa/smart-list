@@ -1,26 +1,30 @@
-import { useState } from 'react';
-import { styled } from 'styled-components';
-import { Link } from 'react-router-dom';
-import imageTest from '../../img/imageTest.png';
+import { useState } from "react";
+import { styled } from "styled-components";
+import { Link } from "react-router-dom";
+import imageTest from "../../img/imageTest.png";
 
-const Register = () => {
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
-  const [first_name, setFirstName] = useState('');
-  const [last_name, setLastName] = useState('');
-  const [gitHubAccount, setGitHubAccount] = useState('');
+const initialState = {
+  first_name: "",
+  last_name: "",
+  gitHubAccount: "",
+  email: "",
+  password: "",
+  confirmPassword: "",
+};
+const Register = (props) => {
+  const [form, setForm] = useState(initialState);
 
-  const userData = {
-    first_name: first_name,
-    last_name: last_name,
-    gitHubAccount: gitHubAccount,
-    email: email,
-    password: password,
+  const handleChange = (event) => {
+    setForm({
+      ...form,
+      [event.target.id]: event.target.value,
+    });
   };
 
-  const handleSubmit = (event) => {
-    event.preventDefault();
-    console.log(userData);
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    props.onRegister(form);
+    setForm(initialState);
   };
 
   return (
@@ -29,51 +33,61 @@ const Register = () => {
         <img src={imageTest} alt="Image test" />
       </div>
       <form>
-        <h1>REGISTER</h1>
+        <h1>SIGN UP</h1>
         <input
-          value={first_name}
+          type="text"
           id="first_name"
           placeholder="First Name"
-          onChange={(event) => setFirstName(event.target.value)}
+          onChange={handleChange}
+          value={form.first_name}
+          required
         />
-        {/* <label htmlFor="last_name">Last name</label> */}
+
         <input
-          value={last_name}
+          type="text"
           id="last_name"
           placeholder="Last Name"
-          onChange={(event) => setLastName(event.target.value)}
+          onChange={handleChange}
+          value={form.last_name}
+          required
         />
-        {/* <label htmlFor="gitHubAccount">GitHub Account</label> */}
+
         <input
-          value={gitHubAccount}
+          type="text"
           id="gitHubAccount"
           placeholder="GitHub Account"
-          onChange={(event) => setGitHubAccount(event.target.value)}
+          onChange={handleChange}
+          value={form.gitHubAccount}
         />
-        {/* <label htmlFor="email">Email</label> */}
+
         <input
-          value={email}
           type="email"
-          placeholder="Email Address"
-          onChange={(event) => setEmail(event.target.value)}
           id="email"
+          placeholder="Email Address"
+          onChange={handleChange}
+          value={form.email}
+          required
         />
-        {/* <label htmlFor="password">Password</label> */}
+
         <input
-          value={password}
           type="password"
+          id="password"
           placeholder="Password"
-          onChange={(event) => setPassword(event.target.value)}
-          id="password"
+          onChange={handleChange}
+          value={form.password}
+          required
         />
         <input
-          value={password}
           type="password"
+          id="confirmPassword"
           placeholder="Confirm Password"
-          onChange={(event) => setPassword(event.target.value)}
-          id="password"
+          onChange={handleChange}
+          value={form.confirmPassword}
+          required
         />
+
         <button onClick={handleSubmit}>SIGN UP</button>
+
         <p>
           Already have an account? <Link to="/login">Login here</Link>
         </p>
@@ -88,33 +102,32 @@ const StyledRegister = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
+  padding: 4rem 0;
 
   form {
     display: flex;
     text-align: center;
     flex-direction: column;
     align-items: center;
-    font-family: 'Montserrat', sans-serif;
-    color: #161616;
   }
 
   input {
     text-align: left;
-    padding: 0.7rem 0.7rem;
+    padding: 0.7rem;
     background-color: white;
     margin: 0.5rem 0;
     width: 300px;
     border-radius: 5px;
     border: none;
-    box-shadow: 5px 5px 5px #d6cdc2;
+    box-shadow: 5px 2px 10px #d6cdc2;
   }
 
   button {
     background-color: #ed6d5a;
     color: white;
-    padding: 0.5rem 1rem;
+    padding: 0.7rem;
     border: none;
-    box-shadow: 5px 5px 5px #d6cdc2;
+    box-shadow: 5px 2px 10px #d6cdc2;
     margin: 1.5rem 0;
     cursor: pointer;
     width: 200px;
@@ -130,6 +143,7 @@ const StyledRegister = styled.div`
   }
 
   h1 {
+    color: #704869;
     font-size: 1.5rem;
     margin: 1rem 0;
     font-weight: 300;
@@ -143,11 +157,11 @@ const StyledRegister = styled.div`
     display: flex;
     justify-content: center;
     align-items: center;
-    gap: 3rem;
+    gap: 5rem;
 
     .image img {
       display: block;
-      width: 33rem;
+      width: 25rem;
     }
   }
 `;

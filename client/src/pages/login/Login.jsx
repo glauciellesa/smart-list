@@ -1,7 +1,7 @@
-import { useState } from 'react';
-import { styled } from 'styled-components';
-import { Link } from 'react-router-dom';
-import imageTest from '../../img/imageTest.png';
+import { useState } from "react";
+import { styled } from "styled-components";
+import { Link } from "react-router-dom";
+import imageTest from "../../img/imageTest.png";
 
 /* 
 https://github.com/glauciellesa.png
@@ -12,8 +12,8 @@ alt="Perfil image "
 src={`https://github.com/${props.imgProfile}.png`}
 /> */
 const Login = () => {
-  const [email, enterEmail] = useState('');
-  const [password, enterPassword] = useState('');
+  const [email, enterEmail] = useState("");
+  const [password, enterPassword] = useState("");
 
   const loginData = {
     email: email,
@@ -70,25 +70,24 @@ const StyleLogin = styled.div`
     text-align: center;
     flex-direction: column;
     align-items: center;
-    font-family: 'Montserrat', sans-serif;
     color: #161616;
   }
   input {
     text-align: left;
-    padding: 0.7rem 0.7rem;
+    padding: 0.7rem;
     background-color: white;
     margin: 0.5rem 0;
     width: 300px;
     border-radius: 5px;
     border: none;
-    box-shadow: 5px 5px 5px #d6cdc2;
+    box-shadow: 5px 2px 10px #d6cdc2;
   }
   button {
     background-color: #ed6d5a;
     color: white;
-    padding: 0.5rem 1rem;
+    padding: 0.7rem;
     border: none;
-    box-shadow: 5px 5px 5px #d6cdc2;
+    box-shadow: 5px 2px 10px #d6cdc2;
     margin: 1.5rem 0;
     cursor: pointer;
     width: 200px;
@@ -104,6 +103,7 @@ const StyleLogin = styled.div`
   }
 
   h1 {
+    color: #704869;
     font-size: 1.5rem;
     margin: 1rem 0;
     font-weight: 300;
@@ -125,11 +125,11 @@ const StyleLogin = styled.div`
     display: flex;
     justify-content: center;
     align-items: center;
-    gap: 3rem;
+    gap: 5rem;
 
     .image img {
       display: block;
-      width: 33rem;
+      width: 25rem;
     }
   }
 `;
