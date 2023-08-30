@@ -1,0 +1,53 @@
+[
+  {
+    "id": 1,
+    "category": "fruits",
+    "text":"strawberry"
+  },
+
+  {
+    "id": 2,
+    "category": "vegetables",
+    "text":"carrots"
+  },
+  {
+    "id": 3,
+    "category": "seasoning and condiments",
+    "text":"garlic powder"
+  },
+
+  {
+    "id": 4,
+    "category": "breads and pasta",
+    "text":"whole grain bread"
+  },
+
+  {
+    "id": 4,
+    "category": "dairy",
+    "text":"cheese"
+  },
+
+  {
+    "id": 6,
+    "category": "proteins",
+    "text":"chicken breast"
+  },
+
+  {
+    "id": 7,
+    "category": "health and beauty",
+    "text":"hand soap"
+  },
+
+  {
+    "id": 8,
+    "category": "household",
+    "text":"toothpaste"
+  },
+  {
+    "id":9,
+    "category":"drinks",
+    "text":"sparkling water"
+  }
+]

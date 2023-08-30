@@ -13,6 +13,7 @@ import List from "./pages/list/List";
 import Register from "./pages/register/Register";
 
 function App() {
+  const [listItems, setListItems] = useState(items);
   const router = createBrowserRouter(
     createRoutesFromElements(
       <Route path="/" element={<RootLayout />}>
