@@ -22,7 +22,7 @@ function App() {
   };
 
   if (userData) {
-    addNewUser(userData, baseUrl);
+    addNewUserTodb(userData, baseUrl);
   }
 
   const router = createBrowserRouter(
@@ -45,7 +45,7 @@ function App() {
 
 export default App;
 
-const addNewUser = (newUser, baseUrl) => {
+const addNewUserTodb = (newUser, baseUrl) => {
   const requestOptions = {
     method: "POST",
     headers: { "Content-Type": "application/json" },
