@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { styled } from 'styled-components';
 import { Link } from 'react-router-dom';
-// import imageTest from '../img/imageTest.png';
+import imageTest from '../../img/imageTest.png';
 
 const Register = () => {
   const [email, setEmail] = useState('');
@@ -25,15 +25,11 @@ const Register = () => {
 
   return (
     <StyledRegister>
+      <div className="image">
+        <img src={imageTest} alt="Image test" />
+      </div>
       <form>
         <h1>REGISTER</h1>
-        {/* <div className="image">
-          <img src={imageTest} alt="Image test" />
-        </div> */}
-        <div className="image">
-          <img src="../img/imageTest.png" alt="Image test" />
-        </div>
-        {/* <label htmlFor="first_name">First name</label> */}
         <input
           value={first_name}
           id="first_name"
@@ -89,12 +85,14 @@ const Register = () => {
 export default Register;
 
 const StyledRegister = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
   form {
-    margin-top: 5rem;
-    text-align: center;
     display: flex;
+    text-align: center;
     flex-direction: column;
-    min-height: 100vh;
     align-items: center;
     font-family: 'Montserrat', sans-serif;
     color: #161616;
@@ -108,7 +106,7 @@ const StyledRegister = styled.div`
     width: 300px;
     border-radius: 5px;
     border: none;
-    box-shadow: 5px 5px 5px #5e503f;
+    box-shadow: 5px 5px 5px #d6cdc2;
   }
 
   button {
@@ -116,11 +114,19 @@ const StyledRegister = styled.div`
     color: white;
     padding: 0.5rem 1rem;
     border: none;
-    box-shadow: 5px 5px 5px #5e503f;
+    box-shadow: 5px 5px 5px #d6cdc2;
     margin: 1.5rem 0;
     cursor: pointer;
     width: 200px;
     border-radius: 5px;
+  }
+
+  a {
+    color: #704869;
+  }
+
+  a:hover {
+    color: #ed6d5a;
   }
 
   h1 {
@@ -129,43 +135,19 @@ const StyledRegister = styled.div`
     font-weight: 300;
   }
 
-  @media only screen and (max-width: 480px) {
-    .image {
-      display: block;
-    }
-
-    StyledRegister {
-      background-color: #ed6d5a;
-    }
+  .image img {
+    display: none;
+    width: 33rem;
   }
 
-  @media only screen and (min-width: 481px) and (max-width: 768px) {
-    .image {
+  @media only screen and (min-width: 600px) {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 3rem;
+
+    .image img {
       display: block;
-    }
-
-    StyledRegister {
-      background-color: #d5bcf0;
-    }
-  }
-
-  @media only screen and (min-width: 769px) and (max-width: 1024px) {
-    .image {
-      display: block;
-    }
-
-    StyledRegister {
-      background-color: #ffefc2;
-    }
-  }
-
-  @media only screen and (min-width: 1025px) {
-    .image {
-      display: block;
-    }
-
-    StyledRegister {
-      background-color: #ffefc2;
     }
   }
 `;
