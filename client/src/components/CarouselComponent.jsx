@@ -8,20 +8,46 @@ const StyledCarousel = styled(Carousel)`
 `;
 
 const CarouselImage = styled.img`
-  width: 400px;
-  height: 300px;
-  /* Additional image styles */
+max-width: 100%;
+height: auto;
+`;
+
+const Caption = styled.p`
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  background-color: rgba(255, 255, 255, 0.7);
+  color: rgb(113 72 105);
+  font-weight: bold;
+  padding: 8px;
+  margin: 0;
 `;
 
 const CarouselComponent = ({ recipes }) => {
   return (
-    <StyledCarousel autoPlay={true} interval={3000} showThumbs={false}>
+    <StyledCarousel
+      autoPlay={true}
+      interval={3000}
+      showThumbs={true}
+      centerMode={true}
+      centerSlidePercentage={40}
+      showStatus={true}
+      showIndicators={true}
+      infiniteLoop={true}
+      useKeyboardArrows={true}
+      stopOnHover={true}
+      swipeable={true}
+      dynamicHeight={true}
+      emulateTouch={true}
+    >
       {recipes.map((recipe) => (
         <div className="recipe-slider" key={recipe.id}>
           <CarouselImage
             src={`https://source.unsplash.com/${recipe.photo}/400x300`}
-            alt="Pictures of recipes"
+            alt={`Pictures of ${recipe.name}`} 
           />
+          <Caption>{recipe.name}</Caption>
         </div>
       ))}
     </StyledCarousel>
@@ -29,3 +55,5 @@ const CarouselComponent = ({ recipes }) => {
 };
 
 export default CarouselComponent;
+
+

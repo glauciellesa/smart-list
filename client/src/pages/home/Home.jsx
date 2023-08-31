@@ -24,12 +24,12 @@ const Home = () => {
 };
 
 const StyledHome = styled.div`
-  padding: 2rem;
+  padding: 2%;
   display: flex;
   flex-direction: column;
 
   @media (min-width: 600px) {
-    padding: 1rem;
+    padding: 1%;
   }
 `;
 
