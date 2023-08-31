@@ -1,9 +1,9 @@
 import shoppingListRepository from "../repositories/shoppingListRepository.js";
 import { InvalidInputError } from "../errors/invalidInputError.js";
 
-const addNewShoppingList = async (clienteRequestId, newList) => {
+const createNewUserList = async (clienteRequestId, newList) => {
   if (!newList.listName) {
-    throw new InvalidInputError("You need to provide the product name.");
+    throw new InvalidInputError("You need to provide List's name.");
   }
 
   const userList = await shoppingListRepository.userHasList(
@@ -23,4 +23,4 @@ const addNewShoppingList = async (clienteRequestId, newList) => {
   }
 };
 
-export default { addNewShoppingList };
+export default { createNewUserList };

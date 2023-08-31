@@ -11,13 +11,14 @@ const createShoppingList = async (userId) => {
 const userHasList = async (listName, clientId) => {
   console.log(listName, { clientId });
   const user = await ShoppingList.find(
-    { _id: new ObjectId(clientId) },
+    { user_id: new ObjectId(clientId) },
     { lists: { $elemMatch: { listName: listName } } }
   );
 
-  console.log("my", user);
+  console.log("mry", user);
+  console.log("my", user[0]);
 
-  if (user && user.lists && user.lists.length > 0) {
+  if (user && user[0].lists && user[0].lists.length > 0) {
     return true; // The user has the list with the specified name.
   } else {
     return false; // The user does not have the list with the specified name.
