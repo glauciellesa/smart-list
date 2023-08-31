@@ -51,10 +51,18 @@ const editShoppingList = async (shoppingListId, newListName) => {
   return editedList;
 };
 
+const deleteShoppingList = async (shoppingListId) => {
+  return await ShoppingList.updateOne(
+    { "lists._id": new ObjectId(shoppingListId) },
+    { $pull: { lists: { _id: new ObjectId(shoppingListId) } } }
+  );
+};
+
 export default {
   createShoppingList,
   userHasList,
   createUserShoppingList,
   getAllUserList,
   editShoppingList,
+  deleteShoppingList,
 };

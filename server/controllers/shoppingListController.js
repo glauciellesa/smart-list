@@ -52,6 +52,12 @@ shoppingList.delete(
   "/api/shoppingLists/:shoppingListId",
   async (req, res, next) => {
     try {
+      const shoppingListId = req.params.shoppingListId;
+      console.log({ shoppingListId });
+
+      await shoppingListRepository.deleteShoppingList(shoppingListId);
+
+      res.status(200).json("Shopping list was deleted").end();
     } catch (error) {
       return next(error);
     }
