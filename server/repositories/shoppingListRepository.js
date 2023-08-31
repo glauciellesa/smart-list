@@ -15,9 +15,6 @@ const userHasList = async (listName, clientId) => {
     { lists: { $elemMatch: { listName: listName } } }
   );
 
-  console.log("mry", user);
-  console.log("my", user[0]);
-
   if (user && user[0].lists && user[0].lists.length > 0) {
     return true; // The user has the list with the specified name.
   } else {
@@ -32,14 +29,22 @@ const createUserShoppingList = async (listName, clientId) => {
   };
 
   return await ShoppingList.findOneAndUpdate({
-    user_id: clientId,
+    user_id: new ObjectId(clientId),
     $push: { lists: shoppingList },
     new: true,
   });
+};
+
+const getAllUserList = async (clientId) => {
+  const userList = await ShoppingList.find({
+    user_id: new ObjectId(clientId),
+  });
+  return userList[0].lists;
 };
 
 export default {
   createShoppingList,
   userHasList,
   createUserShoppingList,
+  getAllUserList,
 };

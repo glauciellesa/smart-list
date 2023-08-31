@@ -1,5 +1,6 @@
 import express from "express";
 import shoppingListService from "../services/shoppingListService.js";
+import shoppingListRepository from "../repositories/shoppingListRepository.js";
 
 const shoppingList = express.Router();
 
@@ -18,6 +19,11 @@ shoppingList.post("/api/shoppingLists", async (req, res, next) => {
 
 shoppingList.get("/api/shoppingLists", async (req, res, next) => {
   try {
+    const clienteRequestId = req.email._id;
+    const userLists = await shoppingListRepository.getAllUserList(
+      clienteRequestId
+    );
+    res.status(200).json(userLists).end();
   } catch (error) {
     return next(error);
   }
