@@ -1,5 +1,7 @@
 import React from "react";
-//https://unsplash.com/photos/${props.image}
+import recipes from "../../../data/recipes.json";
+
+//https://unsplash.com/photos/${recipe.photo}
 
 /* https://unsplash.com/photos/yx3-a7ualMM     = apple
 https://unsplash.com/photos/zLCR7RsxYGs    = pineaple
@@ -9,7 +11,23 @@ https://unsplash.com/photos/fczCr7MdE7U   = banana
 */
 
 const List = () => {
-  return <div>List</div>;
+  return (
+    <div>
+      {recipes.recipes.map((recipe) => {
+        console.log({ recipe });
+        return (
+          <>
+            <div key={recipe.name}>
+              <img
+                src={`https://unsplash.com/photos/${recipe.photo}`}
+                alt="phtoo"
+              />
+            </div>
+          </>
+        );
+      })}
+    </div>
+  );
 };
 
 export default List;

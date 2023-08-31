@@ -1,28 +1,46 @@
 import express from "express";
-import { verifyToken } from "../services/authService";
+import shoppingListService from "../services/shoppingListService.js";
+import shoppingListRepository from "../repositories/shoppingListRepository.js";
 
 const shoppingList = express.Router();
 
-shoppingList.use(verifyToken);
-
-shoppingList.post("/api/shoppingLists/:producId", async (req, resp, next) => {
+shoppingList.post("/api/shoppingLists", async (req, res, next) => {
   try {
+    const clienteRequestId = req.email._id;
+    const createdList = await shoppingListService.createNewUserList(
+      clienteRequestId,
+      req.body
+    );
+    res.status(201).json({ createdList }).end();
   } catch (error) {
     return next(error);
   }
 });
 
-shoppingList.get("/api/shoppingLists", async (req, resp, next) => {
+shoppingList.get("/api/shoppingLists", async (req, res, next) => {
   try {
+    const clienteRequestId = req.email._id;
+    const userLists = await shoppingListRepository.getAllUserList(
+      clienteRequestId
+    );
+    res.status(200).json(userLists).end();
   } catch (error) {
     return next(error);
   }
 });
 
-shoppingList.get(
+shoppingList.put(
   "/api/shoppingLists/:shoppingListId",
-  async (req, resp, next) => {
+  async (req, res, next) => {
     try {
+      const shoppingListId = req.params.shoppingListId;
+      console.log({ shoppingListId });
+
+      const editedList = await shoppingListRepository.editShoppingList(
+        shoppingListId,
+        req.body
+      );
+      console.log({ editedList });
     } catch (error) {
       return next(error);
     }
@@ -32,8 +50,14 @@ shoppingList.get(
 //I think just the person that has created the shoppingList are able to delete it.
 shoppingList.delete(
   "/api/shoppingLists/:shoppingListId",
-  async (req, resp, next) => {
+  async (req, res, next) => {
     try {
+      const shoppingListId = req.params.shoppingListId;
+      console.log({ shoppingListId });
+
+      await shoppingListRepository.deleteShoppingList(shoppingListId);
+
+      res.status(200).json("Shopping list was deleted").end();
     } catch (error) {
       return next(error);
     }
