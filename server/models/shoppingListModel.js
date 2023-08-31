@@ -40,6 +40,6 @@ const shoppingListSchema = new Schema({
   ],
 });
 
-const ShoppingList = connection.model("shoppingList", shoppingListSchema);
+const ShoppingList = connection.model("ShoppingList", shoppingListSchema);
 
 export default ShoppingList;
