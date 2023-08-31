@@ -24,9 +24,9 @@ function App() {
         <Route
           path="shoppingList"
           element={<ShoppingList />}
-          loader={() => {
+          /*  loader={() => {
             return productService.getProducts();
-          }}
+          }} */
         />
         <Route path="*" element={<PageNotFound />} />
       </Route>
