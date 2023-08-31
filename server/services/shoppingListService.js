@@ -12,7 +12,7 @@ const addNewShoppingList = async (clienteRequestId, newList) => {
   );
   console.log({ userList });
 
-  /* if (userList) {
+  if (userList) {
     throw new InvalidInputError("Shopping list already exist.");
   } else {
     const createListName = await shoppingListRepository.createUserShoppingList(
@@ -20,7 +20,7 @@ const addNewShoppingList = async (clienteRequestId, newList) => {
       clienteRequestId
     );
     return createListName;
-  } */
+  }
 };
 
 export default { addNewShoppingList };
