@@ -45,7 +45,7 @@ const getAllUserList = async (clientId) => {
 const editShoppingList = async (shoppingListId, newListName) => {
   const editedList = await ShoppingList.findOneAndUpdate(
     { "lists._id": new ObjectId(shoppingListId) },
-    { $set: { "lists.listName": newListName } }
+    { $set: { "lists.$.listName": newListName } }
   );
   console.log(editedList);
   return editedList;
