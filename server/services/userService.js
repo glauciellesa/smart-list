@@ -4,6 +4,7 @@ import userRepository from "../repositories/userRepository.js";
 import validator from "./validator.js";
 import { InvalidInputError } from "../errors/invalidInputError.js";
 import config from "../config/config.js";
+import shoppingListRepository from "../repositories/shoppingListRepository.js";
 
 const register = async ({
   first_name,
@@ -33,6 +34,8 @@ const register = async ({
   };
 
   const userId = await userRepository.registerUser(newUser);
+  console.log("meusss", userId._id);
+  /*   const createShoppingListo = await shoppingListRepository.createShoppingList(); */
   return userId;
 };
 

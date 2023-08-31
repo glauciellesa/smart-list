@@ -1,6 +1,7 @@
 import mongoose from "mongoose";
 import Product from "./ProductModel.js";
 import connection from "../repositories/connection.js";
+import User from "./UsersModel.js";
 
 const Schema = mongoose.Schema;
 
@@ -30,7 +31,7 @@ const shoppingListSchema = new Schema({
             /* soon, pretty soon, not soon */
           },
           quantity: {
-            type: number,
+            type: Number,
             required: "Quantity is required",
             required: false,
           },
@@ -40,6 +41,6 @@ const shoppingListSchema = new Schema({
   ],
 });
 
-const shoppingList = connection.model("shoppingList", shoppingListSchema);
+const ShoppingList = connection.model("shoppingList", shoppingListSchema);
 
-export default shoppingList;
+export default ShoppingList;

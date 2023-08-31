@@ -1,5 +1,3 @@
-import userRepository from "../repositories/userRepository.js";
-
 const addNewShoppingList = async (clienteRequestId, newList) => {
   console.log(newList);
   if (!newList.product_id) {
