@@ -5,6 +5,18 @@ import styled from 'styled-components';
 
 const StyledCarousel = styled(Carousel)`
   /* Your carousel styles */
+  .carousel .slider-wrapper {
+    margin: 0 -10px; 
+  }
+  
+  .carousel .slider {
+    padding: 0 10px; 
+  }
+  
+  .carousel .slide {
+    border-radius: 5px; 
+    margin: 0 10px; 
+  }
 `;
 
 const CarouselImage = styled.img`
@@ -32,7 +44,7 @@ const CarouselComponent = ({ recipes }) => {
       showThumbs={true}
       centerMode={true}
       centerSlidePercentage={40}
-      showStatus={true}
+      showStatus={false}
       showIndicators={true}
       infiniteLoop={true}
       useKeyboardArrows={true}
@@ -44,7 +56,7 @@ const CarouselComponent = ({ recipes }) => {
       {recipes.map((recipe) => (
         <div className="recipe-slider" key={recipe.id}>
           <CarouselImage
-            src={`https://source.unsplash.com/${recipe.photo}/400x300`}
+            src={`https://source.unsplash.com/${recipe.photo}/450x350`}
             alt={`Pictures of ${recipe.name}`} 
           />
           <Caption>{recipe.name}</Caption>
