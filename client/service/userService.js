@@ -1,4 +1,4 @@
-const handleUserPost = (baseUrl, newUser) => {
+const insertUser = (baseUrl, newUser) => {
   console.log(newUser);
   const requestOptions = {
     method: "POST",
@@ -19,4 +19,4 @@ const handleUserPost = (baseUrl, newUser) => {
     });
 };
 
-export default handleUserPost;
+export default { insertUser };

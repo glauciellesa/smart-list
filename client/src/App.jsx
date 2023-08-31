@@ -9,8 +9,9 @@ import Home from "./pages/home/Home";
 import PageNotFound from "./pages/PageNotFound";
 import Recipes from "./components/Recipes";
 import Login from "./pages/login/Login";
-import List from "./pages/list/List";
+import ShoppingList from "./pages/shoppingList/ShoppingList";
 import Register from "./pages/register/Register";
+import productService from "../service/productService";
 
 function App() {
   const router = createBrowserRouter(
@@ -20,7 +21,13 @@ function App() {
         <Route path="recipes" element={<Recipes />} />
         <Route path="register" element={<Register />} />
         <Route path="login" element={<Login />} />
-        <Route path="list" element={<List />} />
+        <Route
+          path="shoppingList"
+          element={<ShoppingList />}
+          /*  loader={() => {
+            return productService.getProducts();
+          }} */
+        />
         <Route path="*" element={<PageNotFound />} />
       </Route>
     )

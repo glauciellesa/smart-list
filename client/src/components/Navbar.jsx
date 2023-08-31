@@ -1,7 +1,7 @@
-import { NavLink } from 'react-router-dom';
-import styled from 'styled-components';
-import { User2 } from 'lucide-react';
-import logo from '../img/logo.png';
+import { NavLink } from "react-router-dom";
+import styled from "styled-components";
+import { User2 } from "lucide-react";
+import logo from "../img/logo.png";
 
 const Navbar = () => {
   return (
@@ -13,7 +13,7 @@ const Navbar = () => {
       </div>
       <nav className="menu_navbar">
         <NavLink to="recipes"> Recipes</NavLink>
-        <NavLink to="list"> List</NavLink>
+        <NavLink to="shoppingList"> Shopping list</NavLink>
         <NavLink to="register"> Register</NavLink>
         <NavLink to="login">
           <User2 />
