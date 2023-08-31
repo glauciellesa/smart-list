@@ -1,30 +1,4 @@
-import React from 'react';
-<<<<<<< HEAD
-
-const List = ({ item, removeItem }) => {
-  console.log('item:', item); // Debugging statement
-
-  if (typeof item.text === 'string') {
-    console.log('item.text:', item.text);
-    console.log('typeof item.text:', typeof item.text);
-
-    return (
-      <div className="item" key={item.id}>
-        <div className="content">
-          <div>
-            <p>{item.text}</p>
-            <p>Quantity: {item.quantity}</p>
-            <button className='remove' onClick={() => removeItem(item.id)}>x</button>
-          </div>
-        </div>
-      </div>
-    );
-  } else {
-    console.log('Invalid text property:', item.text);
-    // Handle the case where text is not a string
-    return null; // or render an error message
-  }
-=======
+import React from "react";
 //https://unsplash.com/photos/${props.image}
 
 /* https://unsplash.com/photos/yx3-a7ualMM     = apple
@@ -36,13 +10,9 @@ https://unsplash.com/photos/fczCr7MdE7U   = banana
 
 const List = () => {
   return <div>List</div>;
->>>>>>> main
 };
 
 export default List;
-
-
-
 
 // import React from "react";
 // //https://unsplash.com/photos/${props.image}
@@ -70,6 +40,5 @@ export default List;
 //     </div>
 //   );
 // };
-
 
 // export default List;

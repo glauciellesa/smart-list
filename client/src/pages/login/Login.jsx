@@ -1,7 +1,8 @@
-import { useState } from 'react';
-import { styled } from 'styled-components';
-import { Link } from 'react-router-dom';
-import imageTest from '../../img/imageTest.png';
+import { useState } from "react";
+import { styled } from "styled-components";
+import { Link } from "react-router-dom";
+import imageTest from "../../img/imageTest.png";
+import handleUserPost from "../../../repository/userRepo";
 
 /* 
 https://github.com/glauciellesa.png
@@ -11,18 +12,25 @@ https://github.com/leilaZ1111.png
 alt="Perfil image "
 src={`https://github.com/${props.imgProfile}.png`}
 /> */
-const Login = () => {
-  const [email, enterEmail] = useState('');
-  const [password, enterPassword] = useState('');
+const initialState = {
+  email: "",
+  password: "",
+};
 
-  const loginData = {
-    email: email,
-    password: password,
+const Login = () => {
+  const [form, setForm] = useState(initialState);
+
+  const handleChange = (event) => {
+    setForm({
+      ...form,
+      [event.target.id]: event.target.value,
+    });
   };
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log(loginData);
+    handleUserPost("http://localhost:8000/api/login", form);
+    setForm(initialState);
   };
 
   return (
@@ -34,19 +42,21 @@ const Login = () => {
         <h1>WELCOME BACK!</h1>
         {/* <label htmlFor="email">email</label> */}
         <input
-          value={email}
           type="email"
-          placeholder="Email Address"
           id="email"
-          onChange={(event) => enterEmail(event.target.value)}
+          placeholder="Email Address"
+          onChange={handleChange}
+          value={form.email}
+          required
         />
         {/* <label htmlFor="password">password</label> */}
         <input
-          value={password}
           type="password"
-          placeholder="Password"
           id="password"
-          onChange={(event) => enterPassword(event.target.value)}
+          placeholder="Password"
+          onChange={handleChange}
+          value={form.password}
+          required
         />
         <p>Forgot Password?</p>
         <button onClick={handleSubmit}>LOGIN</button>
@@ -70,25 +80,24 @@ const StyleLogin = styled.div`
     text-align: center;
     flex-direction: column;
     align-items: center;
-    font-family: 'Montserrat', sans-serif;
     color: #161616;
   }
   input {
     text-align: left;
-    padding: 0.7rem 0.7rem;
+    padding: 0.7rem;
     background-color: white;
     margin: 0.5rem 0;
     width: 300px;
     border-radius: 5px;
     border: none;
-    box-shadow: 5px 5px 5px #d6cdc2;
+    box-shadow: 5px 2px 10px #d6cdc2;
   }
   button {
     background-color: #ed6d5a;
     color: white;
-    padding: 0.5rem 1rem;
+    padding: 0.7rem;
     border: none;
-    box-shadow: 5px 5px 5px #d6cdc2;
+    box-shadow: 5px 2px 10px #d6cdc2;
     margin: 1.5rem 0;
     cursor: pointer;
     width: 200px;
@@ -104,6 +113,7 @@ const StyleLogin = styled.div`
   }
 
   h1 {
+    color: #704869;
     font-size: 1.5rem;
     margin: 1rem 0;
     font-weight: 300;
@@ -125,11 +135,11 @@ const StyleLogin = styled.div`
     display: flex;
     justify-content: center;
     align-items: center;
-    gap: 3rem;
+    gap: 5rem;
 
     .image img {
       display: block;
-      width: 33rem;
+      width: 25rem;
     }
   }
 `;

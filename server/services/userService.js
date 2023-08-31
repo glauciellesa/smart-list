@@ -8,11 +8,11 @@ import config from "../config/config.js";
 const register = async ({
   first_name,
   last_name,
-  picture,
+  githubAccount,
   email,
   password,
 }) => {
-  if (!first_name || !last_name || !picture || !email || !password) {
+  if (!first_name || !last_name || !githubAccount || !email || !password) {
     throw new InvalidInputError("All user data is required");
   }
 
@@ -27,7 +27,7 @@ const register = async ({
   const newUser = {
     first_name,
     last_name,
-    picture,
+    githubAccount,
     email,
     password: hashedPassword,
   };
