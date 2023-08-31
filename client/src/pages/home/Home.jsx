@@ -8,16 +8,12 @@ const Home = () => {
   return (
     <StyledHome>
       <div className="recipes">
-        <h1>
-          <NavLink to="recipes">Explore All Recipes</NavLink>
-        </h1>
+        <StyledNavLink to="recipes">Explore All Recipes</StyledNavLink>
         <CarouselComponent recipes={recipes.recipes} /> {/* Use the carousel component */}
         <Recipes />
       </div>
       <div className="shoppingList">
-        <h1>
-          <NavLink to="list">Shopping List</NavLink>
-        </h1>
+        <StyledNavLink to="list">Shopping List</StyledNavLink>
       </div>
     </StyledHome>
   );
@@ -33,48 +29,13 @@ const StyledHome = styled.div`
   }
 `;
 
+const StyledNavLink = styled(NavLink)`
+  color: rgb(113, 72, 105);
+  font-size: 2rem;
+  margin-bottom: 4%;
+`;
+
 export default Home;
 
 
-// const Home = () => {
-  
-//   return (
-//     <StyledHome>
-//       <div className="recipes">
-//         <h1>
-//           <NavLink to="recipes">Explore All Recipes</NavLink>
-//         </h1>
-//         {recipes.recipes.map((recipe) => (
-//   <div className="recipe-slider" key={recipe.id}>
-//     <img
-//       src={`https://source.unsplash.com/${recipe.photo}/400x300`}
-//       alt="Pictures of recipes"
-//     />
-//   </div>
-// ))}
-
-
-
-//         <Recipes />
-//       </div>
-//       <div className="shoppingList">
-//         <h1>
-//           <NavLink to="list">Shopping List</NavLink>
-//         </h1>
-//       </div>
-//     </StyledHome>
-//   );
-// };
-
-// export default Home;
-
-// const StyledHome = styled.div`
-//   padding: 2rem;
-//   display: flex;
-//   flex-direction: column;
-
-//   @media (min-width: 600px) {
-//     padding: 1rem;
-//   }
-// `;
 
