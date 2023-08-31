@@ -6,7 +6,7 @@ const shoppingList = express.Router();
 shoppingList.post("/api/shoppingLists", async (req, res, next) => {
   try {
     const clienteRequestId = req.email._id;
-    const createdList = shoppingListService.addNewShoppingList(
+    const createdList = await shoppingListService.addNewShoppingList(
       clienteRequestId,
       req.body
     );

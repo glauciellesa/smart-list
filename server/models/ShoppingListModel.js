@@ -23,7 +23,6 @@ const shoppingListSchema = new Schema({
             type: mongoose.Types.ObjectId,
             ref: Product,
             unique: true,
-            required: true,
           },
           frequency: {
             type: String,

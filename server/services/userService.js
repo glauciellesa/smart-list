@@ -35,7 +35,10 @@ const register = async ({
 
   const userId = await userRepository.registerUser(newUser);
   console.log("meusss", userId._id);
-  /*   const createShoppingListo = await shoppingListRepository.createShoppingList(); */
+  const createShoppingList = await shoppingListRepository.createShoppingList(
+    userId._id
+  );
+  console.log({ createShoppingList });
   return userId;
 };
 
