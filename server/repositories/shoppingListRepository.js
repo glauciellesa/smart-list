@@ -42,9 +42,19 @@ const getAllUserList = async (clientId) => {
   return userList[0].lists;
 };
 
+const editShoppingList = async (shoppingListId, newListName) => {
+  const editedList = await ShoppingList.findOneAndUpdate(
+    { "lists._id": new ObjectId(shoppingListId) },
+    { $set: { "lists.listName": newListName } }
+  );
+  console.log(editedList);
+  return editedList;
+};
+
 export default {
   createShoppingList,
   userHasList,
   createUserShoppingList,
   getAllUserList,
+  editShoppingList,
 };

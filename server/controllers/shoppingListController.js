@@ -33,6 +33,14 @@ shoppingList.put(
   "/api/shoppingLists/:shoppingListId",
   async (req, res, next) => {
     try {
+      const shoppingListId = req.params.shoppingListId;
+      console.log({ shoppingListId });
+
+      const editedList = await shoppingListRepository.editShoppingList(
+        shoppingListId,
+        req.body
+      );
+      console.log({ editedList });
     } catch (error) {
       return next(error);
     }
