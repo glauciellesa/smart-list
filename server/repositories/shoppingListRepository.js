@@ -41,19 +41,32 @@ const getAllUserList = async (clientId) => {
   return userList[0].lists;
 };
 
-const editShoppingList = async (shoppingListId, newListName) => {
-  const editedList = await ShoppingList.findOneAndUpdate(
-    { "lists._id": new ObjectId(shoppingListId) },
-    { $set: { "lists.$.listName": newListName } }
+const fetchUserOwnedLists = async (clienteRequestId, shoppingListId) => {
+  const list = await ShoppingList.findOne(
+    { user_id: clienteRequestId },
+    { "lists._id": shoppingListId }
   );
-  console.log(editedList);
+};
+
+const editShoppingList = async (
+  clienteRequestId,
+  shoppingListId,
+  newListName
+) => {
+  console.log({ clienteRequestId }, { shoppingListId }, newListName.listName);
+
+  const editedList = await ShoppingList.findOneAndUpdate(
+    { user_id: clienteRequestId, "lists._id": shoppingListId },
+    { $set: { lists: { listName: newListName.listName } } }
+  );
+  console.log("repo", { editedList });
   return editedList;
 };
 
-const deleteShoppingList = async (shoppingListId) => {
-  return await ShoppingList.updateOne(
-    { "lists._id": new ObjectId(shoppingListId) },
-    { $pull: { lists: { _id: new ObjectId(shoppingListId) } } }
+const deleteShoppingList = async (clienteRequestId, shoppingListId) => {
+  return await ShoppingList.findOneAndUpdate(
+    { user_id: clienteRequestId, "lists._id": shoppingListId },
+    { $pull: { lists: { _id: shoppingListId } } }
   );
 };
 
@@ -63,5 +76,6 @@ export default {
   createUserShoppingList,
   getAllUserList,
   editShoppingList,
+
   deleteShoppingList,
 };

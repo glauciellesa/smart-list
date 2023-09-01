@@ -33,14 +33,17 @@ shoppingList.put(
   "/api/shoppingLists/:shoppingListId",
   async (req, res, next) => {
     try {
+      const clienteRequestId = req.email._id;
       const shoppingListId = req.params.shoppingListId;
-      console.log({ shoppingListId });
 
-      const editedList = await shoppingListRepository.editShoppingList(
+      const editedList = await shoppingListService.checkBeforeEdit(
+        clienteRequestId,
         shoppingListId,
         req.body
       );
+
       console.log({ editedList });
+      res.status(200).json(editedList).end();
     } catch (error) {
       return next(error);
     }
@@ -52,12 +55,16 @@ shoppingList.delete(
   "/api/shoppingLists/:shoppingListId",
   async (req, res, next) => {
     try {
+      const clienteRequestId = req.email._id;
       const shoppingListId = req.params.shoppingListId;
       console.log({ shoppingListId });
 
-      await shoppingListRepository.deleteShoppingList(shoppingListId);
+      const checkToDelet = await shoppingListService.checkBeforeDelete(
+        clienteRequestId,
+        shoppingListId
+      );
 
-      res.status(200).json("Shopping list was deleted").end();
+      res.status(200).json(checkToDelet).end();
     } catch (error) {
       return next(error);
     }

@@ -23,4 +23,37 @@ const createNewUserList = async (clienteRequestId, newList) => {
   }
 };
 
-export default { createNewUserList };
+const checkBeforeEdit = async (
+  clienteRequestId,
+  shoppingListId,
+  newListName
+) => {
+  const userList = await shoppingListRepository.editShoppingList(
+    clienteRequestId,
+    shoppingListId,
+    newListName
+  );
+
+  console.log("serv", userList);
+
+  if (userList) {
+    return "Shopping was edited";
+  } else {
+    return "You are not owner of this list";
+  }
+};
+
+const checkBeforeDelete = async (clienteRequestId, shoppingListId) => {
+  const userList = await shoppingListRepository.deleteShoppingList(
+    clienteRequestId,
+    shoppingListId
+  );
+
+  if (userList) {
+    return "Shopping list was deleted";
+  } else {
+    return "You are not owner of this list";
+  }
+};
+
+export default { createNewUserList, checkBeforeEdit, checkBeforeDelete };
