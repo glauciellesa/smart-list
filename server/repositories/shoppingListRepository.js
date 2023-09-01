@@ -28,11 +28,10 @@ const createUserShoppingList = async (listName, clientId) => {
     productLists: [],
   };
 
-  return await ShoppingList.findOneAndUpdate({
-    user_id: new ObjectId(clientId),
-    $push: { lists: shoppingList },
-    new: true,
-  });
+  return await ShoppingList.findOneAndUpdate(
+    { user_id: clientId },
+    { $push: { lists: shoppingList } }
+  );
 };
 
 const getAllUserList = async (clientId) => {
