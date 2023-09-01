@@ -16,7 +16,7 @@
       "instructions": "Cook the spaghetti in boiling salted water until al dente. Drain and set aside. In a bowl, whisk together the eggs and grated Pecorino Romano cheese. Season with black pepper. In a skillet, cook the diced pancetta until crispy. Add minced garlic and sauté for 1 minute. Add the cooked spaghetti to the skillet with the pancetta and garlic. Toss to combine. Remove the skillet from heat and quickly pour the egg and cheese mixture over the pasta. Toss vigorously to coat the pasta and create a creamy sauce. Serve immediately, garnished with chopped fresh parsley."
     },
     {
-      "photo": "9SUHKYVcLpI",
+      "photo": "VEpZ1z1Slwo",
       "name": "Chicken Stir-Fry",
       "timeToPrepare": "20 minutes",
       "ingredients": [
@@ -78,6 +78,20 @@
         "2 cups semisweet chocolate chips"
       ],
       "instructions": "Preheat the oven to 375°F (190°C). In a mixing bowl, cream together the softened butter, granulated sugar, and brown sugar until smooth. Beat in the eggs one at a time, then stir in the vanilla. In a separate bowl, whisk together the flour, baking soda, and salt. Gradually add this dry mixture to the wet ingredients, mixing just until combined. Stir in the chocolate chips. Drop rounded tablespoons of cookie dough onto ungreased baking sheets. Bake for 9 to 11 minutes in the preheated oven, or until the edges are golden brown. Allow cookies to cool on baking sheets for a few minutes before transferring to wire racks to cool completely."
-    }
+    },
+    {
+      "photo": "-XazBwHUtJs",
+      "name": "Panna Cotta",
+      "timeToPrepare": "15 minutes",
+      "ingredients": [
+          "2 cups heavy cream",
+          "1/2 cup granulated sugar",
+          "1 teaspoon vanilla extract",
+          "1 packet unflavored gelatin (about 2.5 teaspoons)",
+          "2 tablespoons cold water"
+        ],
+        "instructions": "1. In a small bowl, sprinkle the gelatin over the cold water and let it sit for a few minutes to bloom.\n\n2. In a saucepan, combine the heavy cream and sugar. Heat over medium heat until the sugar dissolves and the mixture is warm.\n\n3. Remove the saucepan from heat and stir in the bloomed gelatin until completely dissolved.\n\n4. Stir in the vanilla extract.\n\n5. Pour the mixture into individual serving glasses or molds.\n\n6. Refrigerate for at least 4 hours or until the panna cotta is set.\n\n7. Once set, you can serve the panna cotta as is or top it with your favorite fruit compote, caramel sauce, or fresh berries.\n\nEnjoy your delicious and creamy panna cotta!"
+      
+      }
   ]
 }
