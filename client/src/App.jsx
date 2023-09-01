@@ -7,7 +7,7 @@ import {
 import RootLayout from './components/layout/RootLayout';
 import Home from './pages/home/Home';
 import PageNotFound from './pages/PageNotFound';
-import Recipes from './components/Recipes';
+import Recipes from './pages/recipes/Recipes';
 import Login from './pages/login/Login';
 import List from './pages/list/List';
 import Register from './pages/register/Register';
