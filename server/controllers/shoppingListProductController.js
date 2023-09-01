@@ -10,9 +10,11 @@ shoppingList.post(
   async (req, res, next) => {
     try {
       const clienteRequestId = req.email._id;
+      const shoppingListId = req.params.shoppingListId;
       const createdList =
         await shoppingListProductService.addProductIntoUserList(
           clienteRequestId,
+          shoppingListId,
           req.body
         );
       res.status(201).json({ createdList }).end();
@@ -27,9 +29,11 @@ shoppingList.get(
   async (req, res, next) => {
     try {
       const clienteRequestId = req.email._id;
+      const shoppingListId = req.params.shoppingListId;
       const userLists =
         await shoppingListProductRepo.getProductsFromShoppingList(
-          clienteRequestId
+          clienteRequestId,
+          shoppingListId
         );
       res.status(200).json(userLists).end();
     } catch (error) {
@@ -44,11 +48,13 @@ shoppingList.put(
     try {
       const clienteRequestId = req.email._id;
       const shoppingListId = req.params.shoppingListId;
+      const productId = req.params.productId;
 
       const editedList =
         await shoppingListProductService.checkProductBeforeEdit(
           clienteRequestId,
           shoppingListId,
+          productId,
           req.body
         );
 
