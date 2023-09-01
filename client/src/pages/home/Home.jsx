@@ -1,35 +1,41 @@
 import { NavLink } from "react-router-dom";
 import styled from "styled-components";
 import Recipes from "../../components/Recipes";
-
+import recipes from "../../../data/recipes.json";
+import CarouselComponent from '../../../src/components/CarouselComponent';
 
 const Home = () => {
   return (
     <StyledHome>
       <div className="recipes">
-        <h1>
-          <NavLink to="recipes">Explore All Recipes</NavLink>
-        </h1>
-        three recipe carousel limiter
+        <StyledNavLink to="recipes">Explore All Recipes</StyledNavLink>
+        <CarouselComponent recipes={recipes.recipes} /> {/* Use the carousel component */}
         <Recipes />
       </div>
       <div className="shoppingList">
-        <h1>
-          <NavLink to="list">Shopping List</NavLink>
-        </h1>
+        <StyledNavLink to="list">Shopping List</StyledNavLink>
       </div>
     </StyledHome>
   );
 };
 
-export default Home;
-
 const StyledHome = styled.div`
-  padding: 2rem;
+  padding: 2%;
   display: flex;
   flex-direction: column;
 
   @media (min-width: 600px) {
-    padding: 1rem;
+    padding: 1%;
   }
 `;
+
+const StyledNavLink = styled(NavLink)`
+  color: rgb(113, 72, 105);
+  font-size: 2rem;
+  margin-bottom: 4%;
+`;
+
+export default Home;
+
+
+
