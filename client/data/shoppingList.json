@@ -1,0 +1,45 @@
+[
+  {
+    "user_id": "64edf10361e4f6f5a4619e09",
+    "lists": [
+      {
+        "_id": "123",
+        "listName": "Mercado Brasileiro",
+        "productList": [
+          {
+            "product_id": "64edf10361e4f6f5a4619e09",
+            "frequency": "soon",
+            "quantity": 4
+          }
+        ]
+      },
+      {
+        "_id": "12",
+        "listName": "Cora",
+        "productList": [
+          {
+            "product_id": "64edf10361e4f6f5a4619e09",
+            "frequency": "soon",
+            "quantity": 4
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "user_id": "1111110361e4fssss6f5a4619e09",
+    "lists": [
+      {
+        "_id": "1283",
+        "listName": "Mercado Brasileiro",
+        "productList": [
+          {
+            "product_id": "64edf10361e4f6f5a4619e09",
+            "frequency": "soon",
+            "quantity": 4
+          }
+        ]
+      }
+    ]
+  }
+]

@@ -1,5 +1,7 @@
 import mongoose from "mongoose";
-import Item from "./ItemsModel.js";
+import Product from "./ProductModel.js";
+import connection from "../repositories/connection.js";
+import User from "./UsersModel.js";
 
 const Schema = mongoose.Schema;
 
@@ -9,25 +11,35 @@ const shoppingListSchema = new Schema({
     ref: User,
     unique: true,
   },
-  list: [
-    {
-      item_id: {
-        type: mongoose.Types.ObjectId,
-        ref: Item,
-        unique: true,
-      },
-      frequency: {
+  lists: [
+    new Schema({
+      listName: {
         type: String,
-        required: false,
+        required: true,
       },
-      quantity: {
-        type: number,
-        required: "Quantity is required",
-      },
-    },
+      productLists: [
+        {
+          product_id: {
+            type: mongoose.Types.ObjectId,
+            ref: Product,
+            unique: true,
+          },
+          frequency: {
+            type: String,
+            required: false,
+            /* soon, pretty soon, not soon */
+          },
+          quantity: {
+            type: Number,
+            required: "Quantity is required",
+            required: false,
+          },
+        },
+      ],
+    }),
   ],
 });
 
-const shoppingList = mongoose.model("shoppingList", shoppingListSchema);
+const ShoppingList = connection.model("ShoppingList", shoppingListSchema);
 
-export default shoppingList;
+export default ShoppingList;

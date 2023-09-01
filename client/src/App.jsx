@@ -7,7 +7,7 @@ import {
 import RootLayout from './components/layout/RootLayout';
 import Home from './pages/home/Home';
 import PageNotFound from './pages/PageNotFound';
-import Recipes from './pages/recipes/Recipes';
+import Recipes from './components/Recipes';
 import Login from './pages/login/Login';
 import List from './pages/list/List';
 import Register from './pages/register/Register';
@@ -20,7 +20,13 @@ function App() {
         <Route path="recipes" element={<Recipes />} />
         <Route path="register" element={<Register />} />
         <Route path="login" element={<Login />} />
-        <Route path="list" element={<List />} />
+        <Route
+          path="shoppingList"
+          element={<ShoppingList />}
+          /*  loader={() => {
+            return productService.getProducts();
+          }} */
+        />
         <Route path="*" element={<PageNotFound />} />
       </Route>
     )
