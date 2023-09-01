@@ -1,9 +1,8 @@
 import ShoppingList from "../models/ShoppingListModel.js";
-import { ObjectId } from "mongodb";
 
 const createShoppingList = async (userId) => {
   return await ShoppingList.create({
-    user_id: new ObjectId(userId),
+    user_id: userId,
     lists: [],
   });
 };
@@ -11,7 +10,7 @@ const createShoppingList = async (userId) => {
 const userHasList = async (listName, clientId) => {
   console.log(listName, { clientId });
   const user = await ShoppingList.find(
-    { user_id: new ObjectId(clientId) },
+    { user_id: clientId },
     { lists: { $elemMatch: { listName: listName } } }
   );
 
@@ -36,16 +35,9 @@ const createUserShoppingList = async (listName, clientId) => {
 
 const getAllUserList = async (clientId) => {
   const userList = await ShoppingList.find({
-    user_id: new ObjectId(clientId),
+    user_id: clientId,
   });
   return userList[0].lists;
-};
-
-const fetchUserOwnedLists = async (clienteRequestId, shoppingListId) => {
-  const list = await ShoppingList.findOne(
-    { user_id: clienteRequestId },
-    { "lists._id": shoppingListId }
-  );
 };
 
 const editShoppingList = async (
@@ -53,13 +45,11 @@ const editShoppingList = async (
   shoppingListId,
   newListName
 ) => {
-  console.log({ clienteRequestId }, { shoppingListId }, newListName.listName);
-
   const editedList = await ShoppingList.findOneAndUpdate(
     { user_id: clienteRequestId, "lists._id": shoppingListId },
     { $set: { lists: { listName: newListName.listName } } }
   );
-  console.log("repo", { editedList });
+
   return editedList;
 };
 
@@ -76,6 +66,5 @@ export default {
   createUserShoppingList,
   getAllUserList,
   editShoppingList,
-
   deleteShoppingList,
 };
