@@ -1,5 +1,6 @@
 import shoppingListRepository from "../repositories/shoppingListRepository.js";
 import { InvalidInputError } from "../errors/invalidInputError.js";
+import { PermissionError } from "../errors/permissionError.js";
 
 const createNewUserList = async (clientRequestId, newList) => {
   if (!newList.listName) {
@@ -39,7 +40,7 @@ const checkBeforeEdit = async (
   if (userList) {
     return "Shopping was edited";
   } else {
-    return "You are not owner of this list";
+    throw new PermissionError("You are not owner of this list");
   }
 };
 
@@ -52,7 +53,7 @@ const checkBeforeDelete = async (clientRequestId, shoppingListId) => {
   if (userList) {
     return "Shopping list was deleted";
   } else {
-    return "You are not owner of this list";
+    throw new PermissionError("You are not owner of this list");
   }
 };
 

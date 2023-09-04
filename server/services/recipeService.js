@@ -1,4 +1,5 @@
 import { InvalidInputError } from "../errors/invalidInputError.js";
+import { PermissionError } from "../errors/permissionError.js";
 import recipeRepository from "../repositories/recipeRepository.js";
 
 const addNewRecipe = async (newRecipe, clientRequestId) => {
@@ -30,7 +31,37 @@ const addNewRecipe = async (newRecipe, clientRequestId) => {
   return recipeCreated;
 };
 
-const checkRecipeBeforeEdit = async (client) => {};
-const checkRecipeBeforeDelete = async () => {};
+const checkRecipeBeforeEdit = async (
+  clientRequestId,
+  recipeId,
+  newRecipeData
+) => {
+  const userRecipe = await recipeRepository.editRecipe(
+    clientRequestId,
+    recipeId,
+    newRecipeData
+  );
+
+  console.log("serv", userRecipe);
+
+  if (userRecipe) {
+    return "Recipe was edited";
+  } else {
+    throw new PermissionError("You are not owner of this recipe");
+  }
+};
+
+const checkRecipeBeforeDelete = async (clientRequestId, recipeId) => {
+  const userList = await recipeRepository.deleteRecipe(
+    clientRequestId,
+    recipeId
+  );
+
+  if (userList) {
+    return "Recipe was deleted";
+  } else {
+    throw new PermissionError("You are not owner of this recipe");
+  }
+};
 
 export default { addNewRecipe, checkRecipeBeforeEdit, checkRecipeBeforeDelete };

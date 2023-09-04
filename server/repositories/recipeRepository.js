@@ -53,22 +53,25 @@ const getRecipeById = async (recipeId) => {
   );
 };
 
-const editRecipe = async (clientId, recipeId, correctedRecipe) => {
-  const newData = {
-    photo: correctedRecipe.photo,
-    name: correctedRecipe.name,
-    timeToPrepare: correctedRecipe.timeToPrepare,
-    ingredients: correctedRecipe.ingredients,
-    instructions: correctedRecipe.instructions,
-  };
+const editRecipe = async (clientId, recipeId, newData) => {
+  let updateFields = {};
+
+  for (const key in newData) {
+    if (newData.hasOwnProperty(key)) {
+      updateFields[`userRecipes.$.${key}`] = newData[key];
+    }
+  }
+
+  console.log(updateFields);
+
   return Recipe.findOneAndUpdate(
     { user_id: clientId, "userRecipes._id": recipeId },
-    { $set: { userRecipes: newData } }
+    { $set: updateFields }
   );
 };
 
 const deleteRecipe = async (clientRequestId, recipeId) => {
-  return await ShoppingList.findOneAndUpdate(
+  return await Recipe.findOneAndUpdate(
     { user_id: clientRequestId, "userRecipes._id": recipeId },
     { $pull: { userRecipes: { _id: recipeId } } }
   );

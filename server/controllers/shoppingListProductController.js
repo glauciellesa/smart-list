@@ -67,7 +67,6 @@ shoppingList.delete(
     try {
       const clientRequestId = req.email._id;
       const shoppingListId = req.params.shoppingListId;
-      console.log({ shoppingListId });
 
       const checkToDelet =
         await shoppingListProductService.checkProductBeforeDelete(
