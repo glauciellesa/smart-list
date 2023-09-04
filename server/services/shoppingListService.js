@@ -1,14 +1,14 @@
 import shoppingListRepository from "../repositories/shoppingListRepository.js";
 import { InvalidInputError } from "../errors/invalidInputError.js";
 
-const createNewUserList = async (clienteRequestId, newList) => {
+const createNewUserList = async (clientRequestId, newList) => {
   if (!newList.listName) {
     throw new InvalidInputError("You need to provide List's name.");
   }
 
   const userList = await shoppingListRepository.userHasList(
     newList.listName,
-    clienteRequestId
+    clientRequestId
   );
   console.log({ userList });
 
@@ -17,19 +17,19 @@ const createNewUserList = async (clienteRequestId, newList) => {
   } else {
     const createListName = await shoppingListRepository.createUserShoppingList(
       newList.listName,
-      clienteRequestId
+      clientRequestId
     );
     return createListName;
   }
 };
 
 const checkBeforeEdit = async (
-  clienteRequestId,
+  clientRequestId,
   shoppingListId,
   newListName
 ) => {
   const userList = await shoppingListRepository.editShoppingList(
-    clienteRequestId,
+    clientRequestId,
     shoppingListId,
     newListName
   );
@@ -43,9 +43,9 @@ const checkBeforeEdit = async (
   }
 };
 
-const checkBeforeDelete = async (clienteRequestId, shoppingListId) => {
+const checkBeforeDelete = async (clientRequestId, shoppingListId) => {
   const userList = await shoppingListRepository.deleteShoppingList(
-    clienteRequestId,
+    clientRequestId,
     shoppingListId
   );
 

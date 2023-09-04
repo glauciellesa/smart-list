@@ -1,7 +1,7 @@
 import { InvalidInputError } from "../errors/invalidInputError.js";
 import recipeRepository from "../repositories/recipeRepository.js";
 
-const addNewRecipe = async (newRecipe, clienteRequestId) => {
+const addNewRecipe = async (newRecipe, clientRequestId) => {
   if (!newRecipe.name || !newRecipe.ingredients.length) {
     throw new InvalidInputError(
       "You need to provide the recipe name and ingredients."
@@ -11,7 +11,7 @@ const addNewRecipe = async (newRecipe, clienteRequestId) => {
   const recipeDuplicate = await recipeRepository.recipeExist(newRecipe.name);
 
   if (recipeDuplicate) {
-    throw new InvalidInputError("Category already exists in categories list.");
+    throw new InvalidInputError("Recipe already exists in recipe list.");
   }
 
   const newRecipeData = {
@@ -25,9 +25,12 @@ const addNewRecipe = async (newRecipe, clienteRequestId) => {
 
   const recipeCreated = await recipeRepository.createNewRecipe(
     newRecipeData,
-    clienteRequestId
+    clientRequestId
   );
   return recipeCreated;
 };
 
-export default { addNewRecipe };
+const checkRecipeBeforeEdit = async (client) => {};
+const checkRecipeBeforeDelete = async () => {};
+
+export default { addNewRecipe, checkRecipeBeforeEdit, checkRecipeBeforeDelete };

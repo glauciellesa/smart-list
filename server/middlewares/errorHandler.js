@@ -8,13 +8,9 @@ const errorHandler = (error, req, res, next) => {
   if (error instanceof NoContentError) {
     res.status(205).json({ message: "No content", error: error.message });
   } else if (error instanceof InvalidInputError) {
-    res
-      .status(400)
-      .json({ message: "Registration failed", error: error.message });
+    res.status(400).json({ message: "Failed", error: error.message });
   } else {
-    res
-      .status(500)
-      .json({ message: "Registration failed", error: error.message });
+    res.status(500).json({ message: "Server error", error: error.message });
   }
 };
 

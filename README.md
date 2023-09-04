@@ -15,6 +15,6 @@ Currently, two official plugins are available:
   - Express
   - Mongodb
 
-- cliente
+- client
   - Dynamic routes (react-router-dom) - data loaders
   - fetch data from my server
