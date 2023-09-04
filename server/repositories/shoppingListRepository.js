@@ -41,21 +41,21 @@ const getAllUserList = async (clientId) => {
 };
 
 const editShoppingList = async (
-  clienteRequestId,
+  clientRequestId,
   shoppingListId,
   newListName
 ) => {
   const editedList = await ShoppingList.findOneAndUpdate(
-    { user_id: clienteRequestId, "lists._id": shoppingListId },
+    { user_id: clientRequestId, "lists._id": shoppingListId },
     { $set: { lists: { listName: newListName.listName } } }
   );
 
   return editedList;
 };
 
-const deleteShoppingList = async (clienteRequestId, shoppingListId) => {
+const deleteShoppingList = async (clientRequestId, shoppingListId) => {
   return await ShoppingList.findOneAndUpdate(
-    { user_id: clienteRequestId, "lists._id": shoppingListId },
+    { user_id: clientRequestId, "lists._id": shoppingListId },
     { $pull: { lists: { _id: shoppingListId } } }
   );
 };

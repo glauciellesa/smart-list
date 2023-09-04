@@ -3,8 +3,19 @@ import Category from "../models/CategoryModel.js";
 import Recipe from "../models/RecipesModel.js";
 import { ObjectId } from "mongodb";
 
+const createRecipeArray = async (userId) => {
+  return await Recipe.create({
+    user_id: userId,
+    userRecipes: [],
+  });
+};
+
 const recipeExist = async (recipeName) => {
-  const query = await Category.findOne({ name: recipeName }).exec();
+  console.log({ recipeName });
+  const query = await Recipe.findOne({
+    userRecipes: { $elemMatch: { name: recipeName } },
+  }).exec();
+  console.log({ query });
   if (query) {
     return true;
   } else {
@@ -12,40 +23,66 @@ const recipeExist = async (recipeName) => {
   }
 };
 
-const createNewRecipe = async (recipeData, clienteRequestId) => {
-  return Recipe.create({
-    user_id: new ObjectId(clienteRequestId),
-    userRecipes: [
-      {
-        photo: recipeData.photo,
-        name: recipeData.name,
-        timeToPrepare: recipeData.timeToPrepare,
-        ingredients: recipeData.ingredients,
-        instructions: recipeData.instructions,
+const createNewRecipe = async (recipeData, clientRequestId) => {
+  return Recipe.findOneAndUpdate(
+    { user_id: clientRequestId },
+    {
+      $push: {
+        userRecipes: {
+          photo: recipeData.photo,
+          name: recipeData.name,
+          timeToPrepare: recipeData.timeToPrepare,
+          ingredients: recipeData.ingredients,
+          instructions: recipeData.instructions,
+        },
       },
-    ],
-  });
+    }
+  );
 };
 
-const getCategories = () => {
-  return Category.find({});
+const getRecipes = () => {
+  const recipes = Recipe.find({});
+  console.log(recipes);
+  return recipes;
 };
 
-const getCategorybyName = async (name) => {
-  return Category.find({ category_name: new RegExp(name, "i") });
+const getRecipeById = async (recipeId) => {
+  return Recipe.find(
+    { "userRecipes._id": recipeId },
+    { userRecipes: { $elemMatch: { _id: recipeId } } }
+  );
+};
 
-  /* console.log("cat", category.category);
+const editRecipe = async (clientId, recipeId, newData) => {
+  let updateFields = {};
 
-  if (category) {
-    return category;
-  } else {
-    throw new NoContentError("Data does not exist in our database.");
-  } */
+  for (const key in newData) {
+    if (newData.hasOwnProperty(key)) {
+      updateFields[`userRecipes.$.${key}`] = newData[key];
+    }
+  }
+
+  console.log(updateFields);
+
+  return Recipe.findOneAndUpdate(
+    { user_id: clientId, "userRecipes._id": recipeId },
+    { $set: updateFields }
+  );
+};
+
+const deleteRecipe = async (clientRequestId, recipeId) => {
+  return await Recipe.findOneAndUpdate(
+    { user_id: clientRequestId, "userRecipes._id": recipeId },
+    { $pull: { userRecipes: { _id: recipeId } } }
+  );
 };
 
 export default {
+  createRecipeArray,
   recipeExist,
   createNewRecipe,
-  getCategories,
-  getCategorybyName,
+  getRecipes,
+  getRecipeById,
+  editRecipe,
+  deleteRecipe,
 };

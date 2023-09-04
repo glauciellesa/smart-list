@@ -1,14 +1,15 @@
 import shoppingListRepository from "../repositories/shoppingListRepository.js";
 import { InvalidInputError } from "../errors/invalidInputError.js";
+import { PermissionError } from "../errors/permissionError.js";
 
-const createNewUserList = async (clienteRequestId, newList) => {
+const createNewUserList = async (clientRequestId, newList) => {
   if (!newList.listName) {
     throw new InvalidInputError("You need to provide List's name.");
   }
 
   const userList = await shoppingListRepository.userHasList(
     newList.listName,
-    clienteRequestId
+    clientRequestId
   );
   console.log({ userList });
 
@@ -17,19 +18,19 @@ const createNewUserList = async (clienteRequestId, newList) => {
   } else {
     const createListName = await shoppingListRepository.createUserShoppingList(
       newList.listName,
-      clienteRequestId
+      clientRequestId
     );
     return createListName;
   }
 };
 
 const checkBeforeEdit = async (
-  clienteRequestId,
+  clientRequestId,
   shoppingListId,
   newListName
 ) => {
   const userList = await shoppingListRepository.editShoppingList(
-    clienteRequestId,
+    clientRequestId,
     shoppingListId,
     newListName
   );
@@ -39,20 +40,20 @@ const checkBeforeEdit = async (
   if (userList) {
     return "Shopping was edited";
   } else {
-    return "You are not owner of this list";
+    throw new PermissionError("You are not owner of this list");
   }
 };
 
-const checkBeforeDelete = async (clienteRequestId, shoppingListId) => {
+const checkBeforeDelete = async (clientRequestId, shoppingListId) => {
   const userList = await shoppingListRepository.deleteShoppingList(
-    clienteRequestId,
+    clientRequestId,
     shoppingListId
   );
 
   if (userList) {
     return "Shopping list was deleted";
   } else {
-    return "You are not owner of this list";
+    throw new PermissionError("You are not owner of this list");
   }
 };
 

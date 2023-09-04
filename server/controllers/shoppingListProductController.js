@@ -9,12 +9,10 @@ shoppingList.post(
   "/api/shoppingLists/:shoppingListId/products",
   async (req, res, next) => {
     try {
-      const clienteRequestId = req.email._id;
-      const shoppingListId = req.params.shoppingListId;
+      const clientRequestId = req.email._id;
       const createdList =
         await shoppingListProductService.addProductIntoUserList(
-          clienteRequestId,
-          shoppingListId,
+          clientRequestId,
           req.body
         );
       res.status(201).json({ createdList }).end();
@@ -28,12 +26,10 @@ shoppingList.get(
   "/api/shoppingLists/:shoppingListId/products",
   async (req, res, next) => {
     try {
-      const clienteRequestId = req.email._id;
-      const shoppingListId = req.params.shoppingListId;
+      const clientRequestId = req.email._id;
       const userLists =
         await shoppingListProductRepo.getProductsFromShoppingList(
-          clienteRequestId,
-          shoppingListId
+          clientRequestId
         );
       res.status(200).json(userLists).end();
     } catch (error) {
@@ -46,13 +42,13 @@ shoppingList.put(
   "/api/shoppingLists/:shoppingListId/products/:productId",
   async (req, res, next) => {
     try {
-      const clienteRequestId = req.email._id;
+      const clientRequestId = req.email._id;
       const shoppingListId = req.params.shoppingListId;
       const productId = req.params.productId;
 
       const editedList =
         await shoppingListProductService.checkProductBeforeEdit(
-          clienteRequestId,
+          clientRequestId,
           shoppingListId,
           productId,
           req.body
@@ -71,13 +67,12 @@ shoppingList.delete(
   "/api/shoppingLists/:shoppingListId/products/:productId",
   async (req, res, next) => {
     try {
-      const clienteRequestId = req.email._id;
+      const clientRequestId = req.email._id;
       const shoppingListId = req.params.shoppingListId;
-      console.log({ shoppingListId });
 
       const checkToDelet =
         await shoppingListProductService.checkProductBeforeDelete(
-          clienteRequestId,
+          clientRequestId,
           shoppingListId
         );
 
