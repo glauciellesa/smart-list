@@ -5,6 +5,7 @@ import validator from "./validator.js";
 import { InvalidInputError } from "../errors/invalidInputError.js";
 import config from "../config/config.js";
 import shoppingListRepository from "../repositories/shoppingListRepository.js";
+import recipeRepository from "../repositories/recipeRepository.js";
 
 const register = async ({
   first_name,
@@ -34,11 +35,13 @@ const register = async ({
   };
 
   const userId = await userRepository.registerUser(newUser);
-  console.log("meusss", userId._id);
-  const createShoppingList = await shoppingListRepository.createShoppingList(
-    userId._id
-  );
-  console.log({ createShoppingList });
+
+  if (userId) {
+    await shoppingListRepository.createShoppingList(userId._id);
+    await recipeRepository.createRecipeArray(userId._id);
+  } else {
+    throw new InvalidInputError("Shopping List wasn't created.");
+  }
   return userId;
 };
 

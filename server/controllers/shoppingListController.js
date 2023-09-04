@@ -6,9 +6,9 @@ const shoppingList = express.Router();
 
 shoppingList.post("/api/shoppingLists", async (req, res, next) => {
   try {
-    const clienteRequestId = req.email._id;
+    const clientRequestId = req.email._id;
     const createdList = await shoppingListService.createNewUserList(
-      clienteRequestId,
+      clientRequestId,
       req.body
     );
     res.status(201).json({ createdList }).end();
@@ -19,9 +19,9 @@ shoppingList.post("/api/shoppingLists", async (req, res, next) => {
 
 shoppingList.get("/api/shoppingLists", async (req, res, next) => {
   try {
-    const clienteRequestId = req.email._id;
+    const clientRequestId = req.email._id;
     const userLists = await shoppingListRepository.getAllUserList(
-      clienteRequestId
+      clientRequestId
     );
     res.status(200).json(userLists).end();
   } catch (error) {
@@ -33,11 +33,11 @@ shoppingList.put(
   "/api/shoppingLists/:shoppingListId",
   async (req, res, next) => {
     try {
-      const clienteRequestId = req.email._id;
+      const clientRequestId = req.email._id;
       const shoppingListId = req.params.shoppingListId;
 
       const editedList = await shoppingListService.checkBeforeEdit(
-        clienteRequestId,
+        clientRequestId,
         shoppingListId,
         req.body
       );
@@ -55,12 +55,12 @@ shoppingList.delete(
   "/api/shoppingLists/:shoppingListId",
   async (req, res, next) => {
     try {
-      const clienteRequestId = req.email._id;
+      const clientRequestId = req.email._id;
       const shoppingListId = req.params.shoppingListId;
       console.log({ shoppingListId });
 
       const checkToDelet = await shoppingListService.checkBeforeDelete(
-        clienteRequestId,
+        clientRequestId,
         shoppingListId
       );
 
