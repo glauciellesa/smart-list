@@ -1,8 +1,8 @@
 import { useState } from "react";
 import { styled } from "styled-components";
 import { Link } from "react-router-dom";
+import { useRegister } from "../../hooks/useRegister";
 import imageTest from "../../img/imageTest.png";
-import userService from "../../../service/userService";
 
 const initialState = {
   first_name: "",
@@ -15,6 +15,7 @@ const initialState = {
 
 const Register = () => {
   const [form, setForm] = useState(initialState);
+  const { register, error, isLoading } = useRegister();
 
   const handleChange = (event) => {
     setForm({
@@ -23,9 +24,10 @@ const Register = () => {
     });
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    userService.insertUser("http://localhost:8000/api/register", form);
+    await register(form);
+
     setForm(initialState);
   };
 
@@ -88,7 +90,11 @@ const Register = () => {
           required
         /> */}
 
-        <button onClick={handleSubmit}>SIGN UP</button>
+        <button onClick={handleSubmit} disabled={isLoading}>
+          SIGN UP
+        </button>
+
+        {error && <div className="error">{error}</div>}
 
         <p>
           Already have an account? <Link to="/login">Login here</Link>
@@ -153,6 +159,18 @@ const StyledRegister = styled.div`
 
   .image img {
     display: none;
+  }
+
+  div.error {
+    padding: 10px;
+    background: #ffefef;
+    border: 1px solid red;
+    color: red;
+    border-radius: 4px;
+    margin: 20px 0;
+  }
+  input.error {
+    border: 1px solid red;
   }
 
   @media only screen and (min-width: 600px) {

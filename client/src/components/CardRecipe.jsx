@@ -13,7 +13,7 @@ const CardRecipe = ({ recipe }) => {
       </div>
       <div className="recipesTitles">
         <p className="recipeName">{recipe.name}</p>
-        <p>{recipe.timeToPrepare}</p>
+        <p className="recipePreparation">{recipe.timeToPrepare}</p>
       </div>
     </StyleCardReceipe>
   );
@@ -41,7 +41,7 @@ const StyleCardReceipe = styled.div`
     font-weight: 600;
   }
 
-  p {
+  .recipePreparation {
     color: #ed6d5a;
     font-size: 0.7rem;
     margin: 1rem 0;
@@ -69,7 +69,7 @@ const StyleCardReceipe = styled.div`
       font-weight: 600;
     }
 
-    p {
+    .recipesTitles {
       font-size: 1rem;
       font-weight: 300;
     }

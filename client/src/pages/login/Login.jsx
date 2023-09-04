@@ -2,7 +2,6 @@ import { useState } from "react";
 import { styled } from "styled-components";
 import { Link } from "react-router-dom";
 import imageTest from "../../img/imageTest.png";
-import userService from "../../../service/userService";
 
 /* 
 https://github.com/glauciellesa.png
@@ -29,7 +28,8 @@ const Login = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    userService.insertUser("http://localhost:8000/api/login", form);
+    console.log({ form });
+
     setForm(initialState);
   };
 

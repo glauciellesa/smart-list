@@ -1,6 +1,6 @@
 import express from "express";
 import userService from "../services/userService.js";
-import { verifyToken } from "../services/authService.js";
+/* import { verifyToken } from "../services/authService.js"; */
 
 const user = express.Router();
 
@@ -23,10 +23,10 @@ user.post("/api/login", async (req, res, next) => {
     return next(error);
   }
 });
-user.use(verifyToken);
+/* user.use(verifyToken);
 
 user.get("/api/users", async (req, res) => {
   res.status(200).json("hello").end();
-});
+}); */
 
 export default user;

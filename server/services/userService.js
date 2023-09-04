@@ -3,6 +3,7 @@ import jwt from "jsonwebtoken";
 import userRepository from "../repositories/userRepository.js";
 import validator from "./validator.js";
 import { InvalidInputError } from "../errors/invalidInputError.js";
+import { PermissionError } from "../errors/permissionError.js";
 import config from "../config/config.js";
 import shoppingListRepository from "../repositories/shoppingListRepository.js";
 import recipeRepository from "../repositories/recipeRepository.js";
@@ -40,9 +41,29 @@ const register = async ({
     await shoppingListRepository.createShoppingList(userId._id);
     await recipeRepository.createRecipeArray(userId._id);
   } else {
-    throw new InvalidInputError("Shopping List wasn't created.");
+    throw new PermissionError("Shopping List wasn't created.");
   }
-  return userId;
+
+  // Generate a JWT token
+  /* const token = */
+  return new Promise((resolve, rejects) => {
+    jwt.sign(
+      { email },
+      config.jwtKey,
+      { expiresIn: "1h" },
+      //when we have calback we need convert to promisse if not the value will be undefined
+      (err, token) => {
+        if (err) {
+          console.error(err);
+          rejects(new InvalidInputError("Internal Server Error"));
+        } else {
+          resolve(token);
+        }
+      }
+    );
+  });
+  /*   const fullName = `${first_name} ${last_name}`;
+  return { token, email, githubAccount, fullName }; */
 };
 
 const login = async ({ email, password }) => {

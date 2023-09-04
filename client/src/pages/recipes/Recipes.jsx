@@ -9,7 +9,7 @@ const Recipes = () => {
   return (
     <StyleReceipe>
       <div className="topOfRecipes">
-        <p>Recipes</p>
+        <h2 className="recipesTitle">Recipes</h2>
         <button>
           <Link to="/newRecipe">+</Link>
         </button>
@@ -20,7 +20,11 @@ const Recipes = () => {
         <div className="mainOfRecipes">
           {data.map((recipe) => {
             return recipe.userRecipes.map((userRecipe) => {
-              return <CardRecipe key={userRecipe._id} recipe={userRecipe} />;
+              return (
+                <Link to={userRecipe._id}>
+                  <CardRecipe key={userRecipe._id} recipe={userRecipe} />
+                </Link>
+              );
             });
           })}
         </div>
@@ -41,6 +45,7 @@ const StyleReceipe = styled.div`
 
   .loading {
     text-align: left;
+    color: #704869;
   }
 
   .mainOfRecipes {
@@ -53,7 +58,7 @@ const StyleReceipe = styled.div`
     color: #d6cdc2;
   }
 
-  p {
+  .recipesTitle {
     color: #704869;
     font-size: 2rem;
     font-weight: 700;
