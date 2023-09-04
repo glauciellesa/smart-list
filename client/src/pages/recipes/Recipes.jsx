@@ -1,20 +1,30 @@
-import { styled } from 'styled-components';
-import recipes from '../../../data/recipes.json';
-import CardRecipe from '../../components/CardRecipe';
+import { styled } from "styled-components";
+import CardRecipe from "../../components/CardRecipe";
+import useFetch from "../../hooks/recipeFetch";
+import { Link } from "react-router-dom";
 
 const Recipes = () => {
-  console.log(recipes);
+  const { data, loading, error } = useFetch("recipes");
+
   return (
     <StyleReceipe>
       <div className="topOfRecipes">
-        <h1>CREATE A RECIPE</h1>
-        <button>+</button>
+        <p>Recipes</p>
+        <button>
+          <Link to="/newRecipe">+</Link>
+        </button>
       </div>
-      <div className="mainOfRecipes">
-        {recipes.recipes.map((recipe) => {
-          return <CardRecipe key={recipe.name} recipe={recipe} />;
-        })}
-      </div>
+      {loading ? (
+        <p className="loading"> Loading... </p>
+      ) : (
+        <div className="mainOfRecipes">
+          {data.map((recipe) => {
+            return recipe.userRecipes.map((userRecipe) => {
+              return <CardRecipe key={userRecipe._id} recipe={userRecipe} />;
+            });
+          })}
+        </div>
+      )}
     </StyleReceipe>
   );
 };
@@ -22,48 +32,54 @@ const Recipes = () => {
 export default Recipes;
 
 const StyleReceipe = styled.div`
-  display: flex;
-  flex-direction: column;
-  gap: 1rem;
-
   .topOfRecipes {
     display: flex;
     justify-content: space-between;
-    align-items: center;
-    padding-bottom: 1rem;
+    gap: 5rem;
+    padding-bottom: 3rem;
+  }
+
+  .loading {
+    text-align: left;
   }
 
   .mainOfRecipes {
-    padding: 1rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
   }
 
-  h1 {
+  a {
+    color: #d6cdc2;
+  }
+
+  p {
     color: #704869;
-    font-size: 1.6rem;
-    font-weight: 500;
+    font-size: 2rem;
+    font-weight: 700;
   }
 
   button {
     border: none;
     cursor: pointer;
-    font-size: 2rem;
-    height: 35px;
-    width: 35px;
+    font-size: 1.7rem;
+    height: 2rem;
+    width: 2rem;
     color: #d6cdc2;
     text-align: center;
     background: #704869;
     border-radius: 50px;
   }
 
-  @media only screen and (min-width: 600px) {
-
-    .mainOfRecipes {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: space-between;
-    }
-
+  @media (min-width: 600px) {
     .topOfRecipes {
       justify-content: space-between;
     }
+
+    .mainOfRecipes {
+      flex-direction: row;
+      flex-wrap: wrap;
+      justify-content: space-between;
+    }
+  }
 `;

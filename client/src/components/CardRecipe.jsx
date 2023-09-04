@@ -1,10 +1,10 @@
 /* eslint-disable react/prop-types */
-import { styled } from 'styled-components';
+import { styled } from "styled-components";
 
 const CardRecipe = ({ recipe }) => {
-  // console.log(recipe);
+  console.log({ recipe });
   return (
-    <CadrStyleReceipe>
+    <StyleCardReceipe>
       <div className="imageDiv">
         <img
           src={`https://source.unsplash.com/${recipe.photo}`}
@@ -12,19 +12,19 @@ const CardRecipe = ({ recipe }) => {
         />
       </div>
       <div className="recipesTitles">
-        <h2>{recipe.name}</h2>
+        <p className="recipeName">{recipe.name}</p>
         <p>{recipe.timeToPrepare}</p>
       </div>
-    </CadrStyleReceipe>
+    </StyleCardReceipe>
   );
 };
 
 export default CardRecipe;
 
-const CadrStyleReceipe = styled.div`
+const StyleCardReceipe = styled.div`
   display: flex;
-  gap: 1rem;
   align-items: center;
+  gap: 1rem;
 
   .imageDiv img {
     width: 6rem;
@@ -33,11 +33,8 @@ const CadrStyleReceipe = styled.div`
     border-radius: 5px;
   }
 
-  .recipesTitles {
-    height: 6rem;
-  }
-
-  h2 {
+  .recipeName {
+    height: 0.7rem;
     color: #704869;
     font-size: 1rem;
     margin: 1rem 0;
@@ -46,23 +43,30 @@ const CadrStyleReceipe = styled.div`
 
   p {
     color: #ed6d5a;
-    font-size: 0.8rem;
+    font-size: 0.7rem;
     margin: 1rem 0;
-    font-weight: 300;
+    font-weight: 200;
   }
 
-  @media only screen and (min-width: 600px) {
+  @media (min-width: 600px) {
     flex-direction: column;
+    gap: 0rem;
 
     .imageDiv img {
       width: 18rem;
       height: 18rem;
     }
 
-    h2 {
-      font-size: 1.3rem;
+    .recipesTitles {
+      width: 18rem;
+    }
+
+    .recipeName {
+      height: 0.7rem;
+      color: #704869;
+      font-size: 1rem;
+      margin: 1rem 0;
       font-weight: 600;
-      margin: 0;
     }
 
     p {

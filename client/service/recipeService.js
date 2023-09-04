@@ -1,6 +1,8 @@
+/* import config from "../config/config";
+
 export const getRecipes = async () => {
   try {
-    return fetch(`${config.urlBase}/products`).then((response) => {
+    return fetch(`${config.urlBase}/recipes`).then((response) => {
       if (!response.ok) {
         console.log(response);
       }
@@ -11,3 +13,4 @@ export const getRecipes = async () => {
     return [];
   }
 };
+ */
