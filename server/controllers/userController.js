@@ -7,7 +7,15 @@ const user = express.Router();
 user.post("/api/register", async (req, res, next) => {
   try {
     const createdUser = await userService.register(req.body);
-    res.status(201).json({ createdUser });
+
+    const responseData = {
+      token: createdUser.token,
+      email: createdUser.email,
+      githubAccount: createdUser.githubAccount,
+      fullName: createdUser.fullName,
+    };
+    // Send the object as JSON response
+    res.status(201).json(responseData).end();
   } catch (error) {
     return next(error);
   }

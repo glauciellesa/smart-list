@@ -45,8 +45,7 @@ const register = async ({
   }
 
   // Generate a JWT token
-  /* const token = */
-  return new Promise((resolve, rejects) => {
+  const token = await new Promise((resolve, rejects) => {
     jwt.sign(
       { email },
       config.jwtKey,
@@ -62,8 +61,10 @@ const register = async ({
       }
     );
   });
-  /*   const fullName = `${first_name} ${last_name}`;
-  return { token, email, githubAccount, fullName }; */
+
+  const fullName = `${first_name} ${last_name}`;
+
+  return { token, email, githubAccount, fullName };
 };
 
 const login = async ({ email, password }) => {
