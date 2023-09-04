@@ -1,5 +1,5 @@
 /* eslint-disable react/prop-types */
-const CardRecipe = ({ recipe }) => {
+const RecipeDetailPage = ({ recipe }) => {
   // console.log(recipe);
   return (
     <div>
@@ -21,4 +21,4 @@ const CardRecipe = ({ recipe }) => {
   );
 };
 
-export default CardRecipe;
+export default RecipeDetailPage;
