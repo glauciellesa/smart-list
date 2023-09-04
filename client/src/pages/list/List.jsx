@@ -1,4 +1,4 @@
-import React from "react";
+import React from 'react';
 //https://unsplash.com/photos/${props.image}
 
 /* https://unsplash.com/photos/yx3-a7ualMM     = apple
