@@ -94,7 +94,7 @@ const Register = () => {
           SIGN UP
         </button>
 
-        {error && <div className="error">{error}</div>}
+        {error ? <div className="error">{error}</div> : null}
 
         <p>
           Already have an account? <Link to="/login">Login here</Link>

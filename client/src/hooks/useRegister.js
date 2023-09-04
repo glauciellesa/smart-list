@@ -11,23 +11,24 @@ export const useRegister = () => {
   const register = async (newUser) => {
     setIsLoading(true);
     setError(null);
-    console.log({ newUser });
-    const response = await axios.post(`${config.urlBase}register`, newUser, {
-      headers: { "Content-Type": "application/json" },
-    });
+    try {
+      const response = await axios.post(`${config.urlBase}register`, newUser, {
+        headers: { "Content-Type": "application/json" },
+      });
 
-    if (!response.data) {
-      setIsLoading(false);
-      setError(response.error);
-    }
-    if (response.ok) {
+      console.log("respo", response);
+
       //Save user in local storage
-      localStorage.setItem("user", JSON.stringify(response));
+      localStorage.setItem("user", JSON.stringify(response.data));
       //update the auth context
-      dispatch({ type: "LOGIN", payload: response });
-
+      dispatch({ type: "LOGIN", payload: response.data });
+    } catch (error) {
+      console.log(error);
+      setError(error.response.data.error);
+    } finally {
       setIsLoading(false);
     }
   };
+
   return { register, isLoading, error };
 };
