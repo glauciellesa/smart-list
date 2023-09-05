@@ -40,7 +40,7 @@ const StyleReceipe = styled.div`
     display: flex;
     justify-content: space-between;
     gap: 5rem;
-    padding-bottom: 3rem;
+    padding: 3rem 0;
   }
 
   .loading {
