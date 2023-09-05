@@ -4,14 +4,6 @@ import { Link } from "react-router-dom";
 import imageTest from "../../img/imageTest.png";
 import { useLogin } from "../../hooks/useLogin";
 
-/* 
-https://github.com/glauciellesa.png
-https://github.com/CamilaFAssuncao.png
-https://github.com/leilaZ1111.png
-<img
-alt="Perfil image "
-src={`https://github.com/${props.imgProfile}.png`}
-/> */
 const initialState = {
   email: "",
   password: "",

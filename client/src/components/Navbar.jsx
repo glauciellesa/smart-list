@@ -1,6 +1,6 @@
 import { NavLink } from "react-router-dom";
 import styled from "styled-components";
-import { UserCircle } from "lucide-react";
+import { UserCircle, Home, ClipboardList, ConciergeBell } from "lucide-react";
 
 import logo from "../img/logo.png";
 import { useLogout } from "../hooks/useLogout";
@@ -9,7 +9,6 @@ import { useAuthContext } from "../hooks/useAuthContex";
 const Navbar = () => {
   const { logout } = useLogout();
   const { user } = useAuthContext();
-  console.log({ user });
 
   const handleClick = () => {
     logout();
@@ -26,10 +25,10 @@ const Navbar = () => {
         {user ? (
           <div className="logged">
             <div className="menu_logged">
-              <NavLink to="shoppingList" className="menuBotton">
+              <NavLink to="shoppingList" className="menuDesktop">
                 Shopping list
               </NavLink>
-              <NavLink to="recipes" className="menuBotton">
+              <NavLink to="recipes" className="menuDesktop">
                 Recipes
               </NavLink>
             </div>
@@ -38,16 +37,20 @@ const Navbar = () => {
                 Logout
               </button>
               <NavLink className="login" to="login">
-                <img
-                  src={`https://github.com/${user.githubAccount}.png`}
-                  alt={`${user.fullName}'s photo`}
-                />
+                {user.githubAccount ? (
+                  <img
+                    src={`https://github.com/${user.githubAccount}.png`}
+                    alt={`${user.fullName}'s photo`}
+                  />
+                ) : (
+                  <UserCircle />
+                )}
               </NavLink>
             </div>
           </div>
         ) : (
           <div className="notLogged">
-            <NavLink to="recipes" className="menuBotton">
+            <NavLink to="recipes" className="menuDesktop">
               Recipes
             </NavLink>
             <div className="logDiv">
@@ -59,6 +62,17 @@ const Navbar = () => {
           </div>
         )}
       </nav>
+      <div className="menuMobile">
+        <NavLink to="/">
+          <Home />
+        </NavLink>
+        <NavLink to="recipes">
+          <ConciergeBell />
+        </NavLink>
+        <NavLink to="shoppingList">
+          <ClipboardList />
+        </NavLink>
+      </div>
     </StyledNavbar>
   );
 };
@@ -67,19 +81,16 @@ export default Navbar;
 
 const StyledNavbar = styled.nav`
   background-color: #fefaeb;
-  padding: 0 1rem;
+  width: 100%;
   display: flex;
   justify-content: space-between;
   align-items: center;
 
   .menu_logo img {
+    padding-left: 1rem;
     padding-top: 2.5rem;
     position: relative;
     width: 10rem;
-  }
-
-  .menu_navbar {
-    width: 100%;
   }
 
   .menu_navbar a {
@@ -95,20 +106,15 @@ const StyledNavbar = styled.nav`
     font-weight: bold;
   }
 
-  .userMenu {
-    display: none;
-  }
-
   .notLogged {
     display: flex;
     justify-content: right;
   }
 
   .login svg {
-    width: 2.3rem;
-    height: 2.3rem;
+    width: 2rem;
+    height: 2rem;
     color: #4d4d4da7;
-    padding-bottom: -1rem;
   }
 
   .login img {
@@ -126,9 +132,10 @@ const StyledNavbar = styled.nav`
     justify-content: space-between;
   }
 
-  .menu_logged {
-    width: 100%;
-    display: flex;
+  .menu_logged,
+  .userMenu,
+  .menuDesktop {
+    display: none;
   }
 
   .logout {
@@ -143,24 +150,54 @@ const StyledNavbar = styled.nav`
   .logDiv {
     display: flex;
     align-items: center;
+    padding-right: 1rem;
   }
 
-  .menuBotton {
-    display: none;
+  .menuMobile {
+    padding: 0 1rem;
+    width: 100%;
+    z-index: 9999;
+    position: fixed;
+    bottom: 0;
+    height: 4rem;
+    display: flex;
+    align-items: center;
+    background-color: #704869;
+  }
+
+  .menuMobile svg {
+    width: 7rem;
+    color: #fefaeb;
+  }
+
+  .menuMobile .active,
+  .menuMobile a:hover {
+    padding: 0.3rem 0;
+    background-color: #fefaeb42;
+    border-radius: 10rem;
   }
 
   @media (min-width: 600px) {
     .menu_navbar {
+      width: 100%;
       display: flex;
       align-items: center;
+    }
+
+    .menu_navbar a {
+      color: #4d4d4d;
     }
 
     .userMenu {
       display: block;
     }
 
-    .menuBotton {
+    .menuDesktop {
       display: block;
+    }
+
+    .menuMobile {
+      display: none;
     }
 
     .notLogged {
