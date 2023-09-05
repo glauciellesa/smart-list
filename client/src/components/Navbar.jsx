@@ -162,6 +162,7 @@ const StyledNavbar = styled.nav`
     height: 4rem;
     display: flex;
     align-items: center;
+    justify-content: space-around;
     background-color: #704869;
   }
 
