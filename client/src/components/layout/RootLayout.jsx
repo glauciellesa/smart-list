@@ -34,11 +34,10 @@ const StyledRootLayout = styled.div`
   }
 
   main {
+    width: 100vw;
     display: flex;
     justify-content: center;
-    padding: 2rem;
-    padding-top: 2rem;
-    flex: 1 0 auto;
+    height: 81vh;
   }
 
   footer {

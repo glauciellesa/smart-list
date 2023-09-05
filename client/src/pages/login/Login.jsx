@@ -71,6 +71,7 @@ const StyleLogin = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
+  width: 100%;
 
   form {
     display: flex;
@@ -124,14 +125,12 @@ const StyleLogin = styled.div`
     font-size: 0.8rem;
     margin: 0.5rem 0;
   }
+
   .registerHere {
     font-size: 1rem;
   }
 
   @media only screen and (min-width: 600px) {
-    display: flex;
-    justify-content: center;
-    align-items: center;
     gap: 5rem;
 
     .image img {
