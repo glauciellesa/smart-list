@@ -53,7 +53,7 @@ const StyledRootLayout = styled.div`
     }
     footer {
       display: block;
-      width: 80vw;
+      width: 100vw;
     }
   }
 `;
