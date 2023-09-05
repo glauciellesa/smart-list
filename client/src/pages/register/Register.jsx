@@ -161,18 +161,6 @@ const StyledRegister = styled.div`
     display: none;
   }
 
-  div.error {
-    padding: 10px;
-    background: #ffefef;
-    border: 1px solid red;
-    color: red;
-    border-radius: 4px;
-    margin: 20px 0;
-  }
-  input.error {
-    border: 1px solid red;
-  }
-
   @media only screen and (min-width: 600px) {
     display: flex;
     justify-content: center;
