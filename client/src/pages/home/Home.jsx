@@ -45,6 +45,7 @@ const StyledHome = styled.div`
   }
 
   .userName span {
+    font-size: 1.5rem;
     font-weight: 400;
     color: #ed6d5a;
   }
