@@ -42,8 +42,7 @@ const StyledRootLayout = styled.div`
   }
 
   footer {
-    width: 100vw;
-    flex-shrink: 0;
+    display: none;
   }
 
   @media (min-width: 600px) {
@@ -54,6 +53,7 @@ const StyledRootLayout = styled.div`
       width: 80vw;
     }
     footer {
+      display: block;
       width: 80vw;
     }
   }
