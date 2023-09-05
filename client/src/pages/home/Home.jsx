@@ -23,6 +23,8 @@ const StyledHome = styled.div`
   padding: 2%;
   display: flex;
   flex-direction: column;
+  border-radius: 20px; /* Adjust the value as needed */
+  overflow: hidden;
 
   @media (min-width: 600px) {
     padding: 1%;
