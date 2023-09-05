@@ -2,6 +2,7 @@ import { useState } from "react";
 import { styled } from "styled-components";
 import { Link } from "react-router-dom";
 import imageTest from "../../img/imageTest.png";
+import { useLogin } from "../../hooks/useLogin";
 
 /* 
 https://github.com/glauciellesa.png
@@ -18,6 +19,7 @@ const initialState = {
 
 const Login = () => {
   const [form, setForm] = useState(initialState);
+  const { login, error, isLoading } = useLogin();
 
   const handleChange = (event) => {
     setForm({
@@ -26,9 +28,9 @@ const Login = () => {
     });
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log({ form });
+    await login(form);
 
     setForm(initialState);
   };
@@ -59,7 +61,10 @@ const Login = () => {
           required
         />
         <p>Forgot Password?</p>
-        <button onClick={handleSubmit}>LOGIN</button>
+        <button onClick={handleSubmit} disabled={isLoading}>
+          LOGIN
+        </button>
+        {error ? <div className="error">{error}</div> : null}
         <p className="registerHere">
           Don't yet have an account? <Link to="/register">Register here</Link>
         </p>

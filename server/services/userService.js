@@ -1,10 +1,7 @@
-import bcrypt from "bcrypt";
-import jwt from "jsonwebtoken";
 import userRepository from "../repositories/userRepository.js";
 import validator from "./validator.js";
 import { InvalidInputError } from "../errors/invalidInputError.js";
 import { PermissionError } from "../errors/permissionError.js";
-import config from "../config/config.js";
 import shoppingListRepository from "../repositories/shoppingListRepository.js";
 import recipeRepository from "../repositories/recipeRepository.js";
 
@@ -44,23 +41,7 @@ const register = async ({
     throw new PermissionError("Shopping List wasn't created.");
   }
 
-  // Generate a JWT token
-  const token = await new Promise((resolve, rejects) => {
-    jwt.sign(
-      { email },
-      config.jwtKey,
-      { expiresIn: "1h" },
-      //when we have calback we need convert to promisse if not the value will be undefined
-      (err, token) => {
-        if (err) {
-          console.error(err);
-          rejects(new InvalidInputError("Internal Server Error"));
-        } else {
-          resolve(token);
-        }
-      }
-    );
-  });
+  const token = await userRepository.createToken(email);
 
   const fullName = `${first_name} ${last_name}`;
 
@@ -80,24 +61,23 @@ const login = async ({ email, password }) => {
   if (!isUser) {
     throw new InvalidInputError("Email or password do not exist.");
   }
-  console.log({ isUser });
-  // Generate a JWT token
-  return new Promise((resolve, rejects) => {
-    jwt.sign(
-      { email },
-      config.jwtKey,
-      { expiresIn: "1h" },
-      //when we have calback we need convert to promisse if not the value will be undefined
-      (err, token) => {
-        if (err) {
-          console.error(err);
-          rejects(new InvalidInputError("Internal Server Error"));
-        } else {
-          resolve(token);
-        }
-      }
-    );
-  });
+
+  const user = await userRepository.getUserByEmail(email);
+  const token = await userRepository.createToken(email);
+  let userData;
+
+  if (user) {
+    userData = {
+      token: token,
+      email: user.email,
+      githubAccount: user.githubAccount,
+      fullName: `${user.first_name} ${user.last_name}`,
+    };
+  } else {
+    throw new Error("User was not found");
+  }
+
+  return userData;
 };
 
 export default { register, login };
