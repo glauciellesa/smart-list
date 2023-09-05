@@ -7,7 +7,7 @@ const errorHandler = (error, req, res, next) => {
   //https://stackabuse.com/guide-to-exception-handling-in-express/
   console.log("error", { error });
   if (error instanceof NoContentError) {
-    res.status(205).json({ message: "No content", error: error.message });
+    res.status(400).json({ message: "No content", error: error.message });
   } else if (error instanceof InvalidInputError) {
     res.status(400).json({ message: "Failed", error: error.message });
   } else if (error instanceof PermissionError) {

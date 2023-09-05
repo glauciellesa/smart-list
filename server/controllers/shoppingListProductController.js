@@ -44,11 +44,13 @@ shoppingList.put(
     try {
       const clientRequestId = req.email._id;
       const shoppingListId = req.params.shoppingListId;
+      const productId = req.params.productId;
 
       const editedList =
         await shoppingListProductService.checkProductBeforeEdit(
           clientRequestId,
           shoppingListId,
+          productId,
           req.body
         );
 
