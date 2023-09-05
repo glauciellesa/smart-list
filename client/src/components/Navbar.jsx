@@ -1,6 +1,6 @@
 import { NavLink } from "react-router-dom";
 import styled from "styled-components";
-import { UserCircle, Home, ClipboardList, ConciergeBell } from "lucide-react";
+import { UserCircle, Home, ClipboardList, ChefHat } from "lucide-react";
 
 import logo from "../img/logo.png";
 import { useLogout } from "../hooks/useLogout";
@@ -67,7 +67,7 @@ const Navbar = () => {
           <Home />
         </NavLink>
         <NavLink to="recipes">
-          <ConciergeBell />
+          <ChefHat />
         </NavLink>
         <NavLink to="shoppingList">
           <ClipboardList />
