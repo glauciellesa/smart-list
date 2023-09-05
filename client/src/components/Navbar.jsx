@@ -128,7 +128,6 @@ const StyledNavbar = styled.nav`
     width: 100%;
     gap: 1rem;
     display: flex;
-    align-items: end;
     justify-content: space-between;
   }
 
@@ -189,12 +188,14 @@ const StyledNavbar = styled.nav`
       color: #4d4d4d;
     }
 
-    .userMenu {
+    .userMenu,
+    .menuDesktop {
       display: block;
     }
 
-    .menuDesktop {
-      display: block;
+    .menu_logged {
+      display: flex;
+      align-items: center;
     }
 
     .menuMobile {
