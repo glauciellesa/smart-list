@@ -1,6 +1,6 @@
 import { styled } from "styled-components";
-import CardRecipe from "../../components/CardRecipe";
-import useRecipes from "../../hooks/useRecipes";
+import CardRecipe from "src/components/CardRecipe";
+import useRecipes from "src/hooks/useRecipes";
 import { Link } from "react-router-dom";
 
 const Recipes = () => {
@@ -12,6 +12,9 @@ const Recipes = () => {
         <h2 className="recipesTitle">Recipes</h2>
         <button>
           <Link to="/newRecipe">+</Link>
+        </button>
+        <button>
+          <Link to="/recipeDetail">Recipe Detail</Link>
         </button>
       </div>
       {loading ? (
@@ -43,11 +46,6 @@ const StyleReceipe = styled.div`
     justify-content: space-between;
     gap: 5rem;
     padding: 3rem 0;
-  }
-
-  .loading {
-    text-align: left;
-    color: #704869;
   }
 
   .mainOfRecipes {

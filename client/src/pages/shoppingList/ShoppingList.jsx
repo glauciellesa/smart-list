@@ -1,29 +1,23 @@
 import { styled } from "styled-components";
-import shoppingList from "../../../data/shoppingList.json";
-import CreateNewList from "../../components/CreateNewList";
+
+import CreateNewList from "src/components/CreateNewList";
+import useShoppingList from "src/hooks/useShoppingList";
 
 const ShoppingList = () => {
-  console.log(shoppingList);
+  const { data, loading, error } = useShoppingList("shoppingLists");
+  console.log("eu", { data });
   return (
     <StyledShoppingList>
-      {shoppingList.map((user) => {
-        console.log("use", user);
-        return (
-          <div key={Math.random() * 100}>
-            {user.lists.map((list) => {
-              console.log("my", list);
-              return (
-                <div key={Math.random() * 10}>
-                  <div>
-                    <CreateNewList list={list} />
-                  </div>
-                  <div></div>
-                </div>
-              );
-            })}
-          </div>
-        );
-      })}
+      {loading ? (
+        <p className="loading"> Loading... </p>
+      ) : (
+        <>
+          {data.map((user) => {
+            console.log(user);
+            return <div>eu</div>;
+          })}
+        </>
+      )}
     </StyledShoppingList>
   );
 };
