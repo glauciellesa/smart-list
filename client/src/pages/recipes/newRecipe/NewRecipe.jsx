@@ -43,7 +43,7 @@ const NewRecipe = () => {
         />
         <label name="photo">Photo</label>
         <input
-          type="file"
+          type="text"
           id="photo"
           placeholder="Add a photo"
           onChange={handleChange}
@@ -52,7 +52,7 @@ const NewRecipe = () => {
         />
         <label name="timeToPrepare">Time to prepare</label>
         <input
-          type="time"
+          type="text"
           id="timeToPrepare"
           placeholder="How long does it take to prepare?"
           onChange={handleChange}
@@ -98,6 +98,8 @@ const StyleNewRecipe = styled.div`
     width: 100%;
     gap: 2rem;
     padding-bottom: 2rem;
+    padding-top: 3rem;
+    align-items: center;
   }
 
   h1 {
@@ -115,6 +117,7 @@ const StyleNewRecipe = styled.div`
     cursor: pointer;
     width: 50px;
     border-radius: 5px;
+    height: 50px;
   }
 
   label {
@@ -136,5 +139,11 @@ const StyleNewRecipe = styled.div`
     border-radius: 5px;
     border: none;
     box-shadow: 5px 2px 10px #d6cdc2;
+  }
+
+  #instructions,
+  #ingredients {
+    height: 100px;
+    overflow-wrap: break-word;
   }
 `;
