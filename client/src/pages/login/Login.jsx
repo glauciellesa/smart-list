@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { styled } from "styled-components";
 import { Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import imageTest from "../../img/imageTest.png";
 import { useLogin } from "../../hooks/useLogin";
 
@@ -12,6 +13,7 @@ const initialState = {
 const Login = () => {
   const [form, setForm] = useState(initialState);
   const { login, error, isLoading } = useLogin();
+  const navigate = useNavigate();
 
   const handleChange = (event) => {
     setForm({
@@ -23,8 +25,9 @@ const Login = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     await login(form);
-
+    //reset form
     setForm(initialState);
+    navigate("/");
   };
 
   return (

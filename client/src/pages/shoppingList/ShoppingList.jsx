@@ -4,17 +4,19 @@ import CreateNewList from "src/components/CreateNewList";
 import useShoppingList from "src/hooks/useShoppingList";
 
 const ShoppingList = () => {
-  const { data, loading, error } = useShoppingList("shoppingLists");
+  const { data, isLoading, error } = useShoppingList("shoppingLists");
   console.log("eu", { data });
   return (
     <StyledShoppingList>
-      {loading ? (
+      {error ? (
+        <div className="error">{error}</div>
+      ) : isLoading ? (
         <p className="loading"> Loading... </p>
       ) : (
         <>
-          {data.map((user) => {
-            console.log(user);
-            return <div>eu</div>;
+          {data.map((shoppingList) => {
+            console.log(shoppingList);
+            return <div>{shoppingList.listName}</div>;
           })}
         </>
       )}
@@ -26,7 +28,5 @@ export default ShoppingList;
 
 const StyledShoppingList = styled.div`
   padding: 2rem;
-  border: 1px solid black;
-  color: black;
   font-size: large;
 `;

@@ -1,6 +1,7 @@
 import { NavLink } from "react-router-dom";
 import styled from "styled-components";
 import { UserCircle, Home, ClipboardList, ChefHat } from "lucide-react";
+import { useNavigate } from "react-router-dom";
 
 import logo from "../img/logo.png";
 import { useLogout } from "../hooks/useLogout";
@@ -9,9 +10,11 @@ import { useAuthContext } from "../hooks/useAuthContex";
 const Navbar = () => {
   const { logout } = useLogout();
   const { user } = useAuthContext();
+  const navigate = useNavigate();
 
   const handleClick = () => {
     logout();
+    navigate("/");
   };
 
   return (
