@@ -3,11 +3,14 @@ import styled from "styled-components";
 import useShoppingList from "src/hooks/useShoppingList";
 import { useState } from "react";
 import Modal from "../Modal";
+import NewList from "../NewList";
 
 const ShoppingListLayout = ({ children }) => {
   const { data, isLoading, error } = useShoppingList("shoppingLists");
   const [showModal, setshowModal] = useState(false);
-
+  const createdNewListName = (newListName) => {
+    console.log({ newListName });
+  };
   return (
     <StyledLayoutList>
       <div className="menu">
@@ -31,7 +34,10 @@ const ShoppingListLayout = ({ children }) => {
             setshowModal((prev) => !prev);
           }}
         >
-          <div>Your Modal</div>
+          <NewList
+            handleModal={setshowModal}
+            onAddNewListName={createdNewListName}
+          />
         </Modal>
       </div>
       <div className="list_products">

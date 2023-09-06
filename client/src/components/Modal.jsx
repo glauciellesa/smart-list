@@ -51,8 +51,8 @@ const StyledModal = styled.div`
     left: 17.2rem;
     width: fit-content;
     border: none;
-    background-color: #ed6d5a;
-    color: #fefaeb;
+    background-color: #fefaeb;
+    color: #4d4d4d;
     border-radius: 5px;
     padding: 0 0.8rem;
     font-size: 1.25rem;
