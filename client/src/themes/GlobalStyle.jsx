@@ -20,6 +20,11 @@ const GlobalStyle = createGlobalStyle`
   input.error {
     border: 1px solid red;
   }
+
+  .loading {
+    text-align: left;
+    color: #704869;
+  }
   
 `;
 export default GlobalStyle;
