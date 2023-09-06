@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { useAuthContext } from "./useAuthContex";
 import config from "../../config/config";
-import axios from "axios";
+import { axiosInstance } from "./tokenAuth";
 
 export const useLogin = () => {
   const [error, setError] = useState(null);
@@ -12,9 +12,13 @@ export const useLogin = () => {
     setIsLoading(true);
     setError(null);
     try {
-      const response = await axios.post(`${config.urlBase}login`, newUser, {
-        headers: { "Content-Type": "application/json" },
-      });
+      const response = await axiosInstance.post(
+        `${config.urlBase}login`,
+        newUser,
+        {
+          headers: { "Content-Type": "application/json" },
+        }
+      );
 
       console.log("respo", response);
 

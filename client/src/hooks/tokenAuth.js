@@ -17,7 +17,21 @@ export const getToken = () => {
 
 export const getAuthorizationHeader = () => `Bearer ${getToken()}`;
 
-export const axiosInstance = axios.create({
+const axiosInstance = axios.create({
   baseURL,
   headers: { Authorization: getAuthorizationHeader() },
 });
+
+axiosInstance.interceptors.request.use((config) => {
+  console.log("interceptor", config);
+  const accessToken = getAuthorizationHeader();
+
+  //checking if accessToken exists
+  if (accessToken) {
+    config.headers["Authorization"] = accessToken;
+  }
+
+  return config;
+});
+
+export { axiosInstance };
