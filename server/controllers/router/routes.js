@@ -12,11 +12,11 @@ routes.get("/", async function (req, res) {
   res.send(`Reached home!`);
 });
 
+routes.use(recipe);
 routes.use(user);
 routes.use(category);
 routes.use(product);
 routes.use(shoppingList);
 routes.use(shoppingListProduct);
-routes.use(recipe);
 
 export default routes;

@@ -29,6 +29,24 @@ shoppingList.get("/api/shoppingLists", async (req, res, next) => {
   }
 });
 
+shoppingList.get(
+  "/api/shoppingLists/:shoppingListId",
+  async (req, res, next) => {
+    try {
+      const clientRequestId = req.email._id;
+      const shoppingListId = req.params.shoppingListId;
+
+      const userLists = await shoppingListService.getUserList(
+        clientRequestId,
+        shoppingListId
+      );
+      res.status(200).json(userLists).end();
+    } catch (error) {
+      return next(error);
+    }
+  }
+);
+
 shoppingList.put(
   "/api/shoppingLists/:shoppingListId",
   async (req, res, next) => {

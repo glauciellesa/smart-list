@@ -10,9 +10,11 @@ shoppingList.post(
   async (req, res, next) => {
     try {
       const clientRequestId = req.email._id;
+      const shoppingListId = req.params.shoppingListId;
       const createdList =
         await shoppingListProductService.addProductIntoUserList(
           clientRequestId,
+          shoppingListId,
           req.body
         );
       res.status(201).json({ createdList }).end();

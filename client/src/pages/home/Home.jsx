@@ -10,14 +10,16 @@ const Home = () => {
     <StyledHome>
       <div className="home">
         <p className="userName">
-          Hello, <span>{user?.fullName}</span>
+          Hello, <span>{user ? user.fullName : ""}</span>
         </p>
-        <div className="userList_home">
-          <Link to="/newList">
-            <p>Create a new list</p>
-            <button className="newList_btn">+</button>
-          </Link>
-        </div>
+        {user ? (
+          <div className="userList_home">
+            <Link to="/newList">
+              <p>Create a new list</p>
+              <button className="newList_btn">+</button>
+            </Link>
+          </div>
+        ) : null}
       </div>
       <div className="home_recipes">
         <NavLink to="recipes">
@@ -25,11 +27,13 @@ const Home = () => {
         </NavLink>
         <CarouselComponent />
       </div>
-      <div className="shoppingList">
-        <NavLink to="list">
-          <h2 className="title">Shopping List</h2>
-        </NavLink>
-      </div>
+      {user ? (
+        <div className="shoppingList">
+          <NavLink to="list">
+            <h2 className="title">Shopping List</h2>
+          </NavLink>
+        </div>
+      ) : null}
     </StyledHome>
   );
 };

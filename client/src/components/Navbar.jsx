@@ -1,6 +1,7 @@
 import { NavLink } from "react-router-dom";
 import styled from "styled-components";
 import { UserCircle, Home, ClipboardList, ChefHat } from "lucide-react";
+import { useNavigate } from "react-router-dom";
 
 import logo from "../img/logo.png";
 import { useLogout } from "../hooks/useLogout";
@@ -9,9 +10,11 @@ import { useAuthContext } from "../hooks/useAuthContex";
 const Navbar = () => {
   const { logout } = useLogout();
   const { user } = useAuthContext();
+  const navigate = useNavigate();
 
   const handleClick = () => {
     logout();
+    navigate("/");
   };
 
   return (
@@ -100,7 +103,7 @@ const StyledNavbar = styled.nav`
 
   .menu_navbar .active,
   .menu_navbar a:hover {
-    color: #000;
+    color: #ed6d5a;
     text-underline-offset: 0.2rem;
     text-decoration: underline;
     font-weight: bold;
@@ -157,7 +160,7 @@ const StyledNavbar = styled.nav`
     width: 100%;
     z-index: 9999;
     position: fixed;
-    bottom: 0;
+    bottom: 0rem;
     height: 4rem;
     display: flex;
     align-items: center;

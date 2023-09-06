@@ -1,27 +1,31 @@
 import { useEffect, useState } from "react";
-import config from "../../config/config";
-import axios from "axios";
+import shoppingListService from "../service/shoppingListService";
 
 const useShoppingList = (url) => {
   const [data, setData] = useState([]);
-  const [loading, setLoading] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState("");
 
   useEffect(() => {
     const getShoppingLists = async () => {
-      setLoading(true);
+      setIsLoading(true);
       try {
-        const res = await axios.get(`${config.urlBase}${url}`);
+        const res = await shoppingListService.getShoppingLists(url);
         setData(res.data);
       } catch (error) {
-        setError(error);
+        if (error.response.status === 403) {
+          setError(error.response.data);
+        } else {
+          setError(error.response.data.error);
+        }
+      } finally {
+        setIsLoading(false);
       }
-      setLoading(false);
     };
     getShoppingLists();
   }, [url]);
 
-  return { data, loading, error };
+  return { data, isLoading, error };
 };
 
 export default useShoppingList;

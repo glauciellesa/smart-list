@@ -40,6 +40,15 @@ const getAllUserList = async (clientId) => {
   return userList[0].lists;
 };
 
+const getUserShoppingList = async (clientRequestId, shoppingListId) => {
+  return await ShoppingList.findOne(
+    {
+      user_id: clientRequestId,
+    },
+    { lists: { $elemMatch: { _id: shoppingListId } } }
+  ).lean();
+};
+
 const editShoppingList = async (
   clientRequestId,
   shoppingListId,
@@ -65,6 +74,7 @@ export default {
   userHasList,
   createUserShoppingList,
   getAllUserList,
+  getUserShoppingList,
   editShoppingList,
   deleteShoppingList,
 };

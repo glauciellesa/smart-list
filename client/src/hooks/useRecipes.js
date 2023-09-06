@@ -1,6 +1,5 @@
 import { useEffect, useState } from "react";
-import config from "../../config/config";
-import axios from "axios";
+import recipeService from "../service/recipeService";
 
 const useRecipes = (url) => {
   const [data, setData] = useState([]);
@@ -11,27 +10,23 @@ const useRecipes = (url) => {
     const fetchData = async () => {
       setLoading(true);
       try {
-        const res = await axios.get(`${config.urlBase}${url}`);
+        const res = await recipeService.getRecipes(url);
         setData(res.data);
       } catch (error) {
-        setError(error);
+        console.log(error);
+        if (error.response.status === 403) {
+          setError(error.response.data);
+        } else {
+          setError(error.response.data.error);
+        }
+      } finally {
+        setLoading(false);
       }
-      setLoading(false);
     };
     fetchData();
   }, [url]);
 
-  const refetchData = async () => {
-    setLoading(true);
-    try {
-      const res = await axios.get(`${config.urlBase}url`);
-      setData(res.data());
-    } catch (error) {
-      setError(error);
-    }
-    setLoading(false);
-  };
-  return { data, loading, error, refetchData };
+  return { data, loading, error };
 };
 
 export default useRecipes;

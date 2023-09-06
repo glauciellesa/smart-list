@@ -13,6 +13,10 @@ import ShoppingList from "./pages/shoppingList/ShoppingList";
 import Register from "./pages/register/Register";
 import RecipeDetailPage from "./pages/recipes/recipeDetail/RecipeDetailPage";
 import NewRecipe from "./pages/recipes/newRecipe/NewRecipe";
+import ShoppingListDetail, {
+  shoppingListLoader,
+} from "./pages/shoppingList/shoppingListDetail/ShoppingListDetail";
+import ShoppingListLayout from "src/components/layout/ShoppingListLayout";
 
 function App() {
   const router = createBrowserRouter(
@@ -24,13 +28,14 @@ function App() {
         <Route path="newRecipe" element={<NewRecipe />} />
         <Route path="recipeDetail" element={<RecipeDetailPage />} />
         <Route path="login" element={<Login />} />
-        <Route
-          path="shoppingList"
-          element={<ShoppingList />}
-          /*  loader={() => {
-            return productService.getProducts();
-          }} */
-        />
+        {/*  <Route path="shoppingList" element={<ShoppingList />} /> */}
+        <Route path="shoppingList" element={<ShoppingListLayout />}>
+          <Route
+            path=":shoppingListId"
+            element={<ShoppingListDetail />}
+            loader={shoppingListLoader}
+          />
+        </Route>
         <Route path="*" element={<PageNotFound />} />
       </Route>
     )
