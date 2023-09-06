@@ -57,4 +57,28 @@ const checkBeforeDelete = async (clientRequestId, shoppingListId) => {
   }
 };
 
-export default { createNewUserList, checkBeforeEdit, checkBeforeDelete };
+const getUserList = async (clientRequestId, shoppingListId) => {
+  try {
+    const userList = await shoppingListRepository.getUserShoppingList(
+      clientRequestId,
+      shoppingListId
+    );
+
+    if (userList && userList.lists && userList.lists.length > 0) {
+      return userList.lists[0];
+    } else {
+      console.log("Shopping list not found");
+      return null;
+    }
+  } catch (error) {
+    console.error("Error while fetching user list:", error);
+    throw error; // You can choose to handle or propagate the error as needed
+  }
+};
+
+export default {
+  createNewUserList,
+  checkBeforeEdit,
+  checkBeforeDelete,
+  getUserList,
+};
