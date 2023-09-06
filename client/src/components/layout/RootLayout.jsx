@@ -34,16 +34,14 @@ const StyledRootLayout = styled.div`
   }
 
   main {
+    width: 100vw;
     display: flex;
     justify-content: center;
-    padding: 2rem;
-    padding-top: 2rem;
-    flex: 1 0 auto;
+    height: 81vh;
   }
 
   footer {
-    width: 100vw;
-    flex-shrink: 0;
+    display: none;
   }
 
   @media (min-width: 600px) {
@@ -54,7 +52,8 @@ const StyledRootLayout = styled.div`
       width: 80vw;
     }
     footer {
-      width: 80vw;
+      display: block;
+      width: 100vw;
     }
   }
 `;

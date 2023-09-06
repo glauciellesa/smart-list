@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import config from "../../config/config";
 import axios from "axios";
 
-const useFetch = (url) => {
+const useRecipes = (url) => {
   const [data, setData] = useState([]);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
@@ -34,4 +34,4 @@ const useFetch = (url) => {
   return { data, loading, error, refetchData };
 };
 
-export default useFetch;
+export default useRecipes;

@@ -1,15 +1,64 @@
-import React from 'react';
-import { Carousel } from 'react-responsive-carousel';
-import 'react-responsive-carousel/lib/styles/carousel.min.css';
-import styled from 'styled-components';
+import React from "react";
+import { Carousel } from "react-responsive-carousel";
+import "react-responsive-carousel/lib/styles/carousel.min.css";
+import styled from "styled-components";
+import useRecipes from "src/hooks/useRecipes";
+
+const CarouselComponent = () => {
+  const { data, loading, error } = useRecipes("recipes");
+
+  return (
+    <StyledCarousel
+      autoPlay={true}
+      interval={3000}
+      showThumbs={false}
+      centerMode={true}
+      centerSlidePercentage={50}
+      showStatus={false}
+      showIndicators={true}
+      infiniteLoop={true}
+      useKeyboardArrows={true}
+      stopOnHover={true}
+      swipeable={true}
+      dynamicHeight={true}
+      emulateTouch={true}
+    >
+      {data.map((recipe) =>
+        recipe.userRecipes.map((userRecipe) => (
+          <div className="recipe-slider" key={userRecipe._id}>
+            <CarouselImage
+              src={`https://source.unsplash.com/${userRecipe.photo}/450x350`}
+              alt={`Pictures of ${userRecipe.name}`}
+            />
+            <Caption>{userRecipe.name}</Caption>
+          </div>
+        ))
+      )}
+    </StyledCarousel>
+  );
+};
+
+export default CarouselComponent;
 
 const StyledCarousel = styled(Carousel)`
   /* Your carousel styles */
+  .carousel .slider-wrapper {
+    margin: 0 -10px;
+  }
+
+  .carousel .slider {
+    padding: 0 10px;
+  }
+
+  .carousel .slide {
+    border-radius: 5px;
+    margin: 0 10px;
+  }
 `;
 
 const CarouselImage = styled.img`
-max-width: 100%;
-height: auto;
+  max-width: 50rem;
+  height: auto;
 `;
 
 const Caption = styled.p`
@@ -23,37 +72,3 @@ const Caption = styled.p`
   padding: 8px;
   margin: 0;
 `;
-
-const CarouselComponent = ({ recipes }) => {
-  return (
-    <StyledCarousel
-      autoPlay={true}
-      interval={3000}
-      showThumbs={true}
-      centerMode={true}
-      centerSlidePercentage={40}
-      showStatus={true}
-      showIndicators={true}
-      infiniteLoop={true}
-      useKeyboardArrows={true}
-      stopOnHover={true}
-      swipeable={true}
-      dynamicHeight={true}
-      emulateTouch={true}
-    >
-      {recipes.map((recipe) => (
-        <div className="recipe-slider" key={recipe.id}>
-          <CarouselImage
-            src={`https://source.unsplash.com/${recipe.photo}/400x300`}
-            alt={`Pictures of ${recipe.name}`} 
-          />
-          <Caption>{recipe.name}</Caption>
-        </div>
-      ))}
-    </StyledCarousel>
-  );
-};
-
-export default CarouselComponent;
-
-

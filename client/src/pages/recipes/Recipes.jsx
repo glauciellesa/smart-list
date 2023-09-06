@@ -1,10 +1,10 @@
 import { styled } from "styled-components";
 import CardRecipe from "../../components/CardRecipe";
-import useFetch from "../../hooks/recipeFetch";
+import useRecipes from "../../hooks/useRecipes";
 import { Link } from "react-router-dom";
 
 const Recipes = () => {
-  const { data, loading, error } = useFetch("recipes");
+  const { data, loading, error } = useRecipes("recipes");
 
   return (
     <StyleReceipe>
@@ -36,11 +36,13 @@ const Recipes = () => {
 export default Recipes;
 
 const StyleReceipe = styled.div`
+  padding: 0 1rem;
+
   .topOfRecipes {
     display: flex;
     justify-content: space-between;
     gap: 5rem;
-    padding-bottom: 3rem;
+    padding: 3rem 0;
   }
 
   .loading {
@@ -70,7 +72,6 @@ const StyleReceipe = styled.div`
     font-size: 1.7rem;
     height: 2rem;
     width: 2rem;
-    color: #d6cdc2;
     text-align: center;
     background: #704869;
     border-radius: 50px;

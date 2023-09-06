@@ -25,8 +25,7 @@ user.post("/api/login", async (req, res, next) => {
   try {
     const userLoginTokken = await userService.login(req.body);
 
-    /* return res.redirect('/users/' + req.user.username); */
-    res.status(200).send({ userLoginTokken }).end();
+    res.status(200).send(userLoginTokken).end();
   } catch (error) {
     return next(error);
   }
