@@ -16,7 +16,7 @@ import NewRecipe from "./pages/recipes/newRecipe/NewRecipe";
 import ShoppingListDetail, {
   shoppingListLoader,
 } from "./pages/shoppingList/shoppingListDetail/ShoppingListDetail";
-import ShoppingListLayout from "src/components/layout/shoppingListLayout";
+import ShoppingListLayout from "src/components/layout/ShoppingListLayout";
 
 function App() {
   const router = createBrowserRouter(
