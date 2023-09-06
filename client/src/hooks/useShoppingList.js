@@ -1,6 +1,5 @@
 import { useEffect, useState } from "react";
-import config from "../../config/config";
-import { axiosInstance } from "./tokenAuth";
+import shoppingListService from "../service/shoppingListService";
 
 const useShoppingList = (url) => {
   const [data, setData] = useState([]);
@@ -11,10 +10,9 @@ const useShoppingList = (url) => {
     const getShoppingLists = async () => {
       setIsLoading(true);
       try {
-        const res = await axiosInstance.get(`${config.urlBase}${url}`);
+        const res = await shoppingListService.getShoppingLists(url);
         setData(res.data);
       } catch (error) {
-        console.log(error);
         if (error.response.status === 403) {
           setError(error.response.data);
         } else {

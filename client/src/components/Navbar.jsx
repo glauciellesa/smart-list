@@ -103,7 +103,7 @@ const StyledNavbar = styled.nav`
 
   .menu_navbar .active,
   .menu_navbar a:hover {
-    color: #000;
+    color: #ed6d5a;
     text-underline-offset: 0.2rem;
     text-decoration: underline;
     font-weight: bold;

@@ -1,11 +1,11 @@
-import config from "../../config/config";
+import config from "src/config/config";
 import axios from "axios";
 
 const baseURL = config;
 
 export const getToken = () => {
   const user = localStorage.getItem("user");
-  console.log({ user });
+
   if (user) {
     let json = JSON.parse(user);
 
@@ -23,7 +23,6 @@ const axiosInstance = axios.create({
 });
 
 axiosInstance.interceptors.request.use((config) => {
-  console.log("interceptor", config);
   const accessToken = getAuthorizationHeader();
 
   //checking if accessToken exists

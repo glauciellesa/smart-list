@@ -6,7 +6,6 @@ import { Link } from "react-router-dom";
 
 const ShoppingList = () => {
   const { data, isLoading, error } = useShoppingList("shoppingLists");
-  console.log("eu", { data });
 
   return (
     <StyledShoppingList>
@@ -15,16 +14,16 @@ const ShoppingList = () => {
       ) : isLoading ? (
         <p className="loading"> Loading... </p>
       ) : (
-        <>
+        <h1> MY Listtt</h1>
+        /*  <>
           {data.map((shoppingList) => {
-            console.log({ shoppingList });
             return (
               <Link to={shoppingList._id}>
-                <div>{shoppingList.listName}</div>
+                <div key={shoppingList._id}>{shoppingList.listName}</div>
               </Link>
             );
           })}
-        </>
+        </> */
       )}
     </StyledShoppingList>
   );

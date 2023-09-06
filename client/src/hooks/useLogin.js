@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { useAuthContext } from "./useAuthContex";
-import config from "../../config/config";
+import config from "../config/config";
 import { axiosInstance } from "./tokenAuth";
 
 export const useLogin = () => {
@@ -19,8 +19,6 @@ export const useLogin = () => {
           headers: { "Content-Type": "application/json" },
         }
       );
-
-      console.log("respo", response);
 
       //Save user in local storage
       localStorage.setItem("user", JSON.stringify(response.data));

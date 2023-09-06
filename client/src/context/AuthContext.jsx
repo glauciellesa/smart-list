@@ -24,8 +24,6 @@ export const AuthContextProvider = ({ children }) => {
     }
   }, []);
 
-  console.log("AuthContex state: ", state);
-
   return (
     <AuthContext.Provider
       value={{
