@@ -160,7 +160,7 @@ const StyledNavbar = styled.nav`
     width: 100%;
     z-index: 9999;
     position: fixed;
-    bottom: 0;
+    bottom: 0rem;
     height: 4rem;
     display: flex;
     align-items: center;

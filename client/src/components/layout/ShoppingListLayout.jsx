@@ -1,9 +1,12 @@
 import { NavLink, Outlet } from "react-router-dom";
 import styled from "styled-components";
 import useShoppingList from "src/hooks/useShoppingList";
+import { useState } from "react";
+import Modal from "../Modal";
 
 const ShoppingListLayout = ({ children }) => {
   const { data, isLoading, error } = useShoppingList("shoppingLists");
+  const [showModal, setshowModal] = useState(false);
 
   return (
     <StyledLayoutList>
@@ -14,7 +17,22 @@ const ShoppingListLayout = ({ children }) => {
             <p className="product_qnt">{`${list.productLists.length} items`}</p>
           </nav>
         ))}
-        <div className="newList"> + Create new List</div>
+        <div
+          className="newList"
+          onClick={() => {
+            setshowModal((prev) => !prev);
+          }}
+        >
+          + Create new List
+        </div>
+        <Modal
+          shouldShow={showModal}
+          onRequestClose={() => {
+            setshowModal((prev) => !prev);
+          }}
+        >
+          <div>Your Modal</div>
+        </Modal>
       </div>
       <div className="list_products">
         <Outlet />
