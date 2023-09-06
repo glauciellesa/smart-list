@@ -2,10 +2,12 @@ import { styled } from "styled-components";
 
 import CreateNewList from "src/components/CreateNewList";
 import useShoppingList from "src/hooks/useShoppingList";
+import { Link } from "react-router-dom";
 
 const ShoppingList = () => {
   const { data, isLoading, error } = useShoppingList("shoppingLists");
   console.log("eu", { data });
+
   return (
     <StyledShoppingList>
       {error ? (
@@ -15,8 +17,12 @@ const ShoppingList = () => {
       ) : (
         <>
           {data.map((shoppingList) => {
-            console.log(shoppingList);
-            return <div>{shoppingList.listName}</div>;
+            console.log({ shoppingList });
+            return (
+              <Link to={shoppingList._id}>
+                <div>{shoppingList.listName}</div>
+              </Link>
+            );
           })}
         </>
       )}
