@@ -31,7 +31,7 @@ function App() {
         {/*  <Route path="shoppingList" element={<ShoppingList />} /> */}
         <Route path="shoppingList" element={<ShoppingListLayout />}>
           <Route
-            path="shoppingList/:shoppingListId"
+            path=":shoppingListId"
             element={<ShoppingListDetail />}
             loader={shoppingListLoader}
           />

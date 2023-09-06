@@ -29,13 +29,12 @@ const StyledLayoutList = styled.nav`
   width: 100%;
   padding: 3rem;
   display: flex;
-  justify-content: space-between;
+  flex-direction: column;
 
   .menu {
     display: flex;
     flex-direction: column;
     gap: 1rem;
-    border-right: 1px solid #51505015;
   }
 
   .menu_list {
@@ -57,15 +56,29 @@ const StyledLayoutList = styled.nav`
   .active,
   a:hover {
     color: #ed6d5a;
-    text-underline-offset: 0.2rem;
-    text-decoration: underline;
     font-weight: bold;
   }
 
   .newList {
     font-weight: 600;
     font-size: 1.1rem;
-    padding: 1rem 0 0 2rem;
+    padding: 1rem 1rem 0 2rem;
     color: #ed6d5a;
+  }
+
+  .list_products {
+    padding-top: 1.5rem;
+  }
+
+  @media (min-width: 600px) {
+    flex-direction: row;
+
+    .menu {
+      border-right: 1px solid #51505015;
+    }
+
+    .list_products {
+      padding-left: 1.5rem;
+    }
   }
 `;
