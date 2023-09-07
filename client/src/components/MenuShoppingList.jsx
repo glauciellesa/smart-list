@@ -1,17 +1,22 @@
 import { NavLink } from "react-router-dom";
 import { styled } from "styled-components";
 import { useState } from "react";
-
+import { Pencil, Trash } from "lucide-react";
 import useShoppingList from "src/hooks/useShoppingList";
 import Modal from "./Modal";
 import NewList from "./NewList";
+import shoppingListService from "../service/shoppingListService";
 
 const MenuShoppingList = () => {
   const [showModal, setshowModal] = useState(false);
   const { data, isLoading, error } = useShoppingList("shoppingLists");
-  const createdNewListName = (newListName) => {
-    console.log({ newListName });
+
+  const handleEdit = async () => {};
+  const handleDelete = async (id) => {
+    await shoppingListService.deleteShoppingLists(`shoppingLists/${id}`);
+    shoppingListService.getShoppingLists("shoppingLists");
   };
+
   return (
     <StyledMenu>
       {error ? <div className="error">{error}</div> : null}
@@ -19,8 +24,19 @@ const MenuShoppingList = () => {
         <p className="loading"> Loading... </p>
       ) : (
         data.map((list) => (
-          <nav className="menu_list">
-            <NavLink to={`${list._id}`}>{list.listName}</NavLink>
+          <nav className="menu_list" key={list._id}>
+            <div className="actions_menu">
+              <NavLink to={`${list._id}`}>{list.listName}</NavLink>
+              <div>
+                <Pencil onClick={() => handleEdit(list._id)} />
+
+                <Trash
+                  onClick={() => {
+                    handleDelete(list._id);
+                  }}
+                />
+              </div>
+            </div>
             <p className="product_qnt">{`${list.productLists.length} items`}</p>
           </nav>
         ))
@@ -39,10 +55,7 @@ const MenuShoppingList = () => {
           setshowModal((prev) => !prev);
         }}
       >
-        <NewList
-          handleModal={setshowModal}
-          onAddNewListName={createdNewListName}
-        />
+        <NewList handleModal={setshowModal} />
       </Modal>
     </StyledMenu>
   );
@@ -65,6 +78,21 @@ const StyledMenu = styled.div`
     font-size: 1.2rem;
     padding: 0 1rem 0 0;
     color: #4d4d4d;
+  }
+  .actions_menu {
+    display: flex;
+    justify-content: space-between;
+    padding-right: 1rem;
+  }
+
+  .actions_menu div {
+    display: flex;
+    gap: 1rem;
+  }
+
+  .actions_menu svg {
+    width: 0.8rem;
+    color: #515050d7;
   }
 
   .product_qnt {

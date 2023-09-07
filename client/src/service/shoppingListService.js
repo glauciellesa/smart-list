@@ -18,4 +18,25 @@ const createShoppingLists = async (endpoint, newList) => {
     }
   );
 };
-export default { getShoppingLists, getShoppingList, createShoppingLists };
+
+const editShoppingLists = async (endpoint, editedListName) => {
+  return await axiosInstance.post(
+    `${config.urlBase}${endpoint}`,
+    { listName: editedListName },
+    {
+      headers: { "Content-Type": "application/json" },
+    }
+  );
+};
+
+const deleteShoppingLists = async (endpoint) => {
+  return await axiosInstance.delete(`${config.urlBase}${endpoint}`);
+};
+
+export default {
+  getShoppingLists,
+  getShoppingList,
+  createShoppingLists,
+  deleteShoppingLists,
+  editShoppingLists,
+};
