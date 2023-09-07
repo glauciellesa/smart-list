@@ -1,14 +1,31 @@
-import React from "react";
+import React, { useEffect } from "react";
 import shoppingListService from "../../../service/shoppingListService";
+import { styled } from "styled-components";
+import { useParams } from "react-router-dom";
+import productShoppingList from "../../../service/productShoppingList";
 
 const ShoppingListDetail = () => {
-  return <div>listtt</div>;
+  const { shoppingListId } = useParams();
+  console.log(shoppingListId);
+
+  useEffect(() => {
+    productShoppingList.getProductFromLists(
+      `shoppingLists/${shoppingListId}/products`
+    );
+  }, [shoppingListId]);
+
+  return (
+    <StyledShoppingDetail>
+      {/* {shoppingListService.getShoppingList.map((listProduct) => {
+        console.log(listProduct);
+        return <div>listttt</div>;
+      })} */}
+      <div>{shoppingListId}</div>
+      <div>Lidstttt</div>
+    </StyledShoppingDetail>
+  );
 };
 
 export default ShoppingListDetail;
 
-export const shoppingListLoader = async ({ params }) => {
-  return shoppingListService.getShoppingList(
-    `shoppingLists/${params.shoppingListId}`
-  );
-};
+const StyledShoppingDetail = styled.div``;
