@@ -1,6 +1,6 @@
 import styled from "styled-components";
 import { Outlet } from "react-router-dom";
-import MenuShoppingList from "src/MenuShoppingList";
+import MenuShoppingList from "../MenuShoppingList";
 
 const ShoppingListLayout = ({ children }) => {
   return (
