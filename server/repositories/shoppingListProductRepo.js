@@ -1,3 +1,4 @@
+import Product from "../models/ProductModel.js";
 import ShoppingList from "../models/ShoppingListModel.js";
 
 const addProductsIntoList = async (clienteId, shoppingListId, newProduct) => {
@@ -8,7 +9,7 @@ const addProductsIntoList = async (clienteId, shoppingListId, newProduct) => {
     },
     {
       $push: {
-        "lists.0.productLists": {
+        "lists.$.productLists": {
           product_id: newProduct.product_id,
           frequency: newProduct.frequency,
           quantity: newProduct.quantity,
@@ -25,11 +26,14 @@ const addProductsIntoList = async (clienteId, shoppingListId, newProduct) => {
 };
 
 const getProductsFromShoppingList = async (clienteId, shoppingListId) => {
-  const userList = await ShoppingList.find({
-    user_id: clienteId,
-    "lists._id": shoppingListId,
-  });
-  return userList[0].lists[0].productLists;
+  const userLists = await ShoppingList.find(
+    {
+      user_id: clienteId,
+    },
+    { lists: { $elemMatch: { _id: shoppingListId } } }
+  );
+
+  return userLists[0].lists[0].productLists;
 };
 
 const editProductoInList = async (
@@ -48,11 +52,11 @@ const editProductoInList = async (
     {
       user_id: clienteRequestId,
       "lists._id": shoppingListId,
-      "lists.0.productLists.$.product_id": productId,
+      "lists.$.productLists.$.product_id": productId,
     },
     {
       $set: {
-        "lists.0.productLists": {
+        "lists.$.productLists": {
           frequency: newProduct.frequency,
           quantity: newProduct.quantity,
         },

@@ -1,5 +1,6 @@
 import shoppingListProductRepo from "../repositories/shoppingListProductRepo.js";
 import { InvalidInputError } from "../errors/invalidInputError.js";
+import productRepository from "../repositories/productRepository.js";
 
 const addProductIntoUserList = async (
   clienteRequestId,
@@ -22,6 +23,35 @@ const addProductIntoUserList = async (
   }
 };
 
+const joinAndgetProductsFromList = async (clientRequestId, shoppingListId) => {
+  const productsFromList =
+    await shoppingListProductRepo.getProductsFromShoppingList(
+      clientRequestId,
+      shoppingListId
+    );
+
+  const listProductsIds = productsFromList.map((listProduct) => {
+    return listProduct.product_id;
+  });
+
+  const listProducts = await productRepository.getProductByIds(listProductsIds);
+
+  const result = productsFromList.map((productList) => {
+    const findedProduct = listProducts.find((product) => {
+      return product._id.toString() === productList.product_id.toString();
+    });
+
+    return {
+      product_id: productList.product_id,
+      frequency: productList.frequency,
+      quantity: productList.quantity,
+      product: findedProduct,
+    };
+  });
+
+  return result;
+};
+
 const checkProductBeforeEdit = async (
   clienteRequestId,
   shoppingListId,
@@ -35,8 +65,6 @@ const checkProductBeforeEdit = async (
     newProductName
   );
 
-  console.log("serv", productEdited);
-
   if (productEdited) {
     return "Product was edited";
   } else {
@@ -49,5 +77,6 @@ const checkProductBeforeDelete = async () => {};
 export default {
   addProductIntoUserList,
   checkProductBeforeEdit,
+  joinAndgetProductsFromList,
   checkProductBeforeDelete,
 };

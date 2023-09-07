@@ -21,8 +21,20 @@ const getProductbyName = async (name) => {
   return await Product.find({ product_name: new RegExp(name, "i") }).exec();
 };
 
-const getProducts = async (name) => {
+const getProducts = async () => {
   return await Product.find({}).exec();
 };
 
-export default { productExist, addNewProduct, getProductbyName, getProducts };
+const getProductByIds = async (ids) => {
+  const records = await Product.find().where("_id").in(ids).exec();
+
+  return records;
+};
+
+export default {
+  productExist,
+  addNewProduct,
+  getProductbyName,
+  getProducts,
+  getProductByIds,
+};

@@ -9,14 +9,14 @@ import Home from "./pages/home/Home";
 import PageNotFound from "./pages/PageNotFound";
 import Recipes from "./pages/recipes/Recipes";
 import Login from "./pages/login/Login";
-import ShoppingList from "./pages/shoppingList/ShoppingList";
 import Register from "./pages/register/Register";
 import RecipeDetailPage from "./pages/recipes/recipeDetail/RecipeDetailPage";
 import NewRecipe from "./pages/recipes/newRecipe/NewRecipe";
-import ShoppingListDetail, {
-  shoppingListLoader,
-} from "./pages/shoppingList/shoppingListDetail/ShoppingListDetail";
+
 import ShoppingListLayout from "src/components/layout/ShoppingListLayout";
+import ShoppingListDetail from "./pages/shoppingList/shoppingListDetail/ShoppingListDetail";
+
+import loader from "./service/loaders/loader";
 
 function App() {
   const router = createBrowserRouter(
@@ -28,12 +28,11 @@ function App() {
         <Route path="newRecipe" element={<NewRecipe />} />
         <Route path="recipeDetail" element={<RecipeDetailPage />} />
         <Route path="login" element={<Login />} />
-        {/*  <Route path="shoppingList" element={<ShoppingList />} /> */}
         <Route path="shoppingList" element={<ShoppingListLayout />}>
           <Route
             path=":shoppingListId"
             element={<ShoppingListDetail />}
-            loader={shoppingListLoader}
+            loader={loader.shoppingListLoader}
           />
         </Route>
         <Route path="*" element={<PageNotFound />} />

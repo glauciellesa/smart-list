@@ -2,7 +2,6 @@
 import { styled } from "styled-components";
 
 const CardRecipe = ({ recipe }) => {
-  console.log({ recipe });
   return (
     <StyleCardReceipe>
       <div className="imageDiv">
