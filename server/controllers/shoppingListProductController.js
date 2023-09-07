@@ -31,10 +31,11 @@ shoppingList.get(
       const clientRequestId = req.email._id;
       const shoppingListId = req.params.shoppingListId;
       const userLists =
-        await shoppingListProductRepo.getProductsFromShoppingList(
+        await shoppingListProductService.joinAndgetProductsFromList(
           clientRequestId,
           shoppingListId
         );
+
       res.status(200).json(userLists).end();
     } catch (error) {
       return next(error);
@@ -58,7 +59,6 @@ shoppingList.put(
           req.body
         );
 
-      console.log({ editedList });
       res.status(200).json(editedList).end();
     } catch (error) {
       return next(error);

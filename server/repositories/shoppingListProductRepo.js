@@ -1,3 +1,4 @@
+import Product from "../models/ProductModel.js";
 import ShoppingList from "../models/ShoppingListModel.js";
 
 const addProductsIntoList = async (clienteId, shoppingListId, newProduct) => {
@@ -25,13 +26,14 @@ const addProductsIntoList = async (clienteId, shoppingListId, newProduct) => {
 };
 
 const getProductsFromShoppingList = async (clienteId, shoppingListId) => {
-  const userList = await ShoppingList.find(
+  const userLists = await ShoppingList.find(
     {
       user_id: clienteId,
     },
     { lists: { $elemMatch: { _id: shoppingListId } } }
   );
-  return userList[0].lists[0].productLists;
+
+  return userLists[0].lists[0].productLists;
 };
 
 const editProductoInList = async (

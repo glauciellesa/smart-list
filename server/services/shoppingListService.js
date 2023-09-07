@@ -11,7 +11,6 @@ const createNewUserList = async (clientRequestId, newList) => {
     newList.listName,
     clientRequestId
   );
-  console.log({ userList });
 
   if (userList) {
     throw new InvalidInputError("Shopping list already exist.");
@@ -34,8 +33,6 @@ const checkBeforeEdit = async (
     shoppingListId,
     newListName
   );
-
-  console.log("serv", userList);
 
   if (userList) {
     return "Shopping was edited";
