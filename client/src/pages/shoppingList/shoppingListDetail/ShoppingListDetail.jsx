@@ -1,25 +1,30 @@
-import React, { useEffect } from "react";
-import shoppingListService from "../../../service/shoppingListService";
+import React, { useEffect, useState } from "react";
 import { styled } from "styled-components";
 import { useParams } from "react-router-dom";
-import productShoppingList from "../../../service/productShoppingList";
+import useProductsList from "../../../hooks/useProductList";
 
 const ShoppingListDetail = () => {
   const { shoppingListId } = useParams();
-  console.log(shoppingListId);
+  const { data, loading, error } = useProductsList(
+    `shoppingLists/${shoppingListId}/products`
+  );
 
-  useEffect(() => {
-    productShoppingList.getProductFromLists(
-      `shoppingLists/${shoppingListId}/products`
-    );
-  }, [shoppingListId]);
+  console.log(`shoppingLists/${shoppingListId}/producs`);
+  console.log({ data });
 
   return (
     <StyledShoppingDetail>
-      {/* {shoppingListService.getShoppingList.map((listProduct) => {
-        console.log(listProduct);
-        return <div>listttt</div>;
-      })} */}
+      {error ? <div className="error">{error}</div> : null}
+      {loading ? (
+        <p className="loading"> Loading... </p>
+      ) : (
+        <>
+          {data.map((listProduct) => {
+            console.log(listProduct);
+            return <div>listttt</div>;
+          })}
+        </>
+      )}
       <div>{shoppingListId}</div>
       <div>Lidstttt</div>
     </StyledShoppingDetail>
