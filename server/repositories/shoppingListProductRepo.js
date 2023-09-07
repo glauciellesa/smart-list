@@ -8,7 +8,7 @@ const addProductsIntoList = async (clienteId, shoppingListId, newProduct) => {
     },
     {
       $push: {
-        "lists.0.productLists": {
+        "lists.$.productLists": {
           product_id: newProduct.product_id,
           frequency: newProduct.frequency,
           quantity: newProduct.quantity,
@@ -48,11 +48,11 @@ const editProductoInList = async (
     {
       user_id: clienteRequestId,
       "lists._id": shoppingListId,
-      "lists.0.productLists.$.product_id": productId,
+      "lists.$.productLists.$.product_id": productId,
     },
     {
       $set: {
-        "lists.0.productLists": {
+        "lists.$.productLists": {
           frequency: newProduct.frequency,
           quantity: newProduct.quantity,
         },
