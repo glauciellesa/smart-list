@@ -29,9 +29,11 @@ shoppingList.get(
   async (req, res, next) => {
     try {
       const clientRequestId = req.email._id;
+      const shoppingListId = req.params.shoppingListId;
       const userLists =
         await shoppingListProductRepo.getProductsFromShoppingList(
-          clientRequestId
+          clientRequestId,
+          shoppingListId
         );
       res.status(200).json(userLists).end();
     } catch (error) {

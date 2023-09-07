@@ -25,10 +25,12 @@ const addProductsIntoList = async (clienteId, shoppingListId, newProduct) => {
 };
 
 const getProductsFromShoppingList = async (clienteId, shoppingListId) => {
-  const userList = await ShoppingList.find({
-    user_id: clienteId,
-    "lists._id": shoppingListId,
-  });
+  const userList = await ShoppingList.find(
+    {
+      user_id: clienteId,
+    },
+    { lists: { $elemMatch: { _id: shoppingListId } } }
+  );
   return userList[0].lists[0].productLists;
 };
 
