@@ -67,6 +67,7 @@ const StyledMenu = styled.div`
   display: flex;
   flex-direction: column;
   gap: 1rem;
+  padding-top: 1rem;
 
   .menu_list {
     display: flex;
@@ -106,9 +107,16 @@ const StyledMenu = styled.div`
   }
 
   .newList {
+    text-align: right;
     font-weight: 600;
     font-size: 1.1rem;
-    padding: 1rem 1rem 0 2rem;
+    padding: 2rem;
     color: #ed6d5a;
+  }
+
+  @media (min-width: 600px) {
+    .newList {
+      padding: 1rem 1rem 0 2rem;
+    }
   }
 `;

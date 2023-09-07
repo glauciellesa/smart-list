@@ -19,29 +19,32 @@ export default ShoppingListLayout;
 
 const StyledLayoutList = styled.nav`
   width: 100%;
-  padding: 3rem;
+  padding: 1rem;
   display: flex;
   flex-direction: column;
 
   .menu {
+    width: 93vw;
     display: flex;
     flex-direction: column;
     gap: 1rem;
   }
 
   .list_products {
-    padding-top: 1.5rem;
+    width: 93vw;
   }
 
   @media (min-width: 600px) {
+    padding: 3rem;
     flex-direction: row;
 
     .menu {
+      width: 20vw;
       border-right: 1px solid #51505015;
     }
 
     .list_products {
-      padding-left: 1.5rem;
+      width: 60vw;
     }
   }
 `;

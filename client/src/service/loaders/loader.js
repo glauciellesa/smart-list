@@ -6,11 +6,4 @@ const shoppingListLoader = async ({ params }) => {
   );
 };
 
-const productListLoader = async ({ params }) => {
-  console.log(params);
-  /* return shoppingListService.getShoppingList(
-    `shoppingLists/${params.shoppingListId}`
-  ); */
-};
-
-export default { shoppingListLoader, productListLoader };
+export default { shoppingListLoader };

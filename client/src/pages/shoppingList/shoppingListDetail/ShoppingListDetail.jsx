@@ -2,15 +2,13 @@ import React, { useEffect, useState } from "react";
 import { styled } from "styled-components";
 import { useParams } from "react-router-dom";
 import useProductsList from "../../../hooks/useProductList";
+import CardProduct from "../../../components/CardProduct";
 
 const ShoppingListDetail = () => {
   const { shoppingListId } = useParams();
   const { data, loading, error } = useProductsList(
     `shoppingLists/${shoppingListId}/products`
   );
-
-  console.log(`shoppingLists/${shoppingListId}/producs`);
-  console.log({ data });
 
   return (
     <StyledShoppingDetail>
@@ -19,18 +17,41 @@ const ShoppingListDetail = () => {
         <p className="loading"> Loading... </p>
       ) : (
         <>
-          {data.map((listProduct) => {
-            console.log(listProduct);
-            return <div>listttt</div>;
-          })}
+          <h2 className="list_title">Shopping List</h2>
+          <div className="product_list">
+            {data.map((listProduct) => {
+              console.log(listProduct);
+              return (
+                <>
+                  <CardProduct
+                    key={listProduct.product_id}
+                    productName={listProduct.product.product_name}
+                    productImg={listProduct.product.image}
+                    productQnt={listProduct.quantity}
+                    /* productCategory={listProduct.product.category_id} */
+                  />
+                </>
+              );
+            })}
+          </div>
         </>
       )}
-      <div>{shoppingListId}</div>
-      <div>Lidstttt</div>
     </StyledShoppingDetail>
   );
 };
 
 export default ShoppingListDetail;
 
-const StyledShoppingDetail = styled.div``;
+const StyledShoppingDetail = styled.div`
+  .list_title {
+    font-size: 1.8rem;
+    font-weight: 700;
+    color: #704869;
+    padding: 0 0 1rem 1rem;
+  }
+
+  .product_list {
+    min-height: 15rem;
+    background-color: #ed6e5a10;
+  }
+`;
