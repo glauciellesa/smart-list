@@ -57,18 +57,26 @@ const StyledCarousel = styled(Carousel)`
 `;
 
 const CarouselImage = styled.img`
-  max-width: 50rem;
   height: auto;
+  width: 110% !important;
+
+  @media (min-width: 600px) {
+    width: 90% !important;
+  }
 `;
 
 const Caption = styled.p`
   position: absolute;
   bottom: 0;
   left: 0;
-  width: 100%;
+  width: 110%;
   background-color: rgba(255, 255, 255, 0.7);
   color: rgb(113 72 105);
   font-weight: bold;
   padding: 8px;
   margin: 0;
+
+  @media (min-width: 600px) {
+    left: 1.5rem;
+  }
 `;

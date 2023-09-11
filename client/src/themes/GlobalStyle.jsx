@@ -1,12 +1,20 @@
 import { createGlobalStyle } from "styled-components";
 
 const GlobalStyle = createGlobalStyle`
-  body{
+  html{
+    height: 100%;
+  }
+  
+  body {
     font-family: 'Comfortaa', cursive;
     color: #161616;
     background-color: #fefaeb;
     width: 100%;
-    justify-content: center;
+    display: flex;
+    flex-direction: column;
+    min-height:100%; 
+    position:relative; 
+    padding-bottom:[footer-height] 
   }
 
   div.error {
@@ -17,6 +25,7 @@ const GlobalStyle = createGlobalStyle`
     border-radius: 4px;
     margin: 20px 0;
   }
+
   input.error {
     border: 1px solid red;
   }
@@ -32,15 +41,17 @@ const GlobalStyle = createGlobalStyle`
     border-radius: 5px;
     padding: 0.6rem;
   }
+
   .btn_cancel {
     background-color: #fefaeb;
     border: 1px solid #704869;
     color: #704869;
   }
+
   .btn_create {
     background-color: #ed6d5a;
     color: #fefaeb;
   }
-  
 `;
+
 export default GlobalStyle;
