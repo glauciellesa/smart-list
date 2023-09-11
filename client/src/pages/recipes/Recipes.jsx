@@ -10,6 +10,8 @@ const Recipes = () => {
   const [showModal, setshowModal] = useState(false);
   const { data, loading, error } = useRecipes("getRecipes", "recipes");
 
+  console.log(data);
+
   return (
     <StyleReceipe>
       <div className="topOfRecipes">
@@ -65,6 +67,7 @@ const StyleReceipe = styled.div`
     display: flex;
     flex-direction: column;
     gap: 1rem;
+    padding-bottom: 4rem;
   }
 
   .recipesTitle {

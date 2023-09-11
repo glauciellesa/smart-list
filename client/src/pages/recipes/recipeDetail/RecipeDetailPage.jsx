@@ -11,6 +11,9 @@ const RecipeDetailPage = () => {
     `recipes/${recipeId}`
   );
 
+  console.log(`recipes/${recipeId}`);
+  console.log({ data });
+
   return (
     <StyledRecipeDetailPage>
       {error ? <div className="error">{error}</div> : null}
@@ -201,7 +204,6 @@ const StyledRecipeDetailPage = styled.div`
 
     .topImage img {
       border-radius: 5px;
-      width: fit-content;
     }
 
     .favorite {
