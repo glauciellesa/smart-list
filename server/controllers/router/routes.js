@@ -4,7 +4,7 @@ import product from "../productController.js";
 import recipe from "../recipeController.js";
 import category from "../categoryController.js";
 import shoppingList from "../shoppingListController.js";
-import shoppingListProduct from "../ShoppingListProductController.js";
+import shoppingListProduct from "../shoppingListProductController.js";
 
 const routes = express.Router();
 

@@ -1,6 +1,5 @@
 import express from "express";
 
-import shoppingListProductRepo from "../repositories/shoppingListProductRepo.js";
 import shoppingListProductService from "../services/shoppingListProductService.js";
 
 const shoppingList = express.Router();
