@@ -72,9 +72,11 @@ const Navbar = () => {
         <NavLink to="recipes">
           <ChefHat />
         </NavLink>
-        <NavLink to="shoppingList">
-          <ClipboardList />
-        </NavLink>
+        {user ? (
+          <NavLink to="shoppingList">
+            <ClipboardList />
+          </NavLink>
+        ) : null}
       </div>
     </StyledNavbar>
   );
