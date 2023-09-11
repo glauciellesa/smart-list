@@ -20,6 +20,22 @@ const MenuShoppingList = () => {
   return (
     <StyledMenu>
       {error ? <div className="error">{error}</div> : null}
+      <div
+        className="newList"
+        onClick={() => {
+          setshowModal((prev) => !prev);
+        }}
+      >
+        + Create new List
+      </div>
+      <Modal
+        shouldShow={showModal}
+        onRequestClose={() => {
+          setshowModal((prev) => !prev);
+        }}
+      >
+        <NewList handleModal={setshowModal} />
+      </Modal>
       {isLoading ? (
         <p className="loading"> Loading... </p>
       ) : (
@@ -41,22 +57,6 @@ const MenuShoppingList = () => {
           </nav>
         ))
       )}
-      <div
-        className="newList"
-        onClick={() => {
-          setshowModal((prev) => !prev);
-        }}
-      >
-        + Create new List
-      </div>
-      <Modal
-        shouldShow={showModal}
-        onRequestClose={() => {
-          setshowModal((prev) => !prev);
-        }}
-      >
-        <NewList handleModal={setshowModal} />
-      </Modal>
     </StyledMenu>
   );
 };
@@ -116,7 +116,7 @@ const StyledMenu = styled.div`
 
   @media (min-width: 600px) {
     .newList {
-      padding: 1rem 1rem 0 2rem;
+      padding: 1rem 1rem 1rem 0;
     }
   }
 `;

@@ -2,8 +2,12 @@ import { Link, NavLink } from "react-router-dom";
 import styled from "styled-components";
 import CarouselComponent from "src/components/CarouselComponent";
 import { useAuthContext } from "src/hooks/useAuthContex";
+import NewList from "src/components/NewList";
+import Modal from "src/components/Modal";
+import { useState } from "react";
 
 const Home = () => {
+  const [showModal, setshowModal] = useState(false);
   const { user } = useAuthContext();
 
   return (
@@ -14,10 +18,22 @@ const Home = () => {
         </p>
         {user ? (
           <div className="userList_home">
-            <Link to="/newList">
+            <div
+              onClick={() => {
+                setshowModal((prev) => !prev);
+              }}
+            >
               <p>Create a new list</p>
               <button className="newList_btn">+</button>
-            </Link>
+              <Modal
+                shouldShow={showModal}
+                onRequestClose={() => {
+                  setshowModal((prev) => !prev);
+                }}
+              >
+                <NewList handleModal={setshowModal} />
+              </Modal>
+            </div>
           </div>
         ) : null}
       </div>
@@ -70,10 +86,10 @@ const StyledHome = styled.div`
     color: #704869;
   }
 
-  .userList_home a {
+  .userList_home div {
     padding: 2rem 2rem 0 0;
     display: flex;
-    justify-content: space-between;
+    justify-content: flex-end;
     align-items: center;
   }
 
@@ -81,8 +97,7 @@ const StyledHome = styled.div`
     font-size: 1.4rem;
     font-weight: 600;
     color: #704869;
-    padding: 0.3rem 4rem 0.3rem 0.5rem;
-    border: 1px solid #704869;
+    padding: 0.3rem 2rem 0.3rem 0.5rem;
     text-align: left;
   }
 
