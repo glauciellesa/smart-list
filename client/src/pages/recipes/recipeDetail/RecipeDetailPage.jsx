@@ -1,7 +1,6 @@
-import recipes from "../../../../data/recipes.json";
 import useRecipes from "../../../hooks/useRecipes";
 import { styled } from "styled-components";
-import { Heart } from "lucide-react";
+import { Heart, UserCircle } from "lucide-react";
 import { useParams } from "react-router-dom";
 
 /* eslint-disable react/prop-types */
@@ -11,51 +10,62 @@ const RecipeDetailPage = () => {
     "getRecipeById",
     `recipes/${recipeId}`
   );
-  console.log(data);
 
   return (
     <StyledRecipeDetailPage>
-      {recipes.recipes.map((recipe) => {
-        return (
-          <div className="card">
-            <div className="top">
-              <div className="topImage">
-                <img
-                  src={`https://source.unsplash.com/${recipe.photo}/400x300`}
-                  alt={`Pictures of ${recipe.name}`}
-                />
-              </div>
-              <div className="topRight">
-                <div className="userContainer">
-                  <div className="userImage">
-                    <img
-                      src={`https://github.com/leilaZ1111.png`}
-                      alt={`photo`}
-                    />
-                    <p className="username">Isabella Swan</p>
-                  </div>
-                </div>
-
-                <h2>{recipe.name}</h2>
-                <p className="time">{recipe.timeToPrepare}</p>
-              </div>
-              <div className="favorite">
-                <Heart />
-              </div>
+      {error ? <div className="error">{error}</div> : null}
+      {loading ? (
+        <p className="loading"> Loading... </p>
+      ) : (
+        <div className="card">
+          <div className="top">
+            <div className="topImage">
+              <img
+                src={`https://source.unsplash.com/${data.photo}/400x300`}
+                alt={`Pictures of ${data.name}`}
+              />
             </div>
-            <div className="bottom">
-              <h3>Ingredients</h3>
-              <ul>
-                {recipe.ingredients.map((element, index) => (
-                  <li key={element + index}>{element}</li>
-                ))}
-              </ul>
-              <h3>Instructions</h3>
-              <p>{recipe.instructions}</p>
+            <div className="topRight">
+              <div className="userContainer">
+                <div className="userImage">
+                  {data.githubAccount ? (
+                    <>
+                      <img
+                        src={`https://github.com/${data.githubAccount}.png`}
+                        alt={`${data.userName}'s photo`}
+                      />
+                      <p className="username">{data.userName}</p>
+                    </>
+                  ) : (
+                    <UserCircle />
+                  )}
+                </div>
+              </div>
+
+              <h2>{data.name}</h2>
+              <p className="time">{data.timeToPrepare}</p>
+            </div>
+            <div className="favorite">
+              <Heart />
             </div>
           </div>
-        );
-      })}
+          <div className="bottom">
+            <h3>Ingredients</h3>
+            {data.ingredients ? (
+              <ul>
+                {data.ingredients?.map((ingredient) => (
+                  <li key={Math.random()}>{ingredient}</li>
+                ))}
+              </ul>
+            ) : (
+              <div>No ingredients found</div>
+            )}
+
+            <h3>Instructions</h3>
+            <p>{data.instructions}</p>
+          </div>
+        </div>
+      )}
     </StyledRecipeDetailPage>
   );
 };
