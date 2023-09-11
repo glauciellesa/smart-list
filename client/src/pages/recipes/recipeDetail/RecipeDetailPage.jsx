@@ -82,44 +82,42 @@ const StyledRecipeDetailPage = styled.div`
 
   .card {
     box-shadow: 5px 2px 10px #d6cdc2;
-    width: 95%; 
+    width: 95%;
     border-radius: 5px;
   }
 
-.top {
-  position: relative;
-  display: flex;
-  flex-direction: column;
-  gap: 1rem;
-  align-items: center;
+  .top {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    align-items: center;
+  }
 
-}
+  .topImage {
+    width: 100%;
+  }
 
-.topImage {
-  width: 100%;
-}
+  .topImage img {
+    border-radius: 5px 5px 0 0;
+    width: 100%;
+  }
 
-.topImage img {
-  border-radius: 5px 5px 0 0;
-width: 100%;
+  .topRight {
+    display: flex;
+    gap: 1rem;
+    flex-direction: column;
+    width: 100%;
+    padding: 1rem;
+  }
 
-}
-
-.topRight {
-  display: flex;
-  gap: 1rem;
-  flex-direction: column;
-  width: 100%;
-  padding: 1rem;
-}
-
-.bottom {
-  padding: 1rem;
-}
+  .bottom {
+    padding: 1rem;
+  }
 
   h2 {
     color: #704869;
-    font-size:2rem;
+    font-size: 2rem;
     font-weight: 700;
   }
 
@@ -137,7 +135,7 @@ width: 100%;
 
   li {
     line-height: 1.5;
-    margin-left: 20px
+    margin-left: 20px;
     color: #4d4d4d;
   }
 
@@ -163,7 +161,7 @@ width: 100%;
   }
 
   svg:hover {
-   color: #ed6d5a;
+    color: #ed6d5a;
   }
 
   .userContainer {
@@ -172,7 +170,7 @@ width: 100%;
     justify-content: space-between;
     width: 100%;
   }
-  
+
   .userContainer img {
     border-radius: 50%;
     height: 2rem;
@@ -184,9 +182,6 @@ width: 100%;
     align-items: center;
     gap: 0.5rem;
   }
-
-
-
 
   @media (min-width: 600px) {
     width: 850px;
@@ -215,5 +210,4 @@ width: 100%;
       right: 0;
     }
   }
-}
 `;
