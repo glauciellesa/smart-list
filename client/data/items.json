@@ -2,14 +2,14 @@
   {
     "id": 1,
     "category": "fruits",
-    "text": "strawberry",
+    "text": "🍓 strawberry",
     "image": "qrdbYqxnets"
   },
 
   {
     "id": 2,
     "category": "vegetables",
-    "text": "carrots",
+    "text": "🥕 carrots",
     "image": "qrdbYqxnets"
   },
   {
@@ -29,14 +29,14 @@
   {
     "id": 4,
     "category": "dairy",
-    "text": "cheese",
+    "text": "🧀 cheese",
     "image": "qrdbYqxnets"
   },
 
   {
     "id": 6,
     "category": "proteins",
-    "text": "chicken breast",
+    "text": "🍗 chicken breast",
     "image": "qrdbYqxnets"
   },
 
