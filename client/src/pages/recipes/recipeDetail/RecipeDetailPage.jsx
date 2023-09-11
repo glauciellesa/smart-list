@@ -1,11 +1,18 @@
-import recipes from '../../../../data/recipes.json';
-import { styled } from 'styled-components';
-import { Heart } from 'lucide-react';
+import recipes from "../../../../data/recipes.json";
+import useRecipes from "../../../hooks/useRecipes";
+import { styled } from "styled-components";
+import { Heart } from "lucide-react";
+import { useParams } from "react-router-dom";
 
 /* eslint-disable react/prop-types */
 const RecipeDetailPage = () => {
-  console.log(recipes);
-  // console.log(recipe);
+  const { recipeId } = useParams();
+  const { data, loading, error } = useRecipes(
+    "getRecipeById",
+    `recipes/${recipeId}`
+  );
+  console.log(data);
+
   return (
     <StyledRecipeDetailPage>
       {recipes.recipes.map((recipe) => {

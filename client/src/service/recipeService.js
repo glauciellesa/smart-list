@@ -5,4 +5,8 @@ const getRecipes = async (url) => {
   return await axiosInstance.get(`${config.urlBase}${url}`);
 };
 
-export default { getRecipes };
+const getRecipeById = async (url) => {
+  return await axiosInstance.get(`${config.urlBase}${url}`);
+};
+
+export default { getRecipes, getRecipeById };
