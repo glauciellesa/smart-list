@@ -75,6 +75,7 @@ const StyleLogin = styled.div`
   justify-content: center;
   align-items: center;
   width: 100%;
+  padding: 10rem 0;
 
   form {
     display: flex;
@@ -135,6 +136,7 @@ const StyleLogin = styled.div`
 
   @media only screen and (min-width: 600px) {
     gap: 5rem;
+    padding: 5rem 0;
 
     .image img {
       display: block;
