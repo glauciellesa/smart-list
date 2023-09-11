@@ -2,52 +2,58 @@
   {
     "id": 1,
     "category": "fruits",
-    "text":"strawberry"
+    "text": "strawberry",
+    "image": "qrdbYqxnets"
   },
 
   {
     "id": 2,
     "category": "vegetables",
-    "text":"carrots"
+    "text": "carrots",
+    "image": "qrdbYqxnets"
   },
   {
     "id": 3,
     "category": "seasoning and condiments",
-    "text":"garlic powder"
+    "text": "garlic powder",
+    "image": "qrdbYqxnets"
   },
 
   {
     "id": 4,
     "category": "breads and pasta",
-    "text":"whole grain bread"
+    "text": "whole grain bread",
+    "image": "qrdbYqxnets"
   },
 
   {
     "id": 4,
     "category": "dairy",
-    "text":"cheese"
+    "text": "cheese",
+    "image": "qrdbYqxnets"
   },
 
   {
     "id": 6,
     "category": "proteins",
-    "text":"chicken breast"
+    "text": "chicken breast",
+    "image": "qrdbYqxnets"
   },
 
   {
     "id": 7,
     "category": "health and beauty",
-    "text":"hand soap"
+    "text": "hand soap"
   },
 
   {
     "id": 8,
     "category": "household",
-    "text":"toothpaste"
+    "text": "toothpaste"
   },
   {
-    "id":9,
-    "category":"drinks",
-    "text":"sparkling water"
+    "id": 9,
+    "category": "drinks",
+    "text": "sparkling water"
   }
 ]
