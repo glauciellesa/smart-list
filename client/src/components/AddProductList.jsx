@@ -29,7 +29,7 @@ const AddProductList = () => {
   };
 
   return (
-    <div>
+    <StyledAddProductList>
       {/* Input field with a plus sign */}
       <div className="input-container">
         <input
@@ -38,7 +38,7 @@ const AddProductList = () => {
           value={inputValue}
           onChange={(e) => setInputValue(e.target.value)}
         />
-        <button
+        <button className="add-button"
           onClick={() => {
             if (inputValue) {
               addItem(inputValue);
@@ -57,17 +57,86 @@ const AddProductList = () => {
         <ul>
           {items.map((item, index) => (
             <li key={index}>
-              {item.name} {item.quantity}
-              <button onClick={() => increaseQuantity(index)}>+</button>
-              <button onClick={() => decreaseQuantity(index)}>-</button>
+              <span className="item-name">
+        {item.name.charAt(0).toUpperCase() + item.name.slice(1)}
+      </span>
+      <span className="quantity">{item.quantity}</span>
+      <button className="plus-button" onClick={() => increaseQuantity(index)}>
+        +
+      </button>
+      <button className="minus-button" onClick={() => decreaseQuantity(index)}>
+        -
+      </button>
             </li>
           ))}
         </ul>
       )}
-    </div>
+    </StyledAddProductList>
   );
 };
 
-export default AddProductList;
+const StyledAddProductList = styled.div`
+.input-container {
+    display: flex; /* Apply flexbox */
+    align-items: center; /* Center vertically */
+  }
 
-const StyledAddProductList = styled.div``;
+  img {
+    max-width: 90%;
+  }
+
+  input {
+    padding: 8px;
+    border-radius: 25px;
+    width: 70%;
+    border: solid 2px #704869;
+    margin-right: 3%;
+    margin-left: 3%;
+  }
+
+    .add-button {
+        background-color: #704869;
+    color: white;
+    }
+
+
+  button {
+    border-radius: 50%;
+    width: 35px;
+    height: 35px;
+    font-size: 22px;
+    border: none;
+  }
+
+  li {
+    display: flex;
+    flex-direction: row;
+    padding: 2%;
+    margin-right: 2%;
+    align-items: center;
+  }
+
+  .item-name {
+    flex-grow: 1; /* Allow the item name to take up available space */
+    text-transform: capitalize; /* Capitalize the first letter of the name */
+    margin-right: 10px; /* Add right margin to separate from quantity */
+  }
+  
+  .plus-button,
+.minus-button {
+  background: none;
+  border: none;
+  color: #ed6d5a;
+  font-size: 24px;
+  margin-left: 5px; /* Add left margin to separate buttons */
+}
+
+/* Add space between buttons */
+.plus-button {
+  margin-right: 5px; /* Add right margin to separate from "-" button */
+  margin-left: 8%;
+}
+
+`;
+
+export default AddProductList;

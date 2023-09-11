@@ -56,6 +56,6 @@ const StyledShoppingDetail = styled.div`
 
   .product_list {
     min-height: 15rem;
-    background-color: #ed6e5a10;
+    // background-color: #ed6e5a10;
   }
 `;
