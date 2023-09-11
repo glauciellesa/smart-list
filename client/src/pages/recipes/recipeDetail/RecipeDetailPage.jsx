@@ -46,7 +46,6 @@ const RecipeDetailPage = () => {
               <h3>Instructions</h3>
               <p>{recipe.instructions}</p>
             </div>
-            <button>SAVE</button>
           </div>
         );
       })}
@@ -66,7 +65,8 @@ const StyledRecipeDetailPage = styled.div`
 
   .card {
     box-shadow: 5px 2px 10px #d6cdc2;
-   
+    width: 95%; 
+    border-radius: 5px;
   }
 
 .top {
@@ -80,13 +80,12 @@ const StyledRecipeDetailPage = styled.div`
 
 .topImage {
   width: 100%;
-  padding-bottom: 1rem;
 }
 
 .topImage img {
-  border-radius: 5px;
-  width: fit-content;
-  padding-bottom: 1rem;
+  border-radius: 5px 5px 0 0;
+width: 100%;
+
 }
 
 .topRight {
@@ -97,9 +96,13 @@ const StyledRecipeDetailPage = styled.div`
   padding: 1rem;
 }
 
+.bottom {
+  padding: 1rem;
+}
+
   h2 {
     color: #704869;
-    font-size: 1.5rem;
+    font-size:2rem;
     font-weight: 700;
   }
 
@@ -110,6 +113,22 @@ const StyledRecipeDetailPage = styled.div`
     font-weight: 700;
   }
 
+  p {
+    line-height: 1.5;
+    color: #4d4d4d;
+  }
+
+  li {
+    line-height: 1.5;
+    margin-left: 20px
+    color: #4d4d4d;
+  }
+
+  ul {
+    list-style-type: square;
+    color: #4d4d4d;
+  }
+
   .userName,
   .time {
     font-size: 1rem;
@@ -118,7 +137,7 @@ const StyledRecipeDetailPage = styled.div`
 
   .favorite {
     position: absolute;
-    top: 20rem;
+    top: 17.5rem;
     right: 1rem;
   }
 
@@ -127,14 +146,7 @@ const StyledRecipeDetailPage = styled.div`
   }
 
   svg:hover {
-   color: red;
-  }
-
-
-  .userImage {
-    display: flex;
-    align-items: center;
-    gap: 0.5rem;
+   color: #ed6d5a;
   }
 
   .userContainer {
@@ -143,24 +155,21 @@ const StyledRecipeDetailPage = styled.div`
     justify-content: space-between;
     width: 100%;
   }
-
+  
   .userContainer img {
     border-radius: 50%;
     height: 2rem;
     width: 2rem;
   }
 
-  button {
-    background-color: #ed6d5a;
-    color: white;
-    padding: 0.7rem;
-    border: none;
-    box-shadow: 5px 2px 10px #d6cdc2;
-    margin: 1.5rem 0;
-    cursor: pointer;
-    width: 150px;
-    border-radius: 5px;
+  .userImage {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
   }
+
+
+
 
   @media (min-width: 600px) {
     width: 850px;
@@ -180,8 +189,7 @@ const StyledRecipeDetailPage = styled.div`
 
     .topImage img {
       border-radius: 5px;
-      width: 300px;
-      padding-bottom: 1rem;
+      width: fit-content;
     }
 
     .favorite {
