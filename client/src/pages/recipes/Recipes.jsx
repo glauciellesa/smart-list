@@ -37,7 +37,7 @@ const Recipes = () => {
           {data.map((recipe) => {
             return recipe.userRecipes.map((userRecipe) => {
               return (
-                <Link to={userRecipe._id}>
+                <Link to={userRecipe._id} key={userRecipe._id}>
                   <CardRecipe key={userRecipe._id} recipe={userRecipe} />
                 </Link>
               );

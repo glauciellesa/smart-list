@@ -17,7 +17,6 @@ const useRecipes = (key, url) => {
             break;
 
           case "getRecipeById":
-            console.log({ url });
             res = await recipeService.getRecipeById(url);
             break;
 
