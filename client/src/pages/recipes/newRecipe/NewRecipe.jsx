@@ -1,15 +1,15 @@
-import { useState } from 'react';
-import { styled } from 'styled-components';
+import { useState } from "react";
+import { styled } from "styled-components";
 
 const initialState = {
-  photo: '',
-  name: '',
-  timeToPrepare: '',
-  ingredients: [''],
-  instructions: '',
+  photo: "",
+  name: "",
+  timeToPrepare: "",
+  ingredients: [""],
+  instructions: "",
 };
 
-const NewRecipe = () => {
+const NewRecipe = (props) => {
   const [form, setForm] = useState(initialState);
 
   const handleChange = (event) => {
@@ -21,16 +21,14 @@ const NewRecipe = () => {
 
   const handleRecipe = async (e) => {
     e.preventDefault();
-
     setForm(initialState);
   };
 
   return (
     <StyleNewRecipe>
       <form>
-        <div className="addAndSave">
+        <div className="title">
           <h1>New Recipe</h1>
-          <button onClick={handleRecipe}>Save</button>
         </div>
         <label name="title">Title</label>
         <input
@@ -60,7 +58,7 @@ const NewRecipe = () => {
           required
         />
         <label name="ingredients">Ingredients</label>
-        <input
+        <textarea
           type="text"
           id="ingredients"
           placeholder="What ingredients do you need?"
@@ -69,7 +67,7 @@ const NewRecipe = () => {
           required
         />
         <label name="instructions">Instructions</label>
-        <input
+        <textarea
           type="text"
           id="instructions"
           placeholder="How do you prepare it?"
@@ -77,6 +75,9 @@ const NewRecipe = () => {
           value={form.instructions}
           required
         />
+        <div className="addAndSave">
+          <button onClick={handleRecipe}>Save</button>
+        </div>
       </form>
     </StyleNewRecipe>
   );
@@ -95,7 +96,6 @@ const StyleNewRecipe = styled.div`
   .addAndSave {
     display: flex;
     justify-content: space-between;
-    width: 100%;
     gap: 2rem;
     padding-bottom: 2rem;
     padding-top: 3rem;
@@ -109,15 +109,16 @@ const StyleNewRecipe = styled.div`
     font-weight: 700;
   }
 
-  button {
+  .addAndSave button {
     background-color: #ed6d5a;
-    color: white;
+    color: #fefaeb;
     border: none;
     box-shadow: 5px 2px 10px #d6cdc2;
     cursor: pointer;
-    width: 50px;
+    width: 10rem;
     border-radius: 5px;
     height: 50px;
+    font-size: 1.2rem;
   }
 
   label {
@@ -131,7 +132,9 @@ const StyleNewRecipe = styled.div`
     font-weight: 700;
   }
 
+  textarea,
   input {
+    font-family: "Comfortaa", cursive;
     text-align: left;
     padding: 0.7rem;
     background-color: white;

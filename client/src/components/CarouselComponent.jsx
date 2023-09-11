@@ -5,7 +5,7 @@ import styled from "styled-components";
 import useRecipes from "src/hooks/useRecipes";
 
 const CarouselComponent = () => {
-  const { data, loading, error } = useRecipes("recipes");
+  const { data, loading, error } = useRecipes("getRecipes", "recipes");
 
   return (
     <StyledCarousel

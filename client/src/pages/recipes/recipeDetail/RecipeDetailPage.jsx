@@ -1,54 +1,71 @@
-import recipes from '../../../../data/recipes.json';
-import { styled } from 'styled-components';
-import { Heart } from 'lucide-react';
+import useRecipes from "../../../hooks/useRecipes";
+import { styled } from "styled-components";
+import { Heart, UserCircle } from "lucide-react";
+import { useParams } from "react-router-dom";
 
 /* eslint-disable react/prop-types */
 const RecipeDetailPage = () => {
-  console.log(recipes);
-  // console.log(recipe);
+  const { recipeId } = useParams();
+  const { data, loading, error } = useRecipes(
+    "getRecipeById",
+    `recipes/${recipeId}`
+  );
+
   return (
     <StyledRecipeDetailPage>
-      {recipes.recipes.map((recipe) => {
-        return (
-          <div className="card">
-            <div className="top">
-              <div className="topImage">
-                <img
-                  src={`https://source.unsplash.com/${recipe.photo}/400x300`}
-                  alt={`Pictures of ${recipe.name}`}
-                />
-              </div>
-              <div className="topRight">
-                <div className="userContainer">
-                  <div className="userImage">
-                    <img
-                      src={`https://github.com/leilaZ1111.png`}
-                      alt={`photo`}
-                    />
-                    <p className="username">Isabella Swan</p>
-                  </div>
-                </div>
-
-                <h2>{recipe.name}</h2>
-                <p className="time">{recipe.timeToPrepare}</p>
-              </div>
-              <div className="favorite">
-                <Heart />
-              </div>
+      {error ? <div className="error">{error}</div> : null}
+      {loading ? (
+        <p className="loading"> Loading... </p>
+      ) : (
+        <div className="card">
+          <div className="top">
+            <div className="topImage">
+              <img
+                src={`https://source.unsplash.com/${data.photo}/400x300`}
+                alt={`Pictures of ${data.name}`}
+              />
             </div>
-            <div className="bottom">
-              <h3>Ingredients</h3>
-              <ul>
-                {recipe.ingredients.map((element, index) => (
-                  <li key={element + index}>{element}</li>
-                ))}
-              </ul>
-              <h3>Instructions</h3>
-              <p>{recipe.instructions}</p>
+            <div className="topRight">
+              <div className="userContainer">
+                <div className="userImage">
+                  {data.githubAccount ? (
+                    <>
+                      <img
+                        src={`https://github.com/${data.githubAccount}.png`}
+                        alt={`${data.userName}'s photo`}
+                      />
+                      <p className="username">{data.userName}</p>
+                    </>
+                  ) : (
+                    <UserCircle />
+                  )}
+                </div>
+              </div>
+
+              <h2>{data.name}</h2>
+              <p className="time">{data.timeToPrepare}</p>
+            </div>
+            <div className="favorite">
+              <Heart />
             </div>
           </div>
-        );
-      })}
+          <div className="bottom">
+            <h3>Ingredients</h3>
+            {data.ingredients ? (
+              <ul>
+                {data.ingredients?.map((ingredient) => (
+                  <li key={Math.random()}>{ingredient}</li>
+                ))}
+              </ul>
+            ) : (
+              <div>No ingredients found</div>
+            )}
+
+            <h3>Instructions</h3>
+            <p>{data.instructions}</p>
+          </div>
+        </div>
+      )}
     </StyledRecipeDetailPage>
   );
 };
@@ -65,44 +82,42 @@ const StyledRecipeDetailPage = styled.div`
 
   .card {
     box-shadow: 5px 2px 10px #d6cdc2;
-    width: 95%; 
+    width: 95%;
     border-radius: 5px;
   }
 
-.top {
-  position: relative;
-  display: flex;
-  flex-direction: column;
-  gap: 1rem;
-  align-items: center;
+  .top {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    align-items: center;
+  }
 
-}
+  .topImage {
+    width: 100%;
+  }
 
-.topImage {
-  width: 100%;
-}
+  .topImage img {
+    border-radius: 5px 5px 0 0;
+    width: 100%;
+  }
 
-.topImage img {
-  border-radius: 5px 5px 0 0;
-width: 100%;
+  .topRight {
+    display: flex;
+    gap: 1rem;
+    flex-direction: column;
+    width: 100%;
+    padding: 1rem;
+  }
 
-}
-
-.topRight {
-  display: flex;
-  gap: 1rem;
-  flex-direction: column;
-  width: 100%;
-  padding: 1rem;
-}
-
-.bottom {
-  padding: 1rem;
-}
+  .bottom {
+    padding: 1rem;
+  }
 
   h2 {
     color: #704869;
-    font-size:2rem;
+    font-size: 2rem;
     font-weight: 700;
   }
 
@@ -120,7 +135,7 @@ width: 100%;
 
   li {
     line-height: 1.5;
-    margin-left: 20px
+    margin-left: 20px;
     color: #4d4d4d;
   }
 
@@ -146,7 +161,7 @@ width: 100%;
   }
 
   svg:hover {
-   color: #ed6d5a;
+    color: #ed6d5a;
   }
 
   .userContainer {
@@ -155,7 +170,7 @@ width: 100%;
     justify-content: space-between;
     width: 100%;
   }
-  
+
   .userContainer img {
     border-radius: 50%;
     height: 2rem;
@@ -167,9 +182,6 @@ width: 100%;
     align-items: center;
     gap: 0.5rem;
   }
-
-
-
 
   @media (min-width: 600px) {
     width: 850px;
@@ -198,5 +210,4 @@ width: 100%;
       right: 0;
     }
   }
-}
 `;

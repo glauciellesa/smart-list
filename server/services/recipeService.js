@@ -1,6 +1,7 @@
 import { InvalidInputError } from "../errors/invalidInputError.js";
 import { PermissionError } from "../errors/permissionError.js";
 import recipeRepository from "../repositories/recipeRepository.js";
+import userRepository from "../repositories/userRepository.js";
 
 const addNewRecipe = async (newRecipe, clientRequestId) => {
   if (!newRecipe.name || !newRecipe.ingredients.length) {
@@ -64,4 +65,26 @@ const checkRecipeBeforeDelete = async (clientRequestId, recipeId) => {
   }
 };
 
-export default { addNewRecipe, checkRecipeBeforeEdit, checkRecipeBeforeDelete };
+const getRecipeData = async (recipeId) => {
+  const recipe = await recipeRepository.getRecipeById(recipeId);
+  const user = await userRepository.getUserById(recipe.user_id);
+
+  const recipeData = {
+    userName: `${user.first_name} ${user.last_name}`,
+    githubAccount: user.githubAccount,
+    photo: recipe.userRecipes[0].photo,
+    name: recipe.userRecipes[0].name,
+    timeToPrepare: recipe.userRecipes[0].timeToPrepare,
+    ingredients: recipe.userRecipes[0].ingredients,
+    instructions: recipe.userRecipes[0].instructions,
+  };
+
+  return recipeData;
+};
+
+export default {
+  addNewRecipe,
+  checkRecipeBeforeEdit,
+  checkRecipeBeforeDelete,
+  getRecipeData,
+};

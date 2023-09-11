@@ -1,6 +1,7 @@
 import express from "express";
 import userService from "../services/userService.js";
 import { verifyToken } from "../services/authService.js";
+import userRepository from "../repositories/userRepository.js";
 
 const user = express.Router();
 
@@ -33,8 +34,15 @@ user.post("/api/login", async (req, res, next) => {
 
 user.use(verifyToken);
 
-user.get("/api/users", async (req, res) => {
-  res.status(200).json("hello").end();
+user.get("/api/users/:userId", async (req, res, next) => {
+  try {
+    const userId = req.params.userId;
+
+    const user = await userRepository.getUserById(userId);
+    res.status(200).json(user).end();
+  } catch (error) {
+    return next(error);
+  }
 });
 
 export default user;

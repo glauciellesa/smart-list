@@ -29,7 +29,7 @@ recipe.get("/api/recipes", async (req, res, next) => {
 recipe.get("/api/recipes/:recipeId", async (req, res, next) => {
   try {
     const recipeId = req.params.recipeId;
-    const recipes = await recipeRepository.getRecipeById(recipeId);
+    const recipes = await recipeService.getRecipeData(recipeId);
     res.status(200).json(recipes).end();
   } catch (error) {
     return next(error);
