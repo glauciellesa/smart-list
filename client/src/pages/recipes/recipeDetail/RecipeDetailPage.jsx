@@ -151,6 +151,7 @@ const StyledRecipeDetailPage = styled.div`
   p {
     line-height: 1.5;
     color: #4d4d4d;
+    text-align: justify;
   }
 
   li {
