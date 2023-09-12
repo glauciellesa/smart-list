@@ -1,12 +1,14 @@
 import express from "express";
 import recipeService from "../services/recipeService.js";
 import recipeRepository from "../repositories/recipeRepository.js";
+import { verifyToken } from "../services/authService.js";
 
 const recipe = express.Router();
 
-recipe.post("/api/recipes", async (req, res, next) => {
+recipe.post("/api/recipes", verifyToken, async (req, res, next) => {
   try {
     const clientRequestId = req.email._id;
+    console.log(clientRequestId);
     const createdRecipe = await recipeService.addNewRecipe(
       req.body,
       clientRequestId
