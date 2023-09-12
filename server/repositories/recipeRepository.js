@@ -4,6 +4,9 @@ import Recipe from "../models/RecipesModel.js";
 import { ObjectId } from "mongodb";
 
 const createRecipeArray = async (userId) => {
+  if (!userId) {
+    throw Error("You need to have an account in order to create new recipe");
+  }
   return await Recipe.create({
     user_id: userId,
     userRecipes: [],

@@ -8,7 +8,10 @@ const recipe = express.Router();
 recipe.post("/api/recipes", verifyToken, async (req, res, next) => {
   try {
     const clientRequestId = req.email._id;
-    console.log(clientRequestId);
+    if (!clientRequestId) {
+      throw Error(" You are not logged in");
+    }
+
     const createdRecipe = await recipeService.addNewRecipe(
       req.body,
       clientRequestId

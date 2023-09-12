@@ -45,7 +45,7 @@ const register = async ({
 
   const fullName = `${first_name} ${last_name}`;
 
-  return { token, email, githubAccount, fullName };
+  return { token, email, githubAccount, fullName, _id: userId._id };
 };
 
 const login = async ({ email, password }) => {
@@ -69,6 +69,7 @@ const login = async ({ email, password }) => {
   if (user) {
     userData = {
       token: token,
+      _id: user._id,
       email: user.email,
       githubAccount: user.githubAccount,
       fullName: `${user.first_name} ${user.last_name}`,
