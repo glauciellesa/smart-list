@@ -3,7 +3,7 @@ import { styled } from "styled-components";
 const Footer = () => {
   return (
     <StyledFooter>
-      <p>Copyight © 2023 </p>
+      <p>Copyright © 2023 </p>
     </StyledFooter>
   );
 };
