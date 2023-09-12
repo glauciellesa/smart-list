@@ -47,10 +47,16 @@ const getRecipes = () => {
 };
 
 const getRecipeById = async (recipeId) => {
-  return Recipe.find(
+  const recipeWithUser = await Recipe.findOne(
     { "userRecipes._id": recipeId },
-    { userRecipes: { $elemMatch: { _id: recipeId } } }
+    { "userRecipes.$": 1, user_id: 1 }
   );
+
+  if (!recipeWithUser) {
+    return null;
+  }
+
+  return recipeWithUser;
 };
 
 const editRecipe = async (clientId, recipeId, newData) => {

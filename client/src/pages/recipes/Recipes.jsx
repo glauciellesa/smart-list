@@ -2,20 +2,35 @@ import { styled } from "styled-components";
 import CardRecipe from "src/components/CardRecipe";
 import useRecipes from "src/hooks/useRecipes";
 import { Link } from "react-router-dom";
+import { useState } from "react";
+import NewRecipe from "./newRecipe/NewRecipe";
+import Modal from "src/components/Modal";
 
 const Recipes = () => {
-  const { data, loading, error } = useRecipes("recipes");
+  const [showModal, setshowModal] = useState(false);
+  const { data, loading, error } = useRecipes("getRecipes", "recipes");
+
+  console.log(data);
 
   return (
     <StyleReceipe>
       <div className="topOfRecipes">
         <h2 className="recipesTitle">Recipes</h2>
-        <button>
-          <Link to="/newRecipe">+</Link>
+        <button
+          onClick={() => {
+            setshowModal((prev) => !prev);
+          }}
+        >
+          +
         </button>
-        <button>
-          <Link to="/recipeDetail">Recipe Detail</Link>
-        </button>
+        <Modal
+          shouldShow={showModal}
+          onRequestClose={() => {
+            setshowModal((prev) => !prev);
+          }}
+        >
+          <NewRecipe handleModal={setshowModal} />
+        </Modal>
       </div>
       {loading ? (
         <p className="loading"> Loading... </p>
@@ -24,7 +39,7 @@ const Recipes = () => {
           {data.map((recipe) => {
             return recipe.userRecipes.map((userRecipe) => {
               return (
-                <Link to={userRecipe._id}>
+                <Link to={userRecipe._id} key={userRecipe._id}>
                   <CardRecipe key={userRecipe._id} recipe={userRecipe} />
                 </Link>
               );
@@ -52,10 +67,7 @@ const StyleReceipe = styled.div`
     display: flex;
     flex-direction: column;
     gap: 1rem;
-  }
-
-  a {
-    color: #d6cdc2;
+    padding-bottom: 4rem;
   }
 
   .recipesTitle {
@@ -65,6 +77,7 @@ const StyleReceipe = styled.div`
   }
 
   button {
+    color: #d6cdc2;
     border: none;
     cursor: pointer;
     font-size: 1.7rem;

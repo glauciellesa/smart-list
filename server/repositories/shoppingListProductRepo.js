@@ -1,4 +1,3 @@
-import Product from "../models/ProductModel.js";
 import ShoppingList from "../models/ShoppingListModel.js";
 
 const addProductsIntoList = async (clienteId, shoppingListId, newProduct) => {
@@ -48,6 +47,7 @@ const editProductoInList = async (
     { shoppingListId },
     { newProduct }
   );
+
   const editedProduct = await ShoppingList.findOneAndUpdate(
     {
       user_id: clienteRequestId,
@@ -63,7 +63,7 @@ const editProductoInList = async (
       },
     }
   );
-  console.log("produc", editedProduct);
+
   return editedProduct;
 };
 

@@ -57,10 +57,15 @@ const getUserByEmail = async (email) => {
   return await User.findOne({ email: email }).exec();
 };
 
+const getUserById = async (userId) => {
+  return await User.findOne({ _id: userId }).exec();
+};
+
 export default {
   createToken,
   checkIfEmailExists,
   registerUser,
   existUser,
   getUserByEmail,
+  getUserById,
 };
