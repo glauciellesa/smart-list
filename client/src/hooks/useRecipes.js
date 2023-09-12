@@ -20,6 +20,10 @@ const useRecipes = (key, url) => {
             res = await recipeService.getRecipeById(url);
             break;
 
+          case "deleteRecipe":
+            res = await recipeService.deleteRecipe(url);
+            break;
+
           default:
             break;
         }

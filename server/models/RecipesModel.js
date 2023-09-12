@@ -24,12 +24,10 @@ const recipesSchema = new Schema({
       },
 
       timeToPrepare: {
-        type: String,
+        type: Number,
       },
       ingredients: [String],
-      instructions: {
-        type: String,
-      },
+      instructions: [String],
     },
   ],
 });

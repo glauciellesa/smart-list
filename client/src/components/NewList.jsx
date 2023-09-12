@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { styled } from "styled-components";
-import { useAddNewList } from "../hooks/useAddNewList";
-import shoppingListService from "../service/shoppingListService";
+import { useAddNewList } from "src/hooks/useAddNewList";
+import shoppingListService from "src/service/shoppingListService";
 
 const NewList = (props) => {
   const [listName, setListName] = useState("");

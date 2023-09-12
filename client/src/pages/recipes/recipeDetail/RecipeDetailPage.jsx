@@ -11,8 +11,24 @@ const RecipeDetailPage = () => {
     `recipes/${recipeId}`
   );
 
-  console.log(`recipes/${recipeId}`);
-  console.log({ data });
+  const checkTime = () => {
+    const time = data.timeToPrepare;
+
+    if (time > 60) {
+      let hours = time / 60;
+      let rhours = Math.floor(hours);
+      let minutes = (hours - rhours) * 60;
+      let rminutes = Math.round(minutes);
+
+      return (
+        <p className="recipePreparation">{`${rhours} ${
+          rhours === 1 ? "hour" : "hours"
+        } and ${rminutes} ${rminutes === 1 ? "minute" : "minutes"}`}</p>
+      );
+    } else {
+      return <p className="recipePreparation">{data.timeToPrepare} minutes</p>;
+    }
+  };
 
   return (
     <StyledRecipeDetailPage>
@@ -46,7 +62,7 @@ const RecipeDetailPage = () => {
               </div>
 
               <h2>{data.name}</h2>
-              <p className="time">{data.timeToPrepare}</p>
+              <p className="time">{checkTime()}</p>
             </div>
             <div className="favorite">
               <Heart />
@@ -79,9 +95,10 @@ const StyledRecipeDetailPage = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
+  justify-content: center;
   gap: 1rem;
-  padding-top: 3rem;
-  width: 90%;
+  padding: 3rem 0;
+  margin-bottom: 2rem;
 
   .card {
     box-shadow: 5px 2px 10px #d6cdc2;
