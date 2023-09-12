@@ -61,7 +61,7 @@ const Login = () => {
         </button>
         {error ? <div className="error">{error}</div> : null}
         <p className="registerHere">
-          Don't yet have an account? <Link to="/register">Register here</Link>
+          Don't have an account yet? <Link to="/register">Register here</Link>
         </p>
       </form>
     </StyleLogin>

@@ -3,6 +3,7 @@ import { styled } from "styled-components";
 import { useParams } from "react-router-dom";
 import useProductsList from "../../../hooks/useProductList";
 import CardProduct from "../../../components/CardProduct";
+import AddProductList from "../../../components/addProductList";
 
 const ShoppingListDetail = () => {
   const { shoppingListId } = useParams();
@@ -18,6 +19,9 @@ const ShoppingListDetail = () => {
       ) : (
         <>
           <h2 className="list_title">Shopping List</h2>
+          <div className="addProduct">
+            <AddProductList />
+          </div>
           <div className="product_list">
             {data.map((listProduct) => {
               console.log(listProduct);
@@ -52,6 +56,6 @@ const StyledShoppingDetail = styled.div`
 
   .product_list {
     min-height: 15rem;
-    background-color: #ed6e5a10;
+    // background-color: #ed6e5a10;
   }
 `;
