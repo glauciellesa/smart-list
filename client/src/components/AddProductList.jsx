@@ -168,14 +168,14 @@ const StyledAddProductList = styled.div`
   li {
     display: flex;
     flex-direction: row;
-    padding: 2%;
+    padding: 1.5%;
     margin-right: 2%;
     align-items: center;
   }
 
   .itemsAdded {
-    background-color: white;
-    margin-top: 2%;
+    background-color: rgba(255, 255, 255, 0.5);
+    margin-top: 1.5%;
     margin-left: 2%;
     border-radius: 20px;
     padding-left: 10%;
