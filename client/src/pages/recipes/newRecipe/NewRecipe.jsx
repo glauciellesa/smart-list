@@ -1,27 +1,47 @@
 import { useState } from "react";
 import { styled } from "styled-components";
-
-const initialState = {
-  photo: "",
-  name: "",
-  timeToPrepare: "",
-  ingredients: [""],
-  instructions: "",
-};
+import { useAddNewRecipe } from "src/hooks/useAddNewRecipe";
+import { useAuthContext } from "src/hooks/useAuthContex";
 
 const NewRecipe = (props) => {
-  const [form, setForm] = useState(initialState);
+  const [name, setName] = useState("");
+  const [photo, setPhoto] = useState("");
+  const [timeToPrepare, setTimeToPrepare] = useState(0);
+  const [ingredients, setIngredients] = useState();
+  const [instructions, setInstructions] = useState();
+  const { addNewRecipe, isLoading, error } = useAddNewRecipe();
+  const { user } = useAuthContext();
 
-  const handleChange = (event) => {
-    setForm({
-      ...form,
-      [event.target.id]: event.target.value,
-    });
+  const handleIngredients = (e) => {
+    // Split the string on \n or \r characters
+    let split_string = e.target.value.split(/\r?\n|\r|\n/g);
+    setIngredients(split_string);
+  };
+
+  const handleIInstructions = (e) => {
+    let split_string = e.target.value.split(/\r?\n|\r|\n/g);
+    setInstructions(split_string);
   };
 
   const handleRecipe = async (e) => {
     e.preventDefault();
-    setForm(initialState);
+    const recipeData = {
+      name,
+      photo,
+      timeToPrepare,
+      ingredients,
+      instructions,
+    };
+
+    addNewRecipe("recipes", { ...recipeData }, user._id);
+    setName("");
+    setPhoto("");
+    setTimeToPrepare(0);
+    setIngredients();
+    setInstructions();
+    if (!error) {
+      props.handleModal(false);
+    }
   };
 
   return (
@@ -33,10 +53,12 @@ const NewRecipe = (props) => {
         <label name="title">Title</label>
         <input
           type="text"
-          id="title"
-          placeholder="Give your recipe a name"
-          onChange={handleChange}
-          value={form.name}
+          id="name"
+          placeholder="Give your recipe title"
+          onChange={(e) => {
+            setName(e.target.value);
+          }}
+          value={name}
           required
         />
         <label name="photo">Photo</label>
@@ -44,17 +66,22 @@ const NewRecipe = (props) => {
           type="text"
           id="photo"
           placeholder="Add a photo"
-          onChange={handleChange}
-          value={form.photo}
+          onChange={(e) => {
+            setPhoto(e.target.value);
+          }}
+          value={photo}
           required
         />
-        <label name="timeToPrepare">Time to prepare</label>
+        <label name="timeToPrepare">
+          How long does it take to prepare? (in minutes)
+        </label>
         <input
-          type="text"
+          type="number"
           id="timeToPrepare"
-          placeholder="How long does it take to prepare?"
-          onChange={handleChange}
-          value={form.timeToPrepare}
+          onChange={(e) => {
+            setTimeToPrepare(e.target.value);
+          }}
+          value={timeToPrepare}
           required
         />
         <label name="ingredients">Ingredients</label>
@@ -62,8 +89,8 @@ const NewRecipe = (props) => {
           type="text"
           id="ingredients"
           placeholder="What ingredients do you need?"
-          onChange={handleChange}
-          value={form.ingredients}
+          onChange={handleIngredients}
+          value={ingredients}
           required
         />
         <label name="instructions">Instructions</label>
@@ -71,14 +98,17 @@ const NewRecipe = (props) => {
           type="text"
           id="instructions"
           placeholder="How do you prepare it?"
-          onChange={handleChange}
-          value={form.instructions}
+          onChange={handleIInstructions}
+          value={instructions}
           required
         />
         <div className="addAndSave">
-          <button onClick={handleRecipe}>Save</button>
+          <button disabled={isLoading} onClick={handleRecipe}>
+            Save
+          </button>
         </div>
       </form>
+      {error ? <div className="error">{error}</div> : null}
     </StyleNewRecipe>
   );
 };

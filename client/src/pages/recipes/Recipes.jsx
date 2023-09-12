@@ -5,10 +5,12 @@ import { Link } from "react-router-dom";
 import { useState } from "react";
 import NewRecipe from "./newRecipe/NewRecipe";
 import Modal from "src/components/Modal";
+import { useAuthContext } from "src/hooks/useAuthContex";
 
 const Recipes = () => {
   const [showModal, setshowModal] = useState(false);
   const { data, loading, error } = useRecipes("getRecipes", "recipes");
+  const { user } = useAuthContext();
 
   console.log(data);
 
@@ -16,13 +18,15 @@ const Recipes = () => {
     <StyleReceipe>
       <div className="topOfRecipes">
         <h2 className="recipesTitle">Recipes</h2>
-        <button
-          onClick={() => {
-            setshowModal((prev) => !prev);
-          }}
-        >
-          +
-        </button>
+        {user ? (
+          <button
+            onClick={() => {
+              setshowModal((prev) => !prev);
+            }}
+          >
+            +
+          </button>
+        ) : null}
         <Modal
           shouldShow={showModal}
           onRequestClose={() => {

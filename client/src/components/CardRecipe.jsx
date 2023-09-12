@@ -2,6 +2,27 @@
 import { styled } from "styled-components";
 
 const CardRecipe = ({ recipe }) => {
+  const checkTime = () => {
+    const time = recipe.timeToPrepare;
+
+    if (time > 60) {
+      let hours = time / 60;
+      let rhours = Math.floor(hours);
+      let minutes = (hours - rhours) * 60;
+      let rminutes = Math.round(minutes);
+
+      return (
+        <p className="recipePreparation">{`${rhours} ${
+          rhours === 1 ? "hour" : "hours"
+        } and ${rminutes} ${rminutes === 1 ? "minute" : "minutes"}`}</p>
+      );
+    } else {
+      return (
+        <p className="recipePreparation">{recipe.timeToPrepare} minutes</p>
+      );
+    }
+  };
+
   return (
     <StyleCardReceipe>
       <div className="imageDiv">
@@ -12,7 +33,7 @@ const CardRecipe = ({ recipe }) => {
       </div>
       <div className="recipesTitles">
         <p className="recipeName">{recipe.name}</p>
-        <p className="recipePreparation">{recipe.timeToPrepare}</p>
+        {checkTime()}
       </div>
     </StyleCardReceipe>
   );
