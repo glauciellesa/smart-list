@@ -42,7 +42,7 @@ const StyledCardProduct = styled.div`
     display: flex;
     align-items: center;
     justify-content: space-between;
-    background-color: #ffffff;
+    background-color: rgba(255, 255, 255, 0.5);
     border-radius: 5px;
     width: 100%;
   }
