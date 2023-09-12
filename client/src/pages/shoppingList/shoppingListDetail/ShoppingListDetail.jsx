@@ -3,7 +3,7 @@ import { styled } from "styled-components";
 import { useParams } from "react-router-dom";
 import useProductsList from "src/hooks/useProductList";
 import CardProduct from "src/components/CardProduct";
-import AddProductList from "src/components/addProductList";
+import AddProductList from "src/components/AddProductList";
 
 const ShoppingListDetail = () => {
   const { shoppingListId } = useParams();
