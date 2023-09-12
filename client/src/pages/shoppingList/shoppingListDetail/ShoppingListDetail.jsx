@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from "react";
 import { styled } from "styled-components";
 import { useParams } from "react-router-dom";
-import useProductsList from "../../../hooks/useProductList";
-import CardProduct from "../../../components/CardProduct";
-import AddProductList from "../../../components/addProductList";
+import useProductsList from "src/hooks/useProductList";
+import CardProduct from "src/components/CardProduct";
+import AddProductList from "src/components/addProductList";
 
 const ShoppingListDetail = () => {
   const { shoppingListId } = useParams();
