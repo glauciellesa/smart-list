@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import styled from "styled-components";
 import InputOptions from "./InputOptions";
 
-const AddProductList = () => {
+const AddProductList = (props) => {
   const [items, setItems] = useState([]);
   const [inputValue, setInputValue] = useState("");
   const [filteredOptions, setFilteredOptions] = useState([]);
@@ -84,7 +84,7 @@ const AddProductList = () => {
         </form>
         {showOptions ? (
           <div className="productsOption">
-            <InputOptions />
+            <InputOptions shoppingListId={props.shoppingListId} />
           </div>
         ) : null}
 

@@ -16,21 +16,24 @@ const ShoppingListDetail = () => {
     if (data.length > 1) {
       return (
         <div className="product_list">
-          {data.map((listProduct) => {
-            console.log("po", listProduct);
-            return (
-              <ul>
+          <ul>
+            {data.map((listProduct) => {
+              console.log(listProduct);
+              console.log(listProduct.product_id);
+              console.log(listProduct.id);
+              return (
                 <CardProduct
-                  key={listProduct.product_id}
-                  id={listProduct.product_id}
+                  key={listProduct.id}
+                  idProductFromList={listProduct.id}
+                  shoppingListId={shoppingListId}
                   productName={listProduct.product.product_name}
                   productImg={listProduct.product.image}
                   productQnt={listProduct.quantity}
                   /* productCategory={listProduct.product.category_id} */
                 />
-              </ul>
-            );
-          })}
+              );
+            })}
+          </ul>
         </div>
       );
     } else {
@@ -55,7 +58,7 @@ const ShoppingListDetail = () => {
         <>
           <h2 className="list_title">Shopping List</h2>
           <div className="addProduct">
-            <AddProductList />
+            <AddProductList shoppingListId={shoppingListId} />
           </div>
           {displayItems()}
         </>

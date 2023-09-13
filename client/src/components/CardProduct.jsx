@@ -19,8 +19,11 @@ const CardProduct = (props) => {
   };
 
   const handleDelete = async (id) => {
+    console.log("li", props.shoppingListId);
     console.log(id);
-    await shoppingListService.deleteShoppingLists(`shoppingLists/${id}`);
+    await shoppingListService.deleteShoppingLists(
+      `shoppingLists/${props.shoppingListId}/products/${id}`
+    );
   };
 
   return (

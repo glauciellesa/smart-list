@@ -38,11 +38,13 @@ const joinAndgetProductsFromList = async (clientRequestId, shoppingListId) => {
   const listProducts = await productRepository.getProductByIds(listProductsIds);
 
   const result = productsFromList.map((productList) => {
+    console.log({ productList });
     const findedProduct = listProducts.find((product) => {
       return product._id.toString() === productList.product_id.toString();
     });
 
     return {
+      id: productList._id,
       product_id: productList.product_id,
       frequency: productList.frequency,
       quantity: productList.quantity,
@@ -74,12 +76,12 @@ const checkProductBeforeEdit = async (
 };
 
 const checkProductBeforeDelete = async (
-  clientRequestId,
+  clienteRequestId,
   shoppingListId,
   productListId
 ) => {
   const productFromList = await shoppingListProductRepo.removeProductFromList(
-    clientRequestId,
+    clienteRequestId,
     shoppingListId,
     productListId
   );

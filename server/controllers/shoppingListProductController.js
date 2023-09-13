@@ -70,13 +70,14 @@ shoppingList.delete(
   "/api/shoppingLists/:shoppingListId/products/:productListId",
   async (req, res, next) => {
     try {
-      const clientRequestId = req.email._id;
+      const clienteRequestId = req.email._id;
       const shoppingListId = req.params.shoppingListId;
       const productListId = req.params.productId;
 
+      console.log(clienteRequestId);
       const checkToDelet =
         await shoppingListProductService.checkProductBeforeDelete(
-          clientRequestId,
+          clienteRequestId,
           shoppingListId,
           productListId
         );

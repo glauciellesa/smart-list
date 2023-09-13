@@ -1,20 +1,24 @@
 import { styled } from "styled-components";
 import { Check } from "lucide-react";
-import useProducts from "../hooks/useProducts";
+import useProducts from "src/hooks/useProducts";
 import { useState } from "react";
+import { useAuthContext } from "src/hooks/useAuthContex";
+import { useAddProductIntoList } from "src/hooks/useAddProductIntoList";
 
-const InputOptions = () => {
-  const [selected, setSelected] = useState(false);
+const InputOptions = (props) => {
+  const [selected, setSelected] = useState([]);
   const { data, isLoading, error } = useProducts("products", "getProducts");
+  const { user } = useAuthContext();
+  const { addNewProductIntoList } = useAddProductIntoList();
 
-  const selectOption = () => {
-    setSelected(true);
-  };
-  const deSelectOption = () => {
-    setSelected(false);
-  };
-  const closeOption = () => {
-    setSelected(false);
+  const selectOption = (id) => {
+    const idProductSelected = id;
+
+    addNewProductIntoList(
+      `shoppingLists/${props.shoppingListId}/products`,
+      { product_id: idProductSelected },
+      user._id
+    );
   };
 
   return (
@@ -27,22 +31,14 @@ const InputOptions = () => {
             {data?.allProduct
               ? data.allProduct.map((option) => {
                   return (
-                    <li className="listProduct" key={option._id}>
-                      {selected ? (
-                        <button
-                          className="selectedProduct"
-                          onBlur={deSelectOption}
-                        >
-                          <Check />
-                        </button>
-                      ) : (
-                        <button
-                          className="listProductBtn"
-                          onFocus={selectOption}
-                        >
-                          +
-                        </button>
-                      )}
+                    <li
+                      className="listProduct"
+                      key={option._id}
+                      onClick={() => {
+                        selectOption(option._id);
+                      }}
+                    >
+                      <button className="listProductBtn">+</button>
                       <p className="productName">{option.product_name}</p>
                       <div className="productImg">
                         <img
