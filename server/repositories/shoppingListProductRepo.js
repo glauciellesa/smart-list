@@ -67,8 +67,43 @@ const editProductoInList = async (
   return editedProduct;
 };
 
+const removeProductFromList = async (
+  clienteRequestId,
+  shoppingListId,
+  productId
+) => {
+  try {
+    const updatedList = await ShoppingList.findOneAndUpdate(
+      {
+        user_id: clienteRequestId,
+        "lists._id": shoppingListId,
+      },
+      {
+        $pull: {
+          "lists.$.productLists": {
+            product_id: productId,
+          },
+        },
+      },
+      { new: true }
+    );
+
+    if (!updatedList) {
+      throw new Error("Shopping list not found or product not removed.");
+    }
+
+    console.log(updatedList); // The updated document should be printed to the console
+
+    return updatedList;
+  } catch (error) {
+    console.error("Error removing product from shopping list:", error);
+    throw error;
+  }
+};
+
 export default {
   addProductsIntoList,
   getProductsFromShoppingList,
   editProductoInList,
+  removeProductFromList,
 };

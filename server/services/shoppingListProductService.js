@@ -1,5 +1,6 @@
 import shoppingListProductRepo from "../repositories/shoppingListProductRepo.js";
 import { InvalidInputError } from "../errors/invalidInputError.js";
+import { PermissionError } from "../errors/permissionError.js";
 import productRepository from "../repositories/productRepository.js";
 
 const addProductIntoUserList = async (
@@ -37,11 +38,13 @@ const joinAndgetProductsFromList = async (clientRequestId, shoppingListId) => {
   const listProducts = await productRepository.getProductByIds(listProductsIds);
 
   const result = productsFromList.map((productList) => {
+    console.log({ productList });
     const findedProduct = listProducts.find((product) => {
       return product._id.toString() === productList.product_id.toString();
     });
 
     return {
+      id: productList._id,
       product_id: productList.product_id,
       frequency: productList.frequency,
       quantity: productList.quantity,
@@ -72,7 +75,23 @@ const checkProductBeforeEdit = async (
   }
 };
 
-const checkProductBeforeDelete = async () => {};
+const checkProductBeforeDelete = async (
+  clienteRequestId,
+  shoppingListId,
+  productListId
+) => {
+  const productFromList = await shoppingListProductRepo.removeProductFromList(
+    clienteRequestId,
+    shoppingListId,
+    productListId
+  );
+
+  if (productFromList) {
+    return "Shopping list was deleted";
+  } else {
+    throw new PermissionError("You can not delete this product");
+  }
+};
 
 export default {
   addProductIntoUserList,

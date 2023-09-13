@@ -1,11 +1,25 @@
 import { styled } from "styled-components";
-import useProducts from "../hooks/useProducts";
+import { Check } from "lucide-react";
+import useProducts from "src/hooks/useProducts";
+import { useState } from "react";
+import { useAuthContext } from "src/hooks/useAuthContex";
+import { useAddProductIntoList } from "src/hooks/useAddProductIntoList";
 
-const InputOptions = () => {
+const InputOptions = (props) => {
+  const [selected, setSelected] = useState([]);
   const { data, isLoading, error } = useProducts("products", "getProducts");
-  console.log(data.allProduct);
+  const { user } = useAuthContext();
+  const { addNewProductIntoList } = useAddProductIntoList();
 
-  const handleOptionClick = () => {};
+  const selectOption = (id) => {
+    const idProductSelected = id;
+
+    addNewProductIntoList(
+      `shoppingLists/${props.shoppingListId}/products`,
+      { product_id: idProductSelected },
+      user._id
+    );
+  };
 
   return (
     <StyledInputOptions>
@@ -16,14 +30,15 @@ const InputOptions = () => {
           <>
             {data?.allProduct
               ? data.allProduct.map((option) => {
-                  console.log(option);
                   return (
                     <li
                       className="listProduct"
-                      key={option.id}
-                      onClick={() => handleOptionClick(option.text)}
+                      key={option._id}
+                      onClick={() => {
+                        selectOption(option._id);
+                      }}
                     >
-                      <button>+</button>
+                      <button className="listProductBtn">+</button>
                       <p className="productName">{option.product_name}</p>
                       <div className="productImg">
                         <img
@@ -50,17 +65,19 @@ const StyledInputOptions = styled.div`
   box-shadow: 0px 32px 30px #d6cdc2;
   border-radius: 5px;
   width: 100%;
-  height: 40rem;
+  height: 28rem;
   overflow-y: scroll;
+  position: sticky;
+  z-index: 9995;
 
   .listContainer {
   }
 
   .listProduct {
     display: flex;
-    gap: 0.5rem;
+    gap: 0.8rem;
     flex-direction: row;
-    padding: 1.5%;
+    padding: 0.8rem 0;
     margin-right: 2%;
     align-items: center;
   }
@@ -81,13 +98,31 @@ const StyledInputOptions = styled.div`
     text-transform: capitalize;
   }
 
-  .listProduct button {
+  .listProductBtn {
+    font-size: 1.5rem;
     border-radius: 50%;
-    width: 35px;
-    height: 35px;
-    font-size: 22px;
+    width: 2rem;
+    height: 2rem;
     border: none;
     color: #515050d7;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .selectedProduct {
+    border-radius: 50%;
+    width: 2rem;
+    height: 2rem;
+    border: none;
+    background-color: #ed6d5a;
+    color: #fefaeb !important;
+    font-weight: 700 !important;
+  }
+
+  .selectedProduct svg {
+    width: 1.5rem;
+    text-align: center;
   }
 
   @media (min-width: 600px) {

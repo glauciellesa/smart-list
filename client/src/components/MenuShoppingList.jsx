@@ -70,7 +70,9 @@ const StyledMenu = styled.div`
   padding-bottom: 2rem;
 
   .menu_list {
+    width: 100%;
     display: flex;
+    flex-wrap: wrap;
     flex-direction: column;
   }
 
@@ -84,7 +86,6 @@ const StyledMenu = styled.div`
   .actions_menu {
     display: flex;
     justify-content: space-between;
-    padding-right: 1rem;
   }
 
   .actions_menu div {
@@ -108,6 +109,7 @@ const StyledMenu = styled.div`
   }
 
   .newList {
+    width: 100%;
     text-align: right;
     font-weight: 600;
     font-size: 1.1rem;
@@ -122,8 +124,14 @@ const StyledMenu = styled.div`
     background-color: #fefaeb;
     height: 0;
     width: 15rem;
+
     .newList {
       padding: 1rem 1rem 1rem 0;
+      flex-wrap: wrap;
+    }
+
+    .menu_list {
+      padding: 0 1rem 0 0;
     }
   }
 `;
