@@ -60,33 +60,36 @@ const AddProductList = () => {
 
   return (
     <StyledAddProductList>
-      <form className="input-container" onSubmit={handleSubmit}>
-        <input
-          type="text"
-          placeholder="Add an item..."
-          value={inputValue}
-          onFocus={showProductOptions}
-          onBlur={hideProductOptions}
-          onChange={handleInputChange}
-        />
-        <button
-          className="add-button"
-          onClick={() => {
-            if (inputValue) {
-              addItem(inputValue);
-            }
-          }}
-        >
-          +
-        </button>
-      </form>
       {showOptions ? (
-        <div className="productsOption">
-          <InputOptions />
-        </div>
+        <div className="modal-input" onClick={hideProductOptions}></div>
       ) : null}
+      <div className="container">
+        <form className="input-container" onSubmit={handleSubmit}>
+          <input
+            type="text"
+            placeholder="Add an item..."
+            value={inputValue}
+            onFocus={showProductOptions}
+            onChange={handleInputChange}
+          />
+          <button
+            className="add-button"
+            onClick={() => {
+              if (inputValue) {
+                addItem(inputValue);
+              }
+            }}
+          >
+            +
+          </button>
+        </form>
+        {showOptions ? (
+          <div className="productsOption">
+            <InputOptions />
+          </div>
+        ) : null}
 
-      {/*  {
+        {/*  {
         <ul>
           {items.map((item, index) => (
             <li className="itemsAdded" key={index}>
@@ -110,16 +113,28 @@ const AddProductList = () => {
           ))}
         </ul>
       } */}
+      </div>
     </StyledAddProductList>
   );
 };
 
 const StyledAddProductList = styled.div`
-  width: 100%;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  position: relative;
+  .container {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: relative;
+  }
+
+  .modal-input {
+    top: 0;
+    left: 0;
+    position: absolute;
+    width: 100vw;
+    height: 100vh;
+    z-index: 998;
+  }
 
   .input-container {
     display: flex; /* Apply flexbox */

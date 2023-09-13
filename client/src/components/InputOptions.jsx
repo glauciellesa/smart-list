@@ -50,8 +50,10 @@ const StyledInputOptions = styled.div`
   box-shadow: 0px 32px 30px #d6cdc2;
   border-radius: 5px;
   width: 100%;
-  height: 40rem;
+  height: 28rem;
   overflow-y: scroll;
+  position: sticky;
+  z-index: 9995;
 
   .listContainer {
   }
