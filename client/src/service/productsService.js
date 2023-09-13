@@ -12,7 +12,6 @@ const createNewProduct = async (endpoint, newProduct) => {
 };
 
 const getProducts = async (endpoint) => {
-  console.log({ endpoint });
   return await axiosInstance.get(`${config.urlBase}${endpoint}`);
 };
 

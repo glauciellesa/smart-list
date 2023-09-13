@@ -5,7 +5,7 @@ const useProducts = (url, key, newProduct) => {
   const [data, setData] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState("");
-  console.log({ url });
+
   useEffect(() => {
     const getProducts = async () => {
       setIsLoading(true);

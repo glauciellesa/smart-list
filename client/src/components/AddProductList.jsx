@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import styled from "styled-components";
-import itemsData from "../../data/items.json"; // Import your items data
 import InputOptions from "./InputOptions";
 
 const AddProductList = () => {

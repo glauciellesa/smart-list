@@ -67,16 +67,18 @@ shoppingList.put(
 
 //I think just the person that has created the shoppingList are able to delete it.
 shoppingList.delete(
-  "/api/shoppingLists/:shoppingListId/products/:productId",
+  "/api/shoppingLists/:shoppingListId/products/:productListId",
   async (req, res, next) => {
     try {
       const clientRequestId = req.email._id;
       const shoppingListId = req.params.shoppingListId;
+      const productListId = req.params.productId;
 
       const checkToDelet =
         await shoppingListProductService.checkProductBeforeDelete(
           clientRequestId,
-          shoppingListId
+          shoppingListId,
+          productListId
         );
 
       res.status(200).json(checkToDelet).end();

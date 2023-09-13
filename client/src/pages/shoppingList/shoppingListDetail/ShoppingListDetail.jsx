@@ -19,15 +19,16 @@ const ShoppingListDetail = () => {
           {data.map((listProduct) => {
             console.log("po", listProduct);
             return (
-              <>
+              <ul>
                 <CardProduct
                   key={listProduct.product_id}
+                  id={listProduct.product_id}
                   productName={listProduct.product.product_name}
                   productImg={listProduct.product.image}
                   productQnt={listProduct.quantity}
                   /* productCategory={listProduct.product.category_id} */
                 />
-              </>
+              </ul>
             );
           })}
         </div>

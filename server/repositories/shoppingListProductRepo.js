@@ -67,8 +67,31 @@ const editProductoInList = async (
   return editedProduct;
 };
 
+const removeProductFromList = async (
+  clientRequestId,
+  shoppingListId,
+  productId
+) => {
+  try {
+    const updatedList = await ShoppingList.find({
+      user_id: clientRequestId,
+      "lists._id": shoppingListId,
+    });
+
+    if (!updatedList) {
+      throw new Error("Shopping list not found or product not removed.");
+    }
+    console.log(updatedList);
+    return updatedList;
+  } catch (error) {
+    console.error("Error removing product from shopping list:", error);
+    throw error;
+  }
+};
+
 export default {
   addProductsIntoList,
   getProductsFromShoppingList,
   editProductoInList,
+  removeProductFromList,
 };

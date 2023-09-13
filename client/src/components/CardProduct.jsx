@@ -1,7 +1,28 @@
 import { styled } from "styled-components";
-import { ShoppingBasket } from "lucide-react";
+import { ShoppingBasket, Trash } from "lucide-react";
+import { useState } from "react";
 
 const CardProduct = (props) => {
+  const [quantity, setQuantity] = useState(props.productQnt);
+
+  const increaseQuantity = () => {
+    setQuantity((prev) => prev + 1);
+  };
+
+  const decreaseQuantity = () => {
+    if (quantity > 1) {
+      setQuantity((prev) => prev - 1);
+    } else {
+      setQuantity(1);
+    }
+    setItems(updatedItems);
+  };
+
+  const handleDelete = async (id) => {
+    console.log(id);
+    await shoppingListService.deleteShoppingLists(`shoppingLists/${id}`);
+  };
+
   return (
     <StyledCardProduct>
       {props.productCategory}
@@ -19,13 +40,25 @@ const CardProduct = (props) => {
           </div>
           <div className="productName">
             {props.productName}
-            {props.productQnt ? (
-              <span className="productQnt"> {props.productQnt}</span>
+            {quantity ? (
+              <>
+                <span className="productQnt">{`Qnt: ${quantity}`}</span>
+                <button className="plus-button" onClick={increaseQuantity}>
+                  +
+                </button>
+                <button className="minus-button" onClick={decreaseQuantity}>
+                  -
+                </button>
+              </>
             ) : null}
           </div>
         </div>
-        <div className="productCheck">
-          <input name="productCheck" type="checkbox" />
+        <div className="productDelete">
+          <Trash
+            onClick={() => {
+              handleDelete(props.id);
+            }}
+          />
         </div>
       </div>
     </StyledCardProduct>
@@ -34,8 +67,9 @@ const CardProduct = (props) => {
 
 export default CardProduct;
 
-const StyledCardProduct = styled.div`
+const StyledCardProduct = styled.li`
   padding: 1rem;
+  list-style: none;
 
   .container {
     padding: 0 0.4rem;
@@ -67,11 +101,26 @@ const StyledCardProduct = styled.div`
 
   .productQnt {
     color: #515050d7;
-    padding-left: 0.5rem;
-    font-size: 0.6rem;
+    padding-left: 1rem;
+    padding-right: 1rem;
+    font-size: 0.8rem;
   }
 
-  input[type="checkbox"] {
-    cursor: pointer;
+  .plus-button {
+    padding-right: 0.5rem;
+  }
+
+  .plus-button,
+  .minus-button {
+    background: none;
+    border: none;
+    color: #ed6d5a;
+    font-size: 1.2rem;
+    margin-left: 5px; /* Add left margin to separate buttons */
+  }
+
+  .productDelete svg {
+    width: 0.8rem;
+    color: #515050d7;
   }
 `;

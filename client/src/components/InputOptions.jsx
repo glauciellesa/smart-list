@@ -1,11 +1,21 @@
 import { styled } from "styled-components";
+import { Check } from "lucide-react";
 import useProducts from "../hooks/useProducts";
+import { useState } from "react";
 
 const InputOptions = () => {
+  const [selected, setSelected] = useState(false);
   const { data, isLoading, error } = useProducts("products", "getProducts");
-  console.log(data.allProduct);
 
-  const handleOptionClick = () => {};
+  const selectOption = () => {
+    setSelected(true);
+  };
+  const deSelectOption = () => {
+    setSelected(false);
+  };
+  const closeOption = () => {
+    setSelected(false);
+  };
 
   return (
     <StyledInputOptions>
@@ -16,14 +26,23 @@ const InputOptions = () => {
           <>
             {data?.allProduct
               ? data.allProduct.map((option) => {
-                  console.log(option);
                   return (
-                    <li
-                      className="listProduct"
-                      key={option.id}
-                      onClick={() => handleOptionClick(option.text)}
-                    >
-                      <button>+</button>
+                    <li className="listProduct" key={option._id}>
+                      {selected ? (
+                        <button
+                          className="selectedProduct"
+                          onBlur={deSelectOption}
+                        >
+                          <Check />
+                        </button>
+                      ) : (
+                        <button
+                          className="listProductBtn"
+                          onFocus={selectOption}
+                        >
+                          +
+                        </button>
+                      )}
                       <p className="productName">{option.product_name}</p>
                       <div className="productImg">
                         <img
@@ -60,9 +79,9 @@ const StyledInputOptions = styled.div`
 
   .listProduct {
     display: flex;
-    gap: 0.5rem;
+    gap: 0.8rem;
     flex-direction: row;
-    padding: 1.5%;
+    padding: 0.8rem 0;
     margin-right: 2%;
     align-items: center;
   }
@@ -83,13 +102,31 @@ const StyledInputOptions = styled.div`
     text-transform: capitalize;
   }
 
-  .listProduct button {
+  .listProductBtn {
+    font-size: 1.5rem;
     border-radius: 50%;
-    width: 35px;
-    height: 35px;
-    font-size: 22px;
+    width: 2rem;
+    height: 2rem;
     border: none;
     color: #515050d7;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .selectedProduct {
+    border-radius: 50%;
+    width: 2rem;
+    height: 2rem;
+    border: none;
+    background-color: #ed6d5a;
+    color: #fefaeb !important;
+    font-weight: 700 !important;
+  }
+
+  .selectedProduct svg {
+    width: 1.5rem;
+    text-align: center;
   }
 
   @media (min-width: 600px) {
