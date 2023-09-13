@@ -16,7 +16,7 @@ Whether you're using a desktop computer or a mobile device, Smart List is design
 
 ## Sneak Peeks in Smart List
 
-![Smart List Preview](/screenshots/1.png 'Home Page')
+![Smart List Preview](/screenshots/1.png "Home Page")
 
 ## 🚀 Features:
 
@@ -40,9 +40,9 @@ Whether you're using a desktop computer or a mobile device, Smart List is design
 
 <div align="center">
 
-| Server Architecture |  |
-| --- | --- |
-| <p align="center"> <img src="./client/src/img/routes_preview_1.png" width="70%" alt="Server's architecture"> </p> | <p align="center"> <img src="./client/src/img/routes_preview_2.png" width="100%" alt="Server's architecture"> </p> |
+| Server Architecture                                                                                               |                                                                                                                   |
+| ----------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------- |
+| <p align="center"> <img src="./client/src/img/routes_preview_1.png" width="60%" alt="Server's architecture"> </p> | <p align="center"> <img src="./client/src/img/routes_preview_2.png" width="60%" alt="Server's architecture"> </p> |
 
 </div>
 
@@ -62,9 +62,9 @@ Whether you're using a desktop computer or a mobile device, Smart List is design
 
 <div align="center">
 
-| Client directory | Server directory |
-| --- | --- |
-| <p align="center"> <img src="./client/src/img/frontend_directory_preview.png" width="100%" alt="Client directory's structure"> </p> | <p align="center"> <img src="./client/src/img/backend_directory_preview.png" width="100%" alt="Server directory's structure"> </p> |
+| Client directory                                                                                                                   | Server directory                                                                                                                  |
+| ---------------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------- |
+| <p align="center"> <img src="./client/src/img/frontend_directory_preview.png" width="60%" alt="Client directory's structure"> </p> | <p align="center"> <img src="./client/src/img/backend_directory_preview.png" width="60%" alt="Server directory's structure"> </p> |
 
 </div>
 
@@ -99,18 +99,18 @@ Distributed under the MIT License.
 
 **Glaucielle Sá**
 
-- [GitHub Profile](https://github.com/glauciellesa 'Glaucielle Sá')
+- [GitHub Profile](https://github.com/glauciellesa "Glaucielle Sá")
 - [Linkedin](https://www.linkedin.com/in/glauciellec/)
-- [Portfolio](https://glauciellesa.github.io/ 'Have a look!')
+- [Portfolio](https://glauciellesa.github.io/ "Have a look!")
 
 **Camila Fernandes Assunção**
 
-- [GitHub Profile](https://github.com/CamilaFAssuncao 'Camila Fernandes Assunção')
+- [GitHub Profile](https://github.com/CamilaFAssuncao "Camila Fernandes Assunção")
 - [Linkedin](https://www.linkedin.com/in/camilafassuncao/)
 
 **Leila Zitouni**
 
-- [GitHub Profile](https://github.com/leilaZ1111 'Leila Zitouni')
+- [GitHub Profile](https://github.com/leilaZ1111 "Leila Zitouni")
 - [Linkedin](www.linkedin.com/in/leila-zitouni)
 
 ## 🤝 Support
