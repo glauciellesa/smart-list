@@ -26,14 +26,13 @@ const CardProductInList = (props) => {
       `shoppingLists/${props.shoppingListId}/products/${id}`
     );
 
-    navigate(`/shoppingList/${props.shoppingListId}`, {
-      state: new Date().getTime(),
-    });
+    navigate(".");
   };
 
   return (
     <StyledCardProduct>
       {props.productCategory}
+
       <div className="container">
         <div className="product">
           <div className="productImg">

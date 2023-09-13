@@ -39,7 +39,7 @@ const useProducts = (url, key, newProduct) => {
       }
     };
     getProducts();
-  }, [url]);
+  }, [url, history.length]);
 
   return { data, isLoading, error };
 };

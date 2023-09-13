@@ -11,6 +11,7 @@ const useShoppingList = (endpoint) => {
       setIsLoading(true);
       try {
         const res = await shoppingListService.getShoppingLists(endpoint);
+
         setData(res.data);
       } catch (error) {
         if (error.response.status === 403) {
@@ -23,7 +24,7 @@ const useShoppingList = (endpoint) => {
       }
     };
     getShoppingLists();
-  }, [endpoint]);
+  }, [endpoint, history.length]);
 
   return { data, isLoading, error };
 };
