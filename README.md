@@ -42,7 +42,7 @@ Whether you're using a desktop computer or a mobile device, Smart List is design
 
 | Server Architecture                                                                                               |                                                                                                                   |
 | ----------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------- |
-| <p align="center"> <img src="./client/src/img/routes_preview_1.png" width="60%" alt="Server's architecture"> </p> | <p align="center"> <img src="./client/src/img/routes_preview_2.png" width="60%" alt="Server's architecture"> </p> |
+| <p align="center"> <img src="./client/src/img/routes_preview_1.png" width="60%" alt="Server's architecture"> </p> | <p align="center"> <img src="./client/src/img/routes_preview_2.png" width="75%" alt="Server's architecture"> </p> |
 
 </div>
 
