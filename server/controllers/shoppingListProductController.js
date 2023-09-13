@@ -8,7 +8,7 @@ shoppingList.post(
   "/api/shoppingLists/:shoppingListId/products",
   async (req, res, next) => {
     try {
-      const clientRequestId = req.email._id;
+      const clientRequestId = req.user._id;
       const shoppingListId = req.params.shoppingListId;
       const createdList =
         await shoppingListProductService.addProductIntoUserList(
@@ -27,7 +27,7 @@ shoppingList.get(
   "/api/shoppingLists/:shoppingListId/products",
   async (req, res, next) => {
     try {
-      const clientRequestId = req.email._id;
+      const clientRequestId = req.user._id;
       const shoppingListId = req.params.shoppingListId;
       const userLists =
         await shoppingListProductService.joinAndgetProductsFromList(
@@ -46,7 +46,7 @@ shoppingList.put(
   "/api/shoppingLists/:shoppingListId/products/:productId",
   async (req, res, next) => {
     try {
-      const clientRequestId = req.email._id;
+      const clientRequestId = req.user._id;
       const shoppingListId = req.params.shoppingListId;
       const productId = req.params.productId;
 
@@ -70,7 +70,7 @@ shoppingList.delete(
   "/api/shoppingLists/:shoppingListId/products/:productListId",
   async (req, res, next) => {
     try {
-      const clienteRequestId = req.email._id;
+      const clienteRequestId = req.user._id;
       const shoppingListId = req.params.shoppingListId;
       const productListId = req.params.productListId;
 

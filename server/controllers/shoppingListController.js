@@ -6,7 +6,7 @@ const shoppingList = express.Router();
 
 shoppingList.post("/api/shoppingLists", async (req, res, next) => {
   try {
-    const clientRequestId = req.email._id;
+    const clientRequestId = req.user._id;
     const createdList = await shoppingListService.createNewUserList(
       clientRequestId,
       req.body
@@ -19,7 +19,7 @@ shoppingList.post("/api/shoppingLists", async (req, res, next) => {
 
 shoppingList.get("/api/shoppingLists", async (req, res, next) => {
   try {
-    const clientRequestId = req.email._id;
+    const clientRequestId = req.user._id;
     const userLists = await shoppingListRepository.getAllUserList(
       clientRequestId
     );
@@ -33,7 +33,7 @@ shoppingList.get(
   "/api/shoppingLists/:shoppingListId",
   async (req, res, next) => {
     try {
-      const clientRequestId = req.email._id;
+      const clientRequestId = req.user._id;
       const shoppingListId = req.params.shoppingListId;
 
       const userLists = await shoppingListService.getUserList(
@@ -51,7 +51,7 @@ shoppingList.put(
   "/api/shoppingLists/:shoppingListId",
   async (req, res, next) => {
     try {
-      const clientRequestId = req.email._id;
+      const clientRequestId = req.user._id;
       const shoppingListId = req.params.shoppingListId;
 
       const editedList = await shoppingListService.checkBeforeEdit(
@@ -73,7 +73,7 @@ shoppingList.delete(
   "/api/shoppingLists/:shoppingListId",
   async (req, res, next) => {
     try {
-      const clientRequestId = req.email._id;
+      const clientRequestId = req.user._id;
       const shoppingListId = req.params.shoppingListId;
       console.log({ shoppingListId });
 

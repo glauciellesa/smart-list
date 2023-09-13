@@ -7,7 +7,7 @@ const recipe = express.Router();
 
 recipe.post("/api/recipes", verifyToken, async (req, res, next) => {
   try {
-    const clientRequestId = req.email._id;
+    const clientRequestId = req.user._id;
     if (!clientRequestId) {
       throw Error(" You are not logged in");
     }
@@ -43,7 +43,7 @@ recipe.get("/api/recipes/:recipeId", async (req, res, next) => {
 
 recipe.put("/api/recipes/:recipeId", async (req, res, next) => {
   try {
-    const clientRequestId = req.email._id;
+    const clientRequestId = req.user._id;
     const recipeId = req.params.recipeId;
     const editedRecipe = await recipeService.checkRecipeBeforeEdit(
       clientRequestId,
@@ -58,7 +58,7 @@ recipe.put("/api/recipes/:recipeId", async (req, res, next) => {
 
 recipe.delete("/api/recipes/:recipeId", async (req, res, next) => {
   try {
-    const clientRequestId = req.email._id;
+    const clientRequestId = req.user._id;
     const recipeId = req.params.recipeId;
     const checkToDelet = await recipeService.checkRecipeBeforeDelete(
       clientRequestId,

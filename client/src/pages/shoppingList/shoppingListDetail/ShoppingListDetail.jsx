@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { styled } from "styled-components";
 import { useParams } from "react-router-dom";
 import useProductsList from "src/hooks/useProductList";
-import CardProduct from "src/components/CardProduct";
+import CardProductInList from "src/components/CardProductInList";
 import AddProductList from "src/components/AddProductList";
 import emptyCartImage from "src/img/additemsimg.png"; // Import your empty cart image
 
@@ -18,13 +18,10 @@ const ShoppingListDetail = () => {
         <div className="product_list">
           <ul>
             {data.map((listProduct) => {
-              console.log(listProduct);
-              console.log(listProduct.product_id);
-              console.log(listProduct.id);
               return (
-                <CardProduct
+                <CardProductInList
                   key={listProduct.id}
-                  idProductFromList={listProduct.product_id}
+                  idProductFromList={listProduct.id}
                   shoppingListId={shoppingListId}
                   productName={listProduct.product.product_name}
                   productImg={listProduct.product.image}

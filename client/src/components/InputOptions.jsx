@@ -11,10 +11,10 @@ const InputOptions = (props) => {
   const { user } = useAuthContext();
   const { addNewProductIntoList } = useAddProductIntoList();
 
-  const selectOption = (id) => {
+  const selectOption = async (id) => {
     const idProductSelected = id;
 
-    addNewProductIntoList(
+    await addNewProductIntoList(
       `shoppingLists/${props.shoppingListId}/products`,
       { product_id: idProductSelected },
       user._id
