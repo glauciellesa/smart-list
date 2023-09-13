@@ -16,4 +16,15 @@ const getProductFromLists = async (endpoint) => {
   return await axiosInstance.get(`${config.urlBase}${endpoint}`);
 };
 
-export default { getProductFromLists, addProductIntoList };
+const deleteProductFromLists = async (endpoint, userId) => {
+  console.log("work", `${config.urlBase}${endpoint}`, userId);
+  return await axiosInstance.delete(`${config.urlBase}${endpoint}`, {
+    headers: { "Content-Type": "application/json", "X-User-ID": userId },
+  });
+};
+
+export default {
+  getProductFromLists,
+  addProductIntoList,
+  deleteProductFromLists,
+};

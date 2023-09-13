@@ -1,9 +1,12 @@
 import { styled } from "styled-components";
 import { ShoppingBasket, Trash } from "lucide-react";
 import { useState } from "react";
+import productShoppingList from "src/service/productShoppingList";
+import { useAuthContext } from "src/hooks/useAuthContex";
 
 const CardProduct = (props) => {
   const [quantity, setQuantity] = useState(props.productQnt);
+  const { user } = useAuthContext();
 
   const increaseQuantity = () => {
     setQuantity((prev) => prev + 1);
@@ -19,10 +22,9 @@ const CardProduct = (props) => {
   };
 
   const handleDelete = async (id) => {
-    console.log("li", props.shoppingListId);
-    console.log(id);
-    await shoppingListService.deleteShoppingLists(
-      `shoppingLists/${props.shoppingListId}/products/${id}`
+    await productShoppingList.deleteProductFromLists(
+      `shoppingLists/${props.shoppingListId}/products/${id}`,
+      user._id
     );
   };
 
@@ -59,7 +61,7 @@ const CardProduct = (props) => {
         <div className="productDelete">
           <Trash
             onClick={() => {
-              handleDelete(props.id);
+              handleDelete(props.idProductFromList);
             }}
           />
         </div>

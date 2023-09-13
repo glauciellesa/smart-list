@@ -24,7 +24,7 @@ const ShoppingListDetail = () => {
               return (
                 <CardProduct
                   key={listProduct.id}
-                  idProductFromList={listProduct.id}
+                  idProductFromList={listProduct.product_id}
                   shoppingListId={shoppingListId}
                   productName={listProduct.product.product_name}
                   productImg={listProduct.product.image}
