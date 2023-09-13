@@ -1,12 +1,14 @@
 # About Smart List App
 
-**Smart List** is a user-friendly full-stack application destined to simplify the management of **recipes and shopping lists** by combining them on the same app. This approach allows streamlined **meal planning and shopping** by storing and accessing favourite recipes while generating accurate shopping lists, reducing food and money waste.
+**Smart List** is a user-friendly full-stack MERN application destined to simplify the management of **shopping lists and recipes** by combining them on the same app. This approach allows streamlined **shopping and meal planning** by storing and accessing favourite recipes while generating accurate shopping lists, reducing food and money waste.
+
+Whether you're using a desktop computer or a mobile device, Smart List is designed to provide a **responsive and seamless UI experience**, ensuring that you can effortlessly manage your recipes and shopping lists on any screen size.
 
 ## Links
 
 - Repo: [smart-list](https://github.com/glauciellesa/smart-list)
 
-- Vercel deployement: [Visit Now](https://smart-list-client.vercel.app/)
+- Vercel deployment: [Visit Now](https://smart-list-client.vercel.app/)
 
 ## ⚙️ Technologies
 
@@ -34,17 +36,13 @@
 - JWT Authentication Middleware: verify SignUp, verify token Routes protected.
 - Secure password hashing by default Mongodb REST architecture.
 
-<div align="center">
-
-![Routes_preview](Routes_preview.png)
-
-</div>
-
-This is the directory structure for our Node.js Express & MongoDB application:
+<br>
 
 <div align="center">
 
-![Backend_directory_preview](Backend_directory_preview.png)
+| Server Architecture |  |
+| --- | --- |
+| <p align="center"> <img src="./client/src/img/routes_preview_1.png" width="70%" alt="Server's architecture"> </p> | <p align="center"> <img src="./client/src/img/routes_preview_2.png" width="100%" alt="Server's architecture"> </p> |
 
 </div>
 
@@ -56,35 +54,35 @@ This is the directory structure for our Node.js Express & MongoDB application:
 - Styled Component (for User Interface)
 - React Hooks (for a more intuitive and flexible way to manage component state and side effects in functional components)
 
+<br>
+
+## Directory structure of our Node.js Express & MongoDB application:
+
+<br>
+
+<div align="center">
+
+| Client directory | Server directory |
+| --- | --- |
+| <p align="center"> <img src="./client/src/img/frontend_directory_preview.png" width="100%" alt="Client directory's structure"> </p> | <p align="center"> <img src="./client/src/img/backend_directory_preview.png" width="100%" alt="Server directory's structure"> </p> |
+
+</div>
+
 ## Available Commands
 
-In the project directory, you can run:
+The main directory contains two directories, `client` and `server`, respectively for the frontend and the backend part of the application. Make sure to run the following command in both the `client` and `server` directory:
 
 ```
 npm run dev
 ```
 
-This command starts your project in development mode using Vite. It's perfect for actively working on your project, as it enables hot module replacement (HMR), meaning your changes will instantly appear in the browser without the need for manual refreshing. You can access your development server at [http://localhost:5174/](http://localhost:5174/).
+👆 This command starts your project in development mode using Vite. It's perfect for actively working on your project, as it enables hot module replacement (HMR), meaning your changes will instantly appear in the browser without the need for manual refreshing.
 
 ```
 npm run build
 ```
 
-Use this command to build your project for production. It optimizes and bundles your code, ensuring the best performance. The result will be placed in the "build" directory, ready for deployment.
-
-```
-npm run preview
-```
-
-Running this command will start a local server to preview your production build. It's useful for testing your build locally before deploying it to a live server. You can typically access the preview at [http://localhost:4173/](http://localhost:4173/) or another port specified in the output.
-
-```
-npm start
-```
-
-Similar to `npm run dev`, this command starts your project using Vite. It's often used when you want to quickly run your project without any special development features. You can access it at [http://localhost:5176/](http://localhost:5176/).
-
-Please replace `npm` with `yarn` if you are using Yarn as your package manager.
+👆 Use this command to build your project for production. It optimizes and bundles your code, ensuring the best performance. The result will be placed in the "build" directory, ready for deployment.
 
 ## Future features ⏱️
 
