@@ -25,6 +25,10 @@ const CardProductInList = (props) => {
     await productShoppingList.deleteProductFromLists(
       `shoppingLists/${props.shoppingListId}/products/${id}`
     );
+
+    navigate(`/shoppingList/${props.shoppingListId}`, {
+      state: new Date().getTime(),
+    });
   };
 
   return (

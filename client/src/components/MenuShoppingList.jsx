@@ -14,7 +14,6 @@ const MenuShoppingList = ({ items }) => {
   const handleEdit = async () => {};
   const handleDelete = async (id) => {
     await shoppingListService.deleteShoppingLists(`shoppingLists/${id}`);
-    shoppingListService.getShoppingLists("shoppingLists");
   };
 
   return (

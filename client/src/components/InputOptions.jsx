@@ -4,14 +4,17 @@ import useProducts from "src/hooks/useProducts";
 import { useState } from "react";
 import { useAuthContext } from "src/hooks/useAuthContex";
 import { useAddProductIntoList } from "src/hooks/useAddProductIntoList";
+import { useNavigate } from "react-router-dom";
 
 const InputOptions = (props) => {
-  const [selected, setSelected] = useState([]);
+  const [selected, setSelected] = useState(null);
   const { data, isLoading, error } = useProducts("products", "getProducts");
   const { user } = useAuthContext();
   const { addNewProductIntoList } = useAddProductIntoList();
+  const navigate = useNavigate();
 
   const selectOption = async (id) => {
+    setSelected(id);
     const idProductSelected = id;
 
     await addNewProductIntoList(
@@ -19,6 +22,9 @@ const InputOptions = (props) => {
       { product_id: idProductSelected },
       user._id
     );
+    navigate(`/shoppingList/${props.shoppingListId}`, {
+      state: new Date().getTime(),
+    });
   };
 
   return (
@@ -38,7 +44,14 @@ const InputOptions = (props) => {
                         selectOption(option._id);
                       }}
                     >
-                      <button className="listProductBtn">+</button>
+                      {selected === option._id ? (
+                        <button className="selectedProduct">
+                          <Check />
+                        </button>
+                      ) : (
+                        <button className="listProductBtn">+</button>
+                      )}
+                      {/* <button className="listProductBtn">+</button> */}
                       <p className="productName">{option.product_name}</p>
                       <div className="productImg">
                         <img
