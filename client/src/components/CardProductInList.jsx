@@ -133,7 +133,7 @@ const StyledCardProduct = styled.li`
   }
 
   .productDelete svg {
-    width: 0.8rem;
+    width: 1.3rem;
     color: #515050d7;
   }
 `;
