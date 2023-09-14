@@ -3,10 +3,14 @@ import { styled } from "styled-components";
 import { Heart, UserCircle } from "lucide-react";
 import { useParams } from "react-router-dom";
 import GoBack from "../../../components/GoBack";
+import { useAddNewList } from "src/hooks/useAddNewList";
+import { useNavigate } from "react-router-dom";
 
 /* eslint-disable react/prop-types */
 const RecipeDetailPage = () => {
   const { recipeId } = useParams();
+  const { addNewList } = useAddNewList();
+  const navigate = useNavigate();
   const { data, loading, error } = useRecipes(
     "getRecipeById",
     `recipes/${recipeId}`
@@ -29,6 +33,9 @@ const RecipeDetailPage = () => {
       "kilograms",
       "g",
       "kg",
+      "large",
+      "small",
+      "sticks",
     ];
 
     const ingredientLines = [];
@@ -54,8 +61,10 @@ const RecipeDetailPage = () => {
     return ingredientLines;
   };
 
-  const createShoppingList = () => {
+  const createShoppingList = async () => {
     console.log(extractIngredientsFromRecipes(data.ingredients));
+    await addNewList("shoppingLists", data.name);
+    navigate("/shoppingList");
   };
 
   const checkTime = () => {

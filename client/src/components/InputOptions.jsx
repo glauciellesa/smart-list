@@ -11,21 +11,11 @@ const InputOptions = (props) => {
   const { user } = useAuthContext();
   const { addNewProductIntoList } = useAddProductIntoList();
   const navigate = useNavigate();
+
   const { data, isLoading, error } = useProducts(
     `products?name=${props.inputValue}`,
     "getProductByName"
   );
-
-  console.log(`products?name=${props.inputValue}`, "getProductByName");
-
-  /*  if (props.inputValue) {
-    console.log(props.inputValue);
-    const { data, isLoading, error } = useProducts(
-      `/products?name=${props.inputValue}`,
-      "getProductByName"
-    );
-  } else {
-  } */
 
   const selectOption = async (id) => {
     setSelected(id);
@@ -97,9 +87,6 @@ const StyledInputOptions = styled.div`
   position: sticky;
   z-index: 9995;
 
-  .listContainer {
-  }
-
   .listProduct {
     display: flex;
     gap: 0.8rem;
@@ -153,6 +140,25 @@ const StyledInputOptions = styled.div`
   }
 
   @media (min-width: 600px) {
-    width: 101%;
+    width: 98%;
+
+    .listContainer {
+      width: 100%;
+      display: flex;
+      flex-wrap: wrap;
+      flex-direction: row;
+      justify-content: space-around;
+    }
+
+    .listProduct {
+      width: 17rem;
+      padding: 1rem 3rem;
+      flex-grow: 1;
+    }
+
+    .listProduct p {
+      font-size: 1.4rem;
+      color: #4d4d4d;
+    }
   }
 `;
