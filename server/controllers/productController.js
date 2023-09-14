@@ -18,8 +18,8 @@ product.get("/api/products", async (req, res, next) => {
     const productName = req.query.name;
     if (productName) {
       console.log("productName:", productName);
-      const product = await productRepository.getProductbyName(productName);
-      res.status(201).json({ product }).end();
+      const allProduct = await productRepository.getProductbyName(productName);
+      res.status(201).json({ allProduct }).end();
     } else {
       const allProduct = await productRepository.getProducts();
       res.status(201).json({ allProduct }).end();
