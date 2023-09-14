@@ -4,10 +4,14 @@ import productShoppingList from "../service/productShoppingList";
 export const useAddProductIntoList = () => {
   const [isAdded, setIsAdded] = useState(null);
 
-  const addNewProductIntoList = async (endpoint, newRecipe, userId) => {
+  const addNewProductIntoList = async (endpoint, newProduct, userId) => {
     setIsAdded(null);
     try {
-      await productShoppingList.addProductIntoList(endpoint, newRecipe, userId);
+      await productShoppingList.addProductIntoList(
+        endpoint,
+        newProduct,
+        userId
+      );
     } catch (error) {
       setIsAdded(error.response.data.error);
     }

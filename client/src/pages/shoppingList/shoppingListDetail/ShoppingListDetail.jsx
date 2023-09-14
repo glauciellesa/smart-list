@@ -12,8 +12,12 @@ const ShoppingListDetail = () => {
     `shoppingLists/${shoppingListId}/products`
   );
 
+  const handleDeleteItem = (idDeletedItem) => {
+    console.log(idDeletedItem);
+  };
+
   const displayItems = () => {
-    if (data.length > 1) {
+    if (data.length > 0) {
       return (
         <div className="product_list">
           <ul>
@@ -26,6 +30,7 @@ const ShoppingListDetail = () => {
                   productName={listProduct.product.product_name}
                   productImg={listProduct.product.image}
                   productQnt={listProduct.quantity}
+                  onDelete={handleDeleteItem}
                   /* productCategory={listProduct.product.category_id} */
                 />
               );

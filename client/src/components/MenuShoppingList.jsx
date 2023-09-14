@@ -7,7 +7,7 @@ import Modal from "./Modal";
 import NewList from "./NewList";
 import shoppingListService from "../service/shoppingListService";
 
-const MenuShoppingList = ({ items }) => {
+const MenuShoppingList = () => {
   const [showModal, setshowModal] = useState(false);
   const { data, isLoading, error } = useShoppingList("shoppingLists");
 

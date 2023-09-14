@@ -26,7 +26,7 @@ const useShoppingList = (endpoint) => {
     getShoppingLists();
   }, [endpoint, history.length]);
 
-  return { data, isLoading, error };
+  return { data, setData, isLoading, error };
 };
 
 export default useShoppingList;
