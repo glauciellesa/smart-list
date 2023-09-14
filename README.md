@@ -16,7 +16,7 @@ Whether you're using a desktop computer or a mobile device, Smart List is design
 
 ## Sneak Peeks in Smart List
 
-![Smart List Preview](/screenshots/1.png "Home Page")
+![Smart List Preview](/screenshots/1.png 'Home Page')
 
 ## 🚀 Features:
 
@@ -32,7 +32,7 @@ Whether you're using a desktop computer or a mobile device, Smart List is design
 
 ## Server
 
-- Complete and extremely scalable Node.js backed. Controllers are VERY easily added, scaled and separated due to the MVC pattern used.
+- Complete and extremely scalable Node.js backend. Controllers are VERY easily added, scaled and separated due to the MVC pattern used.
 - JWT Authentication Middleware: verify SignUp, verify token Routes protected.
 - Secure password hashing by default Mongodb REST architecture.
 
@@ -40,8 +40,8 @@ Whether you're using a desktop computer or a mobile device, Smart List is design
 
 <div align="center">
 
-| Server Architecture                                                                                               |                                                                                                                   |
-| ----------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------- |
+| Server Architecture |  |
+| --- | --- |
 | <p align="center"> <img src="./client/src/img/routes_preview_1.png" width="60%" alt="Server's architecture"> </p> | <p align="center"> <img src="./client/src/img/routes_preview_2.png" width="72%" alt="Server's architecture"> </p> |
 
 </div>
@@ -62,8 +62,8 @@ Whether you're using a desktop computer or a mobile device, Smart List is design
 
 <div align="center">
 
-| Client directory                                                                                                                   | Server directory                                                                                                                  |
-| ---------------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------- |
+| Client directory | Server directory |
+| --- | --- |
 | <p align="center"> <img src="./client/src/img/frontend_directory_preview.png" width="60%" alt="Client directory's structure"> </p> | <p align="center"> <img src="./client/src/img/backend_directory_preview.png" width="60%" alt="Server directory's structure"> </p> |
 
 </div>
@@ -90,6 +90,7 @@ npm run build
 - Possibility to delete the default recipes
 - Accessing the recipes of another user and following his/her newly added recipes
 - Importing recipes from other sites
+- Possibility to import ingredients from a recipe to the shopping list
 
 ## License
 
@@ -99,18 +100,18 @@ Distributed under the MIT License.
 
 **Glaucielle Sá**
 
-- [GitHub Profile](https://github.com/glauciellesa "Glaucielle Sá")
+- [GitHub Profile](https://github.com/glauciellesa 'Glaucielle Sá')
 - [Linkedin](https://www.linkedin.com/in/glauciellec/)
-- [Portfolio](https://glauciellesa.github.io/ "Have a look!")
+- [Portfolio](https://glauciellesa.github.io/ 'Have a look!')
 
 **Camila Fernandes Assunção**
 
-- [GitHub Profile](https://github.com/CamilaFAssuncao "Camila Fernandes Assunção")
+- [GitHub Profile](https://github.com/CamilaFAssuncao 'Camila Fernandes Assunção')
 - [Linkedin](https://www.linkedin.com/in/camilafassuncao/)
 
 **Leila Zitouni**
 
-- [GitHub Profile](https://github.com/leilaZ1111 "Leila Zitouni")
+- [GitHub Profile](https://github.com/leilaZ1111 'Leila Zitouni')
 - [Linkedin](www.linkedin.com/in/leila-zitouni)
 
 ## 🤝 Support
