@@ -5,10 +5,12 @@ import { useAuthContext } from "src/hooks/useAuthContex";
 import NewList from "src/components/NewList";
 import Modal from "src/components/Modal";
 import { useState } from "react";
+import useShoppingList from "../../hooks/useShoppingList"; 
 
 const Home = () => {
   const [showModal, setshowModal] = useState(false);
   const { user } = useAuthContext();
+  const { data, isLoading, error } = useShoppingList("shoppingLists");
 
   return (
     <StyledHome>
@@ -45,14 +47,27 @@ const Home = () => {
       </div>
       {user ? (
         <div className="shoppingList">
-          <NavLink to="list">
+          <NavLink to="/shoppingList">
             <h2 className="title">Shopping List</h2>
           </NavLink>
+          {isLoading ? (
+            <p>Loading shopping list...</p>
+          ) : error ? (
+            <p>Error: {error}</p>
+          ) : (
+            <ul>
+              {data.map((listName) => (
+                <li key={listName.id}>{listName.name}</li>
+              ))}
+            </ul>
+          )}
         </div>
       ) : null}
     </StyledHome>
   );
 };
+
+export default Home;
 
 const StyledHome = styled.div`
   padding: 0 1rem;
@@ -60,7 +75,7 @@ const StyledHome = styled.div`
   .userName {
     font-weight: 100;
     font-size: 2rem;
-    padding-top: 4rem;
+    padding-top: 10%;
     color: #704869;
   }
 
@@ -71,14 +86,15 @@ const StyledHome = styled.div`
   }
 
   .title {
-    color: #ed6d5a;
+    color: #704869;
     font-size: 2rem;
     font-weight: 400;
-    padding: 4rem 0;
+    padding: 3rem 0;
   }
 
   .title:hover {
     cursor: pointer;
+    color: #ed6d5a;
   }
 
   .loading {
@@ -87,10 +103,11 @@ const StyledHome = styled.div`
   }
 
   .userList_home div {
-    padding: 2rem 2rem 0 0;
+    padding: 0rem 2rem 0 0;
     display: flex;
     justify-content: flex-end;
     align-items: center;
+    padding-top: 2%;
   }
 
   .userList_home p {
@@ -117,4 +134,3 @@ const StyledHome = styled.div`
   }
 `;
 
-export default Home;
