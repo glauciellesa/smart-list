@@ -8,10 +8,24 @@ import { useNavigate } from "react-router-dom";
 
 const InputOptions = (props) => {
   const [selected, setSelected] = useState(null);
-  const { data, isLoading, error } = useProducts("products", "getProducts");
   const { user } = useAuthContext();
   const { addNewProductIntoList } = useAddProductIntoList();
   const navigate = useNavigate();
+  const { data, isLoading, error } = useProducts(
+    `products?name=${props.inputValue}`,
+    "getProductByName"
+  );
+
+  console.log(`products?name=${props.inputValue}`, "getProductByName");
+
+  /*  if (props.inputValue) {
+    console.log(props.inputValue);
+    const { data, isLoading, error } = useProducts(
+      `/products?name=${props.inputValue}`,
+      "getProductByName"
+    );
+  } else {
+  } */
 
   const selectOption = async (id) => {
     setSelected(id);
