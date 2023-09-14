@@ -14,7 +14,6 @@ const NewList = (props) => {
   const handleSubmit = (e) => {
     e.preventDefault();
     addNewList("shoppingLists", listName);
-    shoppingListService.getShoppingLists("shoppingLists");
     setListName("");
     props.handleModal(false);
   };

@@ -6,14 +6,17 @@ import useShoppingList from "src/hooks/useShoppingList";
 import Modal from "./Modal";
 import NewList from "./NewList";
 import shoppingListService from "../service/shoppingListService";
+import { useNavigate } from "react-router-dom";
 
 const MenuShoppingList = () => {
   const [showModal, setshowModal] = useState(false);
   const { data, isLoading, error } = useShoppingList("shoppingLists");
+  const navigate = useNavigate();
 
   const handleEdit = async () => {};
   const handleDelete = async (id) => {
     await shoppingListService.deleteShoppingLists(`shoppingLists/${id}`);
+    navigate(".");
   };
 
   return (

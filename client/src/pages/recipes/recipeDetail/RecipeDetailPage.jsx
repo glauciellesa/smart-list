@@ -3,14 +3,69 @@ import { styled } from "styled-components";
 import { Heart, UserCircle } from "lucide-react";
 import { useParams } from "react-router-dom";
 import GoBack from "../../../components/GoBack";
+import { useAddNewList } from "src/hooks/useAddNewList";
+import { useNavigate } from "react-router-dom";
 
 /* eslint-disable react/prop-types */
 const RecipeDetailPage = () => {
   const { recipeId } = useParams();
+  const { addNewList } = useAddNewList();
+  const navigate = useNavigate();
   const { data, loading, error } = useRecipes(
     "getRecipeById",
     `recipes/${recipeId}`
   );
+
+  const extractIngredientsFromRecipes = (recipeList) => {
+    console.log("eu");
+    const ingredientKeywords = [
+      "cup",
+      "cups",
+      "teaspoon",
+      "teaspoons",
+      "tablespoon",
+      "tablespoons",
+      "ounce",
+      "ounces",
+      "pound",
+      "pounds",
+      "grams",
+      "kilograms",
+      "g",
+      "kg",
+      "large",
+      "small",
+      "sticks",
+    ];
+
+    const ingredientLines = [];
+
+    for (const recipeText of recipeList) {
+      const lines = recipeText.split("\n");
+
+      for (const line of lines) {
+        console.log({ line });
+        const containsIngredientKeyword = ingredientKeywords.some((keyword) =>
+          new RegExp(`\\b${keyword}\\b`, "i").test(line)
+        );
+
+        if (containsIngredientKeyword) {
+          const productName = line
+            .replace(/[\d.]+(?:\/[\d.]+)?\s?\w+\s/g, "")
+            .trim();
+          ingredientLines.push(productName.trim());
+        }
+      }
+    }
+
+    return ingredientLines;
+  };
+
+  const createShoppingList = async () => {
+    console.log(extractIngredientsFromRecipes(data.ingredients));
+    await addNewList("shoppingLists", data.name);
+    navigate("/shoppingList");
+  };
 
   const checkTime = () => {
     const time = data.timeToPrepare;
@@ -73,7 +128,13 @@ const RecipeDetailPage = () => {
             </div>
           </div>
           <div className="bottom">
-            <h3>Ingredients</h3>
+            <div className="ingredientsAndBtnList">
+              <h3>Ingredients</h3>
+              <button className="createList" onClick={createShoppingList}>
+                Add ingredienst to shoppingList
+              </button>
+            </div>
+
             {data.ingredients ? (
               <ul>
                 {data.ingredients?.map((ingredient) => (
@@ -214,6 +275,23 @@ const StyledRecipeDetailPage = styled.div`
     gap: 0.5rem;
   }
 
+  .ingredientsAndBtnList {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+
+  .createList {
+    height: 2.3rem;
+    padding: 0.2rem;
+    margin-bottom: 1rem;
+    font-weight: 600;
+    color: #704869;
+    border: 2px solid #704869;
+    border-radius: 5px;
+    background-color: #fefaeb;
+  }
+
   @media (min-width: 600px) {
     padding: 2rem 0;
 
@@ -238,6 +316,10 @@ const StyledRecipeDetailPage = styled.div`
       position: absolute;
       top: 0;
       right: 0;
+    }
+
+    .ingredientsAndBtnList {
+      flex-direction: row;
     }
   }
 `;
