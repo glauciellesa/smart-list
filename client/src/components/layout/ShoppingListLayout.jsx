@@ -24,7 +24,6 @@ const StyledLayoutList = styled.nav`
   flex-direction: column;
 
   .menu {
-    width: 93vw;
     display: flex;
     flex-direction: column;
     gap: 1rem;
@@ -39,12 +38,11 @@ const StyledLayoutList = styled.nav`
     flex-direction: row;
 
     .menu {
-      width: 20vw;
       border-right: 1px solid #51505015;
     }
 
     .list_products {
-      width: 60vw;
+      width: 54vw;
     }
   }
 `;

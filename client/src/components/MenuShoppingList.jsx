@@ -7,14 +7,13 @@ import Modal from "./Modal";
 import NewList from "./NewList";
 import shoppingListService from "../service/shoppingListService";
 
-const MenuShoppingList = ({items}) => {
+const MenuShoppingList = ({ items }) => {
   const [showModal, setshowModal] = useState(false);
   const { data, isLoading, error } = useShoppingList("shoppingLists");
 
   const handleEdit = async () => {};
   const handleDelete = async (id) => {
     await shoppingListService.deleteShoppingLists(`shoppingLists/${id}`);
-    shoppingListService.getShoppingLists("shoppingLists");
   };
 
   return (
@@ -67,10 +66,12 @@ const StyledMenu = styled.div`
   display: flex;
   flex-direction: column;
   gap: 1rem;
-  padding-top: 1rem;
+  padding-bottom: 2rem;
 
   .menu_list {
+    width: 100%;
     display: flex;
+    flex-wrap: wrap;
     flex-direction: column;
   }
 
@@ -80,10 +81,10 @@ const StyledMenu = styled.div`
     padding: 0 1rem 0 0;
     color: #4d4d4d;
   }
+
   .actions_menu {
     display: flex;
     justify-content: space-between;
-    padding-right: 1rem;
   }
 
   .actions_menu div {
@@ -100,13 +101,14 @@ const StyledMenu = styled.div`
     color: #515050d7;
   }
 
-  .active,
-  a:hover {
+  .actions_menu .active,
+  .actions_menu a:hover {
     color: #ed6d5a;
     font-weight: bold;
   }
 
   .newList {
+    width: 100%;
     text-align: right;
     font-weight: 600;
     font-size: 1.1rem;
@@ -115,8 +117,20 @@ const StyledMenu = styled.div`
   }
 
   @media (min-width: 600px) {
+    padding: 0;
+    position: static;
+    z-index: 0;
+    background-color: #fefaeb;
+    height: 0;
+    width: 15rem;
+
     .newList {
       padding: 1rem 1rem 1rem 0;
+      flex-wrap: wrap;
+    }
+
+    .menu_list {
+      padding: 0 1rem 0 0;
     }
   }
 `;

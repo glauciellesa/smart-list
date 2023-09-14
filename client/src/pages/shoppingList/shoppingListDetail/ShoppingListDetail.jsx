@@ -2,14 +2,49 @@ import React, { useEffect, useState } from "react";
 import { styled } from "styled-components";
 import { useParams } from "react-router-dom";
 import useProductsList from "src/hooks/useProductList";
-import CardProduct from "src/components/CardProduct";
+import CardProductInList from "src/components/CardProductInList";
 import AddProductList from "src/components/AddProductList";
+import emptyCartImage from "src/img/additemsimg.png"; // Import your empty cart image
 
 const ShoppingListDetail = () => {
   const { shoppingListId } = useParams();
   const { data, loading, error } = useProductsList(
     `shoppingLists/${shoppingListId}/products`
   );
+
+  const displayItems = () => {
+    if (data.length > 1) {
+      return (
+        <div className="product_list">
+          <ul>
+            {data.map((listProduct) => {
+              return (
+                <CardProductInList
+                  key={listProduct.id}
+                  idProductFromList={listProduct.id}
+                  shoppingListId={shoppingListId}
+                  productName={listProduct.product.product_name}
+                  productImg={listProduct.product.image}
+                  productQnt={listProduct.quantity}
+                  /* productCategory={listProduct.product.category_id} */
+                />
+              );
+            })}
+          </ul>
+        </div>
+      );
+    } else {
+      return (
+        <div className="emptyList">
+          <img
+            src={emptyCartImage}
+            alt="Empty Cart"
+            className="empty-cart-image"
+          />
+        </div>
+      );
+    }
+  };
 
   return (
     <StyledShoppingDetail>
@@ -20,24 +55,9 @@ const ShoppingListDetail = () => {
         <>
           <h2 className="list_title">Shopping List</h2>
           <div className="addProduct">
-            <AddProductList />
+            <AddProductList shoppingListId={shoppingListId} />
           </div>
-          <div className="product_list">
-            {data.map((listProduct) => {
-              console.log(listProduct);
-              return (
-                <>
-                  <CardProduct
-                    key={listProduct.product_id}
-                    productName={listProduct.product.product_name}
-                    productImg={listProduct.product.image}
-                    productQnt={listProduct.quantity}
-                    /* productCategory={listProduct.product.category_id} */
-                  />
-                </>
-              );
-            })}
-          </div>
+          {displayItems()}
         </>
       )}
     </StyledShoppingDetail>
@@ -57,5 +77,19 @@ const StyledShoppingDetail = styled.div`
   .product_list {
     min-height: 15rem;
     // background-color: #ed6e5a10;
+  }
+  .emptyList img {
+    width: 100%;
+  }
+
+  @media (min-width: 600px) {
+    .emptyList {
+      display: flex;
+      justify-content: center;
+    }
+
+    .emptyList img {
+      width: 60%;
+    }
   }
 `;

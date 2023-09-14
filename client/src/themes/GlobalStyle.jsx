@@ -14,7 +14,7 @@ const GlobalStyle = createGlobalStyle`
     flex-direction: column;
     min-height:100%; 
     position:relative; 
-    padding-bottom:[footer-height] 
+    scrollbar-width: thin;   
   }
 
   div.error {

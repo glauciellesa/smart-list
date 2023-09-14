@@ -8,7 +8,7 @@ shoppingList.post(
   "/api/shoppingLists/:shoppingListId/products",
   async (req, res, next) => {
     try {
-      const clientRequestId = req.email._id;
+      const clientRequestId = req.user._id;
       const shoppingListId = req.params.shoppingListId;
       const createdList =
         await shoppingListProductService.addProductIntoUserList(
@@ -27,7 +27,7 @@ shoppingList.get(
   "/api/shoppingLists/:shoppingListId/products",
   async (req, res, next) => {
     try {
-      const clientRequestId = req.email._id;
+      const clientRequestId = req.user._id;
       const shoppingListId = req.params.shoppingListId;
       const userLists =
         await shoppingListProductService.joinAndgetProductsFromList(
@@ -46,7 +46,7 @@ shoppingList.put(
   "/api/shoppingLists/:shoppingListId/products/:productId",
   async (req, res, next) => {
     try {
-      const clientRequestId = req.email._id;
+      const clientRequestId = req.user._id;
       const shoppingListId = req.params.shoppingListId;
       const productId = req.params.productId;
 
@@ -67,16 +67,19 @@ shoppingList.put(
 
 //I think just the person that has created the shoppingList are able to delete it.
 shoppingList.delete(
-  "/api/shoppingLists/:shoppingListId/products/:productId",
+  "/api/shoppingLists/:shoppingListId/products/:productListId",
   async (req, res, next) => {
     try {
-      const clientRequestId = req.email._id;
+      const clienteRequestId = req.user._id;
       const shoppingListId = req.params.shoppingListId;
+      const productListId = req.params.productListId;
 
+      console.log({ clienteRequestId }, { shoppingListId }, { productListId });
       const checkToDelet =
         await shoppingListProductService.checkProductBeforeDelete(
-          clientRequestId,
-          shoppingListId
+          clienteRequestId,
+          shoppingListId,
+          productListId
         );
 
       res.status(200).json(checkToDelet).end();

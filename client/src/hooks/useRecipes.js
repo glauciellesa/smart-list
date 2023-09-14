@@ -40,7 +40,7 @@ const useRecipes = (key, url) => {
       }
     };
     fetchData();
-  }, [url]);
+  }, [url, history.length]);
 
   return { data, loading, error };
 };

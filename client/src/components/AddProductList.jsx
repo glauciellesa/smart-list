@@ -1,15 +1,14 @@
 import React, { useState } from "react";
 import styled from "styled-components";
-import emptyCartImage from "../img/additemsimg.png"; // Import your empty cart image
-import itemsData from "../../data/items.json"; // Import your items data
+import InputOptions from "./InputOptions";
 
-const AddProductList = () => {
+const AddProductList = (props) => {
   const [items, setItems] = useState([]);
   const [inputValue, setInputValue] = useState("");
   const [filteredOptions, setFilteredOptions] = useState([]);
   const [showOptions, setShowOptions] = useState(false);
 
-  const addItem = (itemName) => {
+  /*  const addItem = (itemName) => {
     setItems([...items, { name: itemName, quantity: 1 }]);
     setInputValue("");
   };
@@ -30,79 +29,66 @@ const AddProductList = () => {
     setItems(updatedItems);
   };
 
+ */
+
   const handleInputChange = (e) => {
     const inputValue = e.target.value;
     setInputValue(inputValue);
-    // Filter options based on user input
+    /*  // Filter options based on user input
     const filtered = itemsData.filter((item) =>
       item.text.toLowerCase().includes(inputValue.toLowerCase())
     );
     setFilteredOptions(filtered);
+    setShowOptions(true); */
+  };
+
+  const showProductOptions = () => {
     setShowOptions(true);
   };
 
-  const handleOptionClick = (optionText) => {
-    setInputValue(optionText);
+  const hideProductOptions = () => {
     setShowOptions(false);
   };
 
   const handleSubmit = (e) => {
     e.preventDefault(); // Prevent the form from submitting and refreshing the page
     if (inputValue) {
-      addItem(inputValue);
+      console.log(inputValue);
     }
   };
 
-
   return (
     <StyledAddProductList>
-      {/* Input field with a plus sign */}
-      <form onSubmit={handleSubmit}>
-      <div className="input-container">
-        <input
-          type="text"
-          placeholder="Add an item..."
-          value={inputValue}
-          onChange={handleInputChange}
-        />
-        <button
-          className="add-button"
-          onClick={() => {
-            if (inputValue) {
-              addItem(inputValue);
-            }
-          }}
-        >
-          +
-        </button>
-      </div>
-      </form>
+      {showOptions ? (
+        <div className="modal-input" onClick={hideProductOptions}></div>
+      ) : null}
+      <div className="container">
+        <form className="input-container" onSubmit={handleSubmit}>
+          <input
+            type="text"
+            placeholder="Add an item..."
+            value={inputValue}
+            onFocus={showProductOptions}
+            onChange={handleInputChange}
+          />
+          <button
+            className="add-button"
+            onClick={() => {
+              if (inputValue) {
+                addItem(inputValue);
+              }
+            }}
+          >
+            +
+          </button>
+        </form>
+        {showOptions ? (
+          <div className="productsOption">
+            <InputOptions shoppingListId={props.shoppingListId} />
+          </div>
+        ) : null}
 
-      {/* Options dropdown */}
-      {showOptions && filteredOptions.length > 0 && (
-        <div className="options">
-          <ul>
-            {filteredOptions.map((option) => (
-              <li
-                key={option.id}
-                onClick={() => handleOptionClick(option.text)}
-              >
-                {option.text}
-              </li>
-            ))}
-          </ul>
-        </div>
-      )}
-
-      {/* Conditional rendering for the image */}
-      {items.length === 0 ? (
-        <img
-          src={emptyCartImage}
-          alt="Empty Cart"
-          className="empty-cart-image"
-        />
-      ) : (
-        // Render the list of items
+        {/*  {
         <ul>
           {items.map((item, index) => (
             <li className="itemsAdded" key={index}>
@@ -125,39 +111,52 @@ const AddProductList = () => {
             </li>
           ))}
         </ul>
-      )}
+      } */}
+      </div>
     </StyledAddProductList>
   );
 };
 
 const StyledAddProductList = styled.div`
-.input-container {
+  .container {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: relative;
+  }
+
+  .modal-input {
+    top: 0;
+    left: 0;
+    position: absolute;
+    width: 100vw;
+    height: 100vh;
+    z-index: 998;
+  }
+
+  .input-container {
     display: flex; /* Apply flexbox */
     align-items: center; /* Center vertically */
     margin-bottom: 4%;
+    width: 100%;
   }
 
-  img {
-    max-width: 90%;
-  }
-
-  input {
+  .input-container input {
+    z-index: 9999;
     padding: 10px;
     font-size: 1rem;
     border-radius: 25px;
-    width: 70%;
+    width: 80%;
     border: solid 2px #704869;
     margin-right: 3%;
     margin-left: 3%;
   }
 
-    .add-button {
-        background-color: #704869;
+  .add-button {
+    z-index: 9999;
+    background-color: #704869;
     color: white;
-    }
-
-
-  button {
     border-radius: 50%;
     width: 35px;
     height: 35px;
@@ -165,12 +164,11 @@ const StyledAddProductList = styled.div`
     border: none;
   }
 
-  li {
-    display: flex;
-    flex-direction: row;
-    padding: 1.5%;
-    margin-right: 2%;
-    align-items: center;
+  .productsOption {
+    display: block;
+    position: absolute;
+    top: -1rem;
+    width: 100%;
   }
 
   .itemsAdded {
@@ -182,29 +180,32 @@ const StyledAddProductList = styled.div`
     padding-right: 10%;
   }
 
-
   .item-name {
     flex-grow: 1; /* Allow the item name to take up available space */
     text-transform: capitalize; /* Capitalize the first letter of the name */
     margin-right: 10px; /* Add right margin to separate from quantity */
   }
-  
+
   .plus-button,
-.minus-button {
-  background: none;
-  border: none;
-  color: #ed6d5a;
-  font-size: 24px;
-  margin-left: 5px; /* Add left margin to separate buttons */
-}
+  .minus-button {
+    background: none;
+    border: none;
+    color: #ed6d5a;
+    font-size: 24px;
+    margin-left: 5px; /* Add left margin to separate buttons */
+  }
 
-/* Add space between buttons */
-.plus-button {
-  margin-right: 5px; /* Add right margin to separate from "-" button */
-  margin-left: 8%;
-}
+  /* Add space between buttons */
+  .plus-button {
+    margin-right: 5px; /* Add right margin to separate from "-" button */
+    margin-left: 8%;
+  }
 
+  @media (min-width: 600px) {
+    .productsOption {
+      left: 0.2rem;
+    }
+  }
 `;
 
 export default AddProductList;
-

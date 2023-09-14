@@ -2,6 +2,7 @@ import useRecipes from "../../../hooks/useRecipes";
 import { styled } from "styled-components";
 import { Heart, UserCircle } from "lucide-react";
 import { useParams } from "react-router-dom";
+import GoBack from "../../../components/GoBack";
 
 /* eslint-disable react/prop-types */
 const RecipeDetailPage = () => {
@@ -32,6 +33,9 @@ const RecipeDetailPage = () => {
 
   return (
     <StyledRecipeDetailPage>
+      <div className="goBack">
+        <GoBack recipes="recipes" />
+      </div>
       {error ? <div className="error">{error}</div> : null}
       {loading ? (
         <p className="loading"> Loading... </p>
@@ -99,6 +103,13 @@ const StyledRecipeDetailPage = styled.div`
   gap: 1rem;
   padding: 3rem 0;
   margin-bottom: 2rem;
+
+  .goBack {
+    padding-left: 1rem;
+    width: 100%;
+    align-items: flex-end;
+    color: #4d4d4d;
+  }
 
   .card {
     box-shadow: 5px 2px 10px #d6cdc2;
@@ -173,7 +184,7 @@ const StyledRecipeDetailPage = styled.div`
 
   .favorite {
     position: absolute;
-    top: 17.5rem;
+    top: 18.5rem;
     right: 1rem;
   }
 
@@ -205,8 +216,7 @@ const StyledRecipeDetailPage = styled.div`
   }
 
   @media (min-width: 600px) {
-    width: 850px;
-    gap: 3rem;
+    padding: 2rem 0;
 
     .card {
       padding: 2.5rem;
@@ -222,6 +232,7 @@ const StyledRecipeDetailPage = styled.div`
 
     .topImage img {
       border-radius: 5px;
+      max-width: 25rem;
     }
 
     .favorite {
