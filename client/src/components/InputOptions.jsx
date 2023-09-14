@@ -1,10 +1,10 @@
-import { styled } from "styled-components";
-import { Check } from "lucide-react";
-import useProducts from "src/hooks/useProducts";
-import { useState } from "react";
-import { useAuthContext } from "src/hooks/useAuthContex";
-import { useAddProductIntoList } from "src/hooks/useAddProductIntoList";
-import { useNavigate } from "react-router-dom";
+import { styled } from 'styled-components';
+import { Check } from 'lucide-react';
+import useProducts from 'src/hooks/useProducts';
+import { useState } from 'react';
+import { useAuthContext } from 'src/hooks/useAuthContex';
+import { useAddProductIntoList } from 'src/hooks/useAddProductIntoList';
+import { useNavigate } from 'react-router-dom';
 
 const InputOptions = (props) => {
   const [selected, setSelected] = useState(null);
@@ -14,7 +14,7 @@ const InputOptions = (props) => {
 
   const { data, isLoading, error } = useProducts(
     `products?name=${props.inputValue}`,
-    "getProductByName"
+    'getProductByName'
   );
 
   const selectOption = async (id) => {
@@ -33,6 +33,7 @@ const InputOptions = (props) => {
 
   return (
     <StyledInputOptions>
+      <div className="bufferDiv"></div>
       <ul className="listContainer">
         {isLoading ? (
           <p className="loading"> Loading... </p>
@@ -139,6 +140,14 @@ const StyledInputOptions = styled.div`
     text-align: center;
   }
 
+  .bufferDiv {
+    width: 88%;
+    height: 5rem;
+    background-color: #fefaeb;
+    position: fixed;
+    top: 26.96rem;
+  }
+
   @media (min-width: 600px) {
     width: 98%;
 
@@ -159,6 +168,14 @@ const StyledInputOptions = styled.div`
     .listProduct p {
       font-size: 1.4rem;
       color: #4d4d4d;
+    }
+
+    .bufferDiv {
+      width: 49%;
+      height: 5rem;
+      background-color: #fefaeb;
+      position: fixed;
+      top: 10.96rem;
     }
   }
 `;
