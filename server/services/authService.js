@@ -13,7 +13,7 @@ export const verifyToken = (req, res, next) => {
     if (err) {
       res.sendStatus(403); //Forbidden
     } else {
-      req.email = await userRepository.getUserByEmail(authorizedData.email);
+      req.user = await userRepository.getUserByEmail(authorizedData.email);
       next();
     }
   });

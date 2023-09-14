@@ -81,7 +81,7 @@ const removeProductFromList = async (
       {
         $pull: {
           "lists.$.productLists": {
-            product_id: productId,
+            _id: productId,
           },
         },
       },

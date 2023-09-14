@@ -2,11 +2,11 @@ import { styled } from "styled-components";
 import { ShoppingBasket, Trash } from "lucide-react";
 import { useState } from "react";
 import productShoppingList from "src/service/productShoppingList";
-import { useAuthContext } from "src/hooks/useAuthContex";
+import { useNavigate } from "react-router-dom";
 
-const CardProduct = (props) => {
+const CardProductInList = (props) => {
   const [quantity, setQuantity] = useState(props.productQnt);
-  const { user } = useAuthContext();
+  const navigate = useNavigate();
 
   const increaseQuantity = () => {
     setQuantity((prev) => prev + 1);
@@ -23,14 +23,16 @@ const CardProduct = (props) => {
 
   const handleDelete = async (id) => {
     await productShoppingList.deleteProductFromLists(
-      `shoppingLists/${props.shoppingListId}/products/${id}`,
-      user._id
+      `shoppingLists/${props.shoppingListId}/products/${id}`
     );
+
+    navigate(".");
   };
 
   return (
     <StyledCardProduct>
       {props.productCategory}
+
       <div className="container">
         <div className="product">
           <div className="productImg">
@@ -70,7 +72,7 @@ const CardProduct = (props) => {
   );
 };
 
-export default CardProduct;
+export default CardProductInList;
 
 const StyledCardProduct = styled.li`
   padding: 1rem;

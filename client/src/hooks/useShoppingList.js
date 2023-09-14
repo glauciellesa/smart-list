@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import shoppingListService from "../service/shoppingListService";
 
-const useShoppingList = (url) => {
+const useShoppingList = (endpoint) => {
   const [data, setData] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState("");
@@ -10,7 +10,8 @@ const useShoppingList = (url) => {
     const getShoppingLists = async () => {
       setIsLoading(true);
       try {
-        const res = await shoppingListService.getShoppingLists(url);
+        const res = await shoppingListService.getShoppingLists(endpoint);
+
         setData(res.data);
       } catch (error) {
         if (error.response.status === 403) {
@@ -23,7 +24,7 @@ const useShoppingList = (url) => {
       }
     };
     getShoppingLists();
-  }, [url]);
+  }, [endpoint, history.length]);
 
   return { data, isLoading, error };
 };

@@ -11,6 +11,7 @@ const useProductsList = (url) => {
       setIsLoading(true);
       try {
         const res = await productShoppingList.getProductFromLists(url);
+
         setData(res.data);
       } catch (error) {
         if (error.response.status === 403) {
@@ -23,7 +24,7 @@ const useProductsList = (url) => {
       }
     };
     getProductsFromLists();
-  }, [url]);
+  }, [url, history.state]);
 
   return { data, isLoading, error };
 };

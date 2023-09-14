@@ -24,9 +24,9 @@ user.post("/api/register", async (req, res, next) => {
 
 user.post("/api/login", async (req, res, next) => {
   try {
-    const userLoginTokken = await userService.login(req.body);
+    const userLoginToken = await userService.login(req.body);
 
-    res.status(200).send(userLoginTokken).end();
+    res.status(200).send(userLoginToken).end();
   } catch (error) {
     return next(error);
   }
