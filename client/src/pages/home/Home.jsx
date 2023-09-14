@@ -12,6 +12,8 @@ const Home = () => {
   const { user } = useAuthContext();
   const { data, isLoading, error } = useShoppingList("shoppingLists");
 
+  console.log("Data:", data);
+
   return (
     <StyledHome>
       <div className="home">
@@ -55,11 +57,14 @@ const Home = () => {
           ) : error ? (
             <p>Error: {error}</p>
           ) : (
+          <div className="listContainer">  
             <ul>
-              {data.map((listName) => (
-                <li key={listName.id}>{listName.name}</li>
-              ))}
-            </ul>
+            {data.map((listItem) => (
+              <li key={listItem._id}>{listItem.listName}</li> 
+            ))}
+          </ul>
+          </div>
+
           )}
         </div>
       ) : null}
@@ -75,7 +80,7 @@ const StyledHome = styled.div`
   .userName {
     font-weight: 100;
     font-size: 2rem;
-    padding-top: 10%;
+    padding-top: 2rem;
     color: #704869;
   }
 
@@ -89,7 +94,7 @@ const StyledHome = styled.div`
     color: #704869;
     font-size: 2rem;
     font-weight: 400;
-    padding: 3rem 0;
+    padding: 1.5rem 0;
   }
 
   .title:hover {
@@ -107,7 +112,7 @@ const StyledHome = styled.div`
     display: flex;
     justify-content: flex-end;
     align-items: center;
-    padding-top: 2%;
+    padding-top: 1.5rem;
   }
 
   .userList_home p {
@@ -128,6 +133,13 @@ const StyledHome = styled.div`
     background: #704869;
     border-radius: 50px;
     color: #d6cdc2;
+  }
+
+  li {
+    list-style: none;
+    text-transform: capitalize;
+    font-size: 1.2rem;
+    line-height: 4rem;
   }
 
   @media (min-width: 600px) {
