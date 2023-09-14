@@ -1,12 +1,17 @@
 import React, { useState } from "react";
 import styled from "styled-components";
 import InputOptions from "./InputOptions";
-import { useAddProductIntoList } from "../hooks/useAddProductIntoList";
+import productsService from "../service/productsService";
+import { useAuthContext } from "../hooks/useAuthContex";
+import { useAddProductIntoList } from "src/hooks/useAddProductIntoList";
+import { useNavigate } from "react-router-dom";
 
 const AddProductList = (props) => {
   const [inputValue, setInputValue] = useState("");
   const [showOptions, setShowOptions] = useState(false);
-  const { addNewProductIntoList, isAdded } = useAddProductIntoList();
+  const { addNewProductIntoList } = useAddProductIntoList();
+  const { user } = useAuthContext();
+  const navigate = useNavigate();
 
   const handleInputChange = (e) => {
     const inputValue = e.target.value;
@@ -21,11 +26,25 @@ const AddProductList = (props) => {
     setShowOptions(false);
   };
 
-  const handleSubmit = (e) => {
-    e.preventDefault(); // Prevent the form from submitting and refreshing the page
+  const handleSubmit = async (e) => {
+    e.preventDefault();
     if (inputValue) {
-      console.log("onAdd", inputValue);
       setInputValue("");
+
+      const addedProduct = await productsService.createNewProduct(
+        "products",
+        {
+          product_name: inputValue,
+        },
+        user._id
+      );
+
+      await addNewProductIntoList(
+        `shoppingLists/${props.shoppingListId}/products`,
+        { product_id: addedProduct.data.createdproduct._id },
+        user._id
+      );
+      navigate(`/shoppingList/${props.shoppingListId}`);
     }
   };
 
