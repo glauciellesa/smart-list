@@ -1,45 +1,16 @@
 import React, { useState } from "react";
 import styled from "styled-components";
 import InputOptions from "./InputOptions";
+import { useAddProductIntoList } from "../hooks/useAddProductIntoList";
 
 const AddProductList = (props) => {
-  const [items, setItems] = useState([]);
   const [inputValue, setInputValue] = useState("");
-  const [filteredOptions, setFilteredOptions] = useState([]);
   const [showOptions, setShowOptions] = useState(false);
-
-  /*  const addItem = (itemName) => {
-    setItems([...items, { name: itemName, quantity: 1 }]);
-    setInputValue("");
-  };
-
-  const increaseQuantity = (index) => {
-    const updatedItems = [...items];
-    updatedItems[index].quantity++;
-    setItems(updatedItems);
-  };
-
-  const decreaseQuantity = (index) => {
-    const updatedItems = [...items];
-    if (updatedItems[index].quantity > 1) {
-      updatedItems[index].quantity--;
-    } else {
-      updatedItems.splice(index, 1);
-    }
-    setItems(updatedItems);
-  };
-
- */
+  const { addNewProductIntoList, isAdded } = useAddProductIntoList();
 
   const handleInputChange = (e) => {
     const inputValue = e.target.value;
     setInputValue(inputValue);
-    /*  // Filter options based on user input
-    const filtered = itemsData.filter((item) =>
-      item.text.toLowerCase().includes(inputValue.toLowerCase())
-    );
-    setFilteredOptions(filtered);
-    setShowOptions(true); */
   };
 
   const showProductOptions = () => {
@@ -53,7 +24,8 @@ const AddProductList = (props) => {
   const handleSubmit = (e) => {
     e.preventDefault(); // Prevent the form from submitting and refreshing the page
     if (inputValue) {
-      console.log(inputValue);
+      console.log("onAdd", inputValue);
+      setInputValue("");
     }
   };
 
@@ -71,47 +43,18 @@ const AddProductList = (props) => {
             onFocus={showProductOptions}
             onChange={handleInputChange}
           />
-          <button
-            className="add-button"
-            onClick={() => {
-              if (inputValue) {
-                addItem(inputValue);
-              }
-            }}
-          >
+          <button className="add-button" type="submit">
             +
           </button>
         </form>
         {showOptions ? (
           <div className="productsOption">
-            <InputOptions shoppingListId={props.shoppingListId} />
+            <InputOptions
+              shoppingListId={props.shoppingListId}
+              inputValue={inputValue}
+            />
           </div>
         ) : null}
-
-        {/*  {
-        <ul>
-          {items.map((item, index) => (
-            <li className="itemsAdded" key={index}>
-              <span className="item-name">
-                {item.name.charAt(0).toUpperCase() + item.name.slice(1)}
-              </span>
-              <span className="quantity">{item.quantity}</span>
-              <button
-                className="plus-button"
-                onClick={() => increaseQuantity(index)}
-              >
-                +
-              </button>
-              <button
-                className="minus-button"
-                onClick={() => decreaseQuantity(index)}
-              >
-                -
-              </button>
-            </li>
-          ))}
-        </ul>
-      } */}
       </div>
     </StyledAddProductList>
   );

@@ -5,6 +5,7 @@ import productShoppingList from "src/service/productShoppingList";
 import { useNavigate } from "react-router-dom";
 
 const CardProductInList = (props) => {
+  const [idSelected, setIdSelected] = useState(null);
   const [quantity, setQuantity] = useState(props.productQnt);
   const navigate = useNavigate();
 
@@ -22,11 +23,16 @@ const CardProductInList = (props) => {
   };
 
   const handleDelete = async (id) => {
-    await productShoppingList.deleteProductFromLists(
-      `shoppingLists/${props.shoppingListId}/products/${id}`
-    );
+    setIdSelected(id);
 
+    if (!setIdSelected) {
+      return;
+    }
+    await productShoppingList.deleteProductFromLists(
+      `shoppingLists/${props.shoppingListId}/products/${idSelected}`
+    );
     navigate(".");
+    props.onDelete(idSelected);
   };
 
   return (
