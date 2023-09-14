@@ -12,8 +12,6 @@ const Home = () => {
   const { user } = useAuthContext();
   const { data, isLoading, error } = useShoppingList("shoppingLists");
 
-  console.log("Data:", data);
-
   return (
     <StyledHome>
       <div className="home">
@@ -60,7 +58,9 @@ const Home = () => {
           <div className="listContainer">  
             <ul>
             {data.map((listItem) => (
-              <li key={listItem._id}>{listItem.listName}</li> 
+              <li key={listItem._id}>
+              <a href={`/shoppingList/${listItem._id}`}>{listItem.listName}</a>
+            </li>
             ))}
           </ul>
           </div>
@@ -141,7 +141,10 @@ const StyledHome = styled.div`
     font-size: 1.2rem;
     line-height: 4rem;
   }
-
+a:hover {
+  cursor: pointer;
+  color: #ed6d5a;
+}
   @media (min-width: 600px) {
   }
 `;
