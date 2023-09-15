@@ -18,6 +18,10 @@ Whether you're using a desktop computer or a mobile device, Smart List is design
 
 ## Sneak Peeks in Smart List
 
+<p align="center">
+<img src="./client/src/img/projectPresentation.gif" width="100%" alt="Project's architecture">
+</p>
+
  <p align="center"> <img src="./client/src/img/projectPresentation.gif" width="1000%" alt="Project's architecture"> </p>
 
 ## 🚀 Features:
