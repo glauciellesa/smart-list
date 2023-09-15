@@ -10,13 +10,15 @@ Whether you're using a desktop computer or a mobile device, Smart List is design
 
 - Vercel deployment: [Visit Now](https://smart-list-client.vercel.app/)
 
+- Api documentation: [Visit Now](https://documenter.getpostman.com/view/26738001/2s9Y5ZuMEH)
+
 ## ⚙️ Technologies
 
 ![React](https://img.shields.io/badge/react-%2320232a.svg?style=for-the-badge&logo=react&logoColor=%2361DAFB) ![Vite](https://img.shields.io/badge/vite-%23646CFF.svg?style=for-the-badge&logo=vite&logoColor=white) ![HTML5](https://img.shields.io/badge/html5-%23E34F26.svg?style=for-the-badge&logo=html5&logoColor=white) ![CSS3](https://img.shields.io/badge/css3-%231572B6.svg?style=for-the-badge&logo=css3&logoColor=white) ![Styled Components](https://img.shields.io/badge/styled--components-DB7093?style=for-the-badge&logo=styled-components&logoColor=white) ![JavaScript](https://img.shields.io/badge/javascript-%23323330.svg?style=for-the-badge&logo=javascript&logoColor=%23F7DF1E)![Redux](https://img.shields.io/badge/redux-%23593d88.svg?style=for-the-badge&logo=redux&logoColor=white) ![NodeJS](https://img.shields.io/badge/node.js-6DA55F?style=for-the-badge&logo=node.js&logoColor=white) ![Express.js](https://img.shields.io/badge/express.js-%23404d59.svg?style=for-the-badge&logo=express&logoColor=%2361DAFB) ![MongoDB](https://img.shields.io/badge/MongoDB-%234ea94b.svg?style=for-the-badge&logo=mongodb&logoColor=white) ![VS Code Insiders](https://img.shields.io/badge/VS%20Code%20Insiders-35b393.svg?style=for-the-badge&logo=visual-studio-code&logoColor=white) ![Vercel](https://img.shields.io/badge/vercel-%23000000.svg?style=for-the-badge&logo=vercel&logoColor=white)
 
 ## Sneak Peeks in Smart List
 
-![Smart List Preview](/screenshots/1.png 'Home Page')
+ <p align="center"> <img src="./client/src/img/projectPresentation.gif" width="1000%" alt="Project's architecture"> </p>
 
 ## 🚀 Features:
 
@@ -40,8 +42,8 @@ Whether you're using a desktop computer or a mobile device, Smart List is design
 
 <div align="center">
 
-| Server Architecture |  |
-| --- | --- |
+| Server Architecture                                                                                               |                                                                                                                   |
+| ----------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------- |
 | <p align="center"> <img src="./client/src/img/routes_preview_1.png" width="60%" alt="Server's architecture"> </p> | <p align="center"> <img src="./client/src/img/routes_preview_2.png" width="72%" alt="Server's architecture"> </p> |
 
 </div>
@@ -62,8 +64,8 @@ Whether you're using a desktop computer or a mobile device, Smart List is design
 
 <div align="center">
 
-| Client directory | Server directory |
-| --- | --- |
+| Client directory                                                                                                                   | Server directory                                                                                                                  |
+| ---------------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------- |
 | <p align="center"> <img src="./client/src/img/frontend_directory_preview.png" width="60%" alt="Client directory's structure"> </p> | <p align="center"> <img src="./client/src/img/backend_directory_preview.png" width="60%" alt="Server directory's structure"> </p> |
 
 </div>
@@ -100,18 +102,18 @@ Distributed under the MIT License.
 
 **Glaucielle Sá**
 
-- [GitHub Profile](https://github.com/glauciellesa 'Glaucielle Sá')
+- [GitHub Profile](https://github.com/glauciellesa "Glaucielle Sá")
 - [Linkedin](https://www.linkedin.com/in/glauciellec/)
-- [Portfolio](https://glauciellesa.github.io/ 'Have a look!')
+- [Portfolio](https://glauciellesa.github.io/ "Have a look!")
 
 **Camila Fernandes Assunção**
 
-- [GitHub Profile](https://github.com/CamilaFAssuncao 'Camila Fernandes Assunção')
+- [GitHub Profile](https://github.com/CamilaFAssuncao "Camila Fernandes Assunção")
 - [Linkedin](https://www.linkedin.com/in/camilafassuncao/)
 
 **Leila Zitouni**
 
-- [GitHub Profile](https://github.com/leilaZ1111 'Leila Zitouni')
+- [GitHub Profile](https://github.com/leilaZ1111 "Leila Zitouni")
 - [Linkedin](www.linkedin.com/in/leila-zitouni)
 
 ## 🤝 Support
