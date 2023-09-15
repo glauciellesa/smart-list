@@ -5,6 +5,7 @@ import { useState } from "react";
 import { useAuthContext } from "src/hooks/useAuthContex";
 import { useAddProductIntoList } from "src/hooks/useAddProductIntoList";
 import { useNavigate } from "react-router-dom";
+import { ShoppingBasket } from "lucide-react";
 
 const InputOptions = (props) => {
   const [selected, setSelected] = useState(null);
@@ -31,7 +32,6 @@ const InputOptions = (props) => {
 
   return (
     <StyledInputOptions>
-      <div className="bufferDiv"></div>
       <ul className="listContainer">
         {isLoading ? (
           <p className="loading"> Loading... </p>
@@ -56,12 +56,16 @@ const InputOptions = (props) => {
                       )}
                       {/* <button className="listProductBtn">+</button> */}
                       <p className="productName">{option.product_name}</p>
-                      <div className="productImg">
-                        <img
-                          src={`https://source.unsplash.com/${option.image}`}
-                          alt={`Pictures of ${option.product_name}`}
-                        />
-                      </div>
+                      {option.image ? (
+                        <div className="productImg">
+                          <img
+                            src={`https://source.unsplash.com/${option.image}`}
+                            alt={`Pictures of ${option.product_name}`}
+                          />
+                        </div>
+                      ) : (
+                        <ShoppingBasket />
+                      )}
                     </li>
                   );
                 })
@@ -138,14 +142,6 @@ const StyledInputOptions = styled.div`
     text-align: center;
   }
 
-  .bufferDiv {
-    width: 88%;
-    height: 5rem;
-    background-color: #fefaeb;
-    position: fixed;
-    top: 26.96rem;
-  }
-
   @media (min-width: 600px) {
     width: 98%;
 
@@ -166,14 +162,6 @@ const StyledInputOptions = styled.div`
     .listProduct p {
       font-size: 1.4rem;
       color: #4d4d4d;
-    }
-
-    .bufferDiv {
-      width: 49%;
-      height: 5rem;
-      background-color: #fefaeb;
-      position: fixed;
-      top: 10.96rem;
     }
   }
 `;

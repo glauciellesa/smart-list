@@ -129,7 +129,6 @@ const StyledAddProductList = styled.div`
   .productsOption {
     display: block;
     position: absolute;
-    top: -1rem;
     width: 100%;
   }
 
