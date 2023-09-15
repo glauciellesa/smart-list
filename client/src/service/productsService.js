@@ -2,7 +2,6 @@ import config from "src/config/config";
 import { axiosInstance } from "src/hooks/tokenAuth";
 
 const createNewProduct = async (endpoint, newProduct, userId) => {
-  console.log({ endpoint }, { newProduct }, { userId });
   return await axiosInstance.post(
     `${config.urlBase}${endpoint}`,
     { ...newProduct },

@@ -17,7 +17,6 @@ product.get("/api/products", async (req, res, next) => {
   try {
     const productName = req.query.name;
     if (productName) {
-      console.log("productName:", productName);
       const allProduct = await productRepository.getProductbyName(productName);
       res.status(201).json({ allProduct }).end();
     } else {

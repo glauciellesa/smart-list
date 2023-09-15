@@ -74,7 +74,6 @@ shoppingList.delete(
       const shoppingListId = req.params.shoppingListId;
       const productListId = req.params.productListId;
 
-      console.log({ clienteRequestId }, { shoppingListId }, { productListId });
       const checkToDelet =
         await shoppingListProductService.checkProductBeforeDelete(
           clienteRequestId,

@@ -60,7 +60,6 @@ shoppingList.put(
         req.body
       );
 
-      console.log({ editedList });
       res.status(200).json(editedList).end();
     } catch (error) {
       return next(error);
@@ -75,7 +74,6 @@ shoppingList.delete(
     try {
       const clientRequestId = req.user._id;
       const shoppingListId = req.params.shoppingListId;
-      console.log({ shoppingListId });
 
       const checkToDelet = await shoppingListService.checkBeforeDelete(
         clientRequestId,

@@ -61,7 +61,7 @@ const CarouselImage = styled.img`
   width: 110% !important;
 
   @media (min-width: 600px) {
-    width: 90% !important;
+    width: 70% !important;
   }
 `;
 
@@ -77,7 +77,7 @@ const Caption = styled.p`
   margin: 0;
 
   @media (min-width: 600px) {
-    width: 90%;
-    left: 5%;
+    width: 70%;
+    left: 15%;
   }
 `;

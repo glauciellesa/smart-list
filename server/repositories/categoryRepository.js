@@ -19,14 +19,6 @@ const getCategories = () => {
 
 const getCategorybyName = async (name) => {
   return Category.find({ category_name: new RegExp(name, "i") });
-
-  /* console.log("cat", category.category);
-
-  if (category) {
-    return category;
-  } else {
-    throw new NoContentError("Data does not exist in our database.");
-  } */
 };
 
 export default {

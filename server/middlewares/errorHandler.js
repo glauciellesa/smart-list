@@ -5,7 +5,7 @@ import { PermissionError } from "../errors/permissionError.js";
 const errorHandler = (error, req, res, next) => {
   // Logging the error here
   //https://stackabuse.com/guide-to-exception-handling-in-express/
-  console.log("error", { error });
+
   if (error instanceof NoContentError) {
     res.status(400).json({ message: "No content", error: error.message });
   } else if (error instanceof InvalidInputError) {

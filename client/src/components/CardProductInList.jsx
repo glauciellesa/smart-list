@@ -74,7 +74,11 @@ const CardProductInList = (props) => {
             handleDelete(props.idProductFromList);
           }}
         >
-          <Trash />
+          <Trash
+            onClick={() => {
+              handleDelete(props.idProductFromList);
+            }}
+          />
         </div>
       </div>
     </StyledCardProduct>
@@ -137,6 +141,7 @@ const StyledCardProduct = styled.li`
 
   .productDelete {
     padding: 1rem 2rem;
+    cursor: pointer;
   }
 
   .productDelete svg {

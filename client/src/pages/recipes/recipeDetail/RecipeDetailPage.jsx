@@ -17,7 +17,6 @@ const RecipeDetailPage = () => {
   );
 
   const extractIngredientsFromRecipes = (recipeList) => {
-    console.log("eu");
     const ingredientKeywords = [
       "cup",
       "cups",
@@ -44,7 +43,6 @@ const RecipeDetailPage = () => {
       const lines = recipeText.split("\n");
 
       for (const line of lines) {
-        console.log({ line });
         const containsIngredientKeyword = ingredientKeywords.some((keyword) =>
           new RegExp(`\\b${keyword}\\b`, "i").test(line)
         );
@@ -62,7 +60,6 @@ const RecipeDetailPage = () => {
   };
 
   const createShoppingList = async () => {
-    console.log(extractIngredientsFromRecipes(data.ingredients));
     await addNewList("shoppingLists", data.name);
     navigate("/shoppingList");
   };

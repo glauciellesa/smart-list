@@ -8,7 +8,6 @@ const createShoppingList = async (userId) => {
 };
 
 const userHasList = async (listName, clientId) => {
-  console.log(listName, { clientId });
   const user = await ShoppingList.find(
     { user_id: clientId },
     { lists: { $elemMatch: { listName: listName } } }

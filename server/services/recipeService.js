@@ -43,8 +43,6 @@ const checkRecipeBeforeEdit = async (
     newRecipeData
   );
 
-  console.log("serv", userRecipe);
-
   if (userRecipe) {
     return "Recipe was edited";
   } else {

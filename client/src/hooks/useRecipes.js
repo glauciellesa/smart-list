@@ -29,7 +29,6 @@ const useRecipes = (key, url) => {
         }
         setData(res.data);
       } catch (error) {
-        console.log(error);
         if (error.response.status === 403) {
           setError(error.response.data);
         } else {

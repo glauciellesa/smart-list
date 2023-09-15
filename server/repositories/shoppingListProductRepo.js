@@ -41,13 +41,6 @@ const editProductoInList = async (
   productId,
   newProduct
 ) => {
-  console.log(
-    { clienteRequestId },
-    { productId },
-    { shoppingListId },
-    { newProduct }
-  );
-
   const editedProduct = await ShoppingList.findOneAndUpdate(
     {
       user_id: clienteRequestId,

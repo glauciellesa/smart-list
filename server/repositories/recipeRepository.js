@@ -14,11 +14,10 @@ const createRecipeArray = async (userId) => {
 };
 
 const recipeExist = async (recipeName) => {
-  console.log({ recipeName });
   const query = await Recipe.findOne({
     userRecipes: { $elemMatch: { name: recipeName } },
   }).exec();
-  console.log({ query });
+
   if (query) {
     return true;
   } else {
@@ -45,7 +44,7 @@ const createNewRecipe = async (recipeData, clientRequestId) => {
 
 const getRecipes = () => {
   const recipes = Recipe.find({});
-  console.log(recipes);
+
   return recipes;
 };
 
@@ -70,8 +69,6 @@ const editRecipe = async (clientId, recipeId, newData) => {
       updateFields[`userRecipes.$.${key}`] = newData[key];
     }
   }
-
-  console.log(updateFields);
 
   return Recipe.findOneAndUpdate(
     { user_id: clientId, "userRecipes._id": recipeId },
