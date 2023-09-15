@@ -1,11 +1,11 @@
-import { Link, NavLink } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 import styled from "styled-components";
 import CarouselComponent from "src/components/CarouselComponent";
 import { useAuthContext } from "src/hooks/useAuthContex";
 import NewList from "src/components/NewList";
 import Modal from "src/components/Modal";
 import { useState } from "react";
-import useShoppingList from "../../hooks/useShoppingList"; 
+import useShoppingList from "../../hooks/useShoppingList";
 
 const Home = () => {
   const [showModal, setshowModal] = useState(false);
@@ -48,23 +48,24 @@ const Home = () => {
       {user ? (
         <div className="shoppingList">
           <NavLink to="/shoppingList">
-            <h2 className="title">Shopping List</h2>
+            <h2 className="title">My shopping List</h2>
           </NavLink>
           {isLoading ? (
             <p>Loading shopping list...</p>
           ) : error ? (
             <p>Error: {error}</p>
           ) : (
-          <div className="listContainer">  
-            <ul>
-            {data.map((listItem) => (
-              <li key={listItem._id}>
-              <a href={`/shoppingList/${listItem._id}`}>{listItem.listName}</a>
-            </li>
-            ))}
-          </ul>
-          </div>
-
+            <div className="listContainer">
+              <ul>
+                {data.map((listItem) => (
+                  <li key={listItem._id} className="listItem">
+                    <a href={`/shoppingList/${listItem._id}`}>
+                      {listItem.listName}
+                    </a>
+                  </li>
+                ))}
+              </ul>
+            </div>
           )}
         </div>
       ) : null}
@@ -75,24 +76,25 @@ const Home = () => {
 export default Home;
 
 const StyledHome = styled.div`
-  padding: 0 1rem;
+  padding: 1rem 1rem 4rem 1rem;
 
   .userName {
     font-weight: 100;
-    font-size: 2rem;
+    font-size: 1.5rem;
     padding-top: 2rem;
     color: #704869;
   }
 
   .userName span {
-    font-size: 1.5rem;
+    text-transform: capitalize;
+    font-size: 1.3rem;
     font-weight: 400;
     color: #ed6d5a;
   }
 
   .title {
     color: #704869;
-    font-size: 2rem;
+    font-size: 1.5rem;
     font-weight: 400;
     padding: 1.5rem 0;
   }
@@ -115,8 +117,11 @@ const StyledHome = styled.div`
     padding-top: 1.5rem;
   }
 
+  .shoppingList {
+    padding: 2rem 0;
+  }
   .userList_home p {
-    font-size: 1.4rem;
+    font-size: 1rem;
     font-weight: 600;
     color: #704869;
     padding: 0.3rem 2rem 0.3rem 0.5rem;
@@ -126,26 +131,57 @@ const StyledHome = styled.div`
   .newList_btn {
     border: none;
     cursor: pointer;
-    font-size: 1.7rem;
-    height: 2rem;
-    width: 2rem;
+    font-size: 1.3rem;
+    height: 1.5rem;
+    width: 1.5rem;
     text-align: center;
     background: #704869;
     border-radius: 50px;
     color: #d6cdc2;
   }
 
-  li {
+  .listItem {
     list-style: none;
+    padding-left: 1rem;
     text-transform: capitalize;
     font-size: 1.2rem;
-    line-height: 4rem;
+    line-height: 2rem;
   }
-a:hover {
-  cursor: pointer;
-  color: #ed6d5a;
-}
+
+  .listItem a {
+    color: #4d4d4d;
+  }
+
+  .listItem a:hover {
+    cursor: pointer;
+    color: #ed6d5a;
+  }
+
   @media (min-width: 600px) {
+    .userName {
+      font-size: 2rem;
+    }
+
+    .userName span {
+      font-size: 1.5rem;
+    }
+
+    .listItem {
+      padding-left: 2rem;
+    }
+
+    .title {
+      font-size: 2rem;
+    }
+
+    .userList_home p {
+      font-size: 1.4rem;
+    }
+
+    .newList_btn {
+      font-size: 1.5rem;
+      height: 2rem;
+      width: 2rem;
+    }
   }
 `;
-

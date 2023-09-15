@@ -16,7 +16,7 @@ const MenuShoppingList = () => {
   const handleEdit = async () => {};
   const handleDelete = async (id) => {
     await shoppingListService.deleteShoppingLists(`shoppingLists/${id}`);
-    navigate(".");
+    navigate(0);
   };
 
   return (

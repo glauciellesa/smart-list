@@ -12,8 +12,6 @@ const Recipes = () => {
   const { data, loading, error } = useRecipes("getRecipes", "recipes");
   const { user } = useAuthContext();
 
-  console.log(data);
-
   return (
     <StyleReceipe>
       <div className="topOfRecipes">

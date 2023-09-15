@@ -2,6 +2,7 @@ import { useState } from "react";
 import { styled } from "styled-components";
 import { useAddNewRecipe } from "src/hooks/useAddNewRecipe";
 import { useAuthContext } from "src/hooks/useAuthContex";
+import { useNavigate } from "react-router-dom";
 
 const NewRecipe = (props) => {
   const [name, setName] = useState("");
@@ -11,6 +12,7 @@ const NewRecipe = (props) => {
   const [instructions, setInstructions] = useState();
   const { addNewRecipe, isLoading, error } = useAddNewRecipe();
   const { user } = useAuthContext();
+  const navigate = useNavigate();
 
   const handleIngredients = (e) => {
     // Split the string on \n or \r characters
@@ -42,6 +44,7 @@ const NewRecipe = (props) => {
     if (!error) {
       props.handleModal(false);
     }
+    navigate(0);
   };
 
   return (

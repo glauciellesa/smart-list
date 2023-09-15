@@ -25,7 +25,6 @@ export const useLogin = () => {
       //update the auth context
       dispatch({ type: "LOGIN", payload: response.data });
     } catch (error) {
-      console.log(error);
       setError(error.response.data.error);
     } finally {
       setIsLoading(false);

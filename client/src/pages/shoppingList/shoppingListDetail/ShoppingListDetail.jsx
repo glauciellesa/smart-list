@@ -12,9 +12,7 @@ const ShoppingListDetail = () => {
     `shoppingLists/${shoppingListId}/products`
   );
 
-  const handleDeleteItem = (idDeletedItem) => {
-    console.log(idDeletedItem);
-  };
+  const handleDeleteItem = (idDeletedItem) => {};
 
   const displayItems = () => {
     if (data.length > 0) {

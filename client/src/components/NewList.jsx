@@ -1,11 +1,12 @@
 import React, { useState } from "react";
 import { styled } from "styled-components";
 import { useAddNewList } from "src/hooks/useAddNewList";
-import shoppingListService from "src/service/shoppingListService";
+import { useNavigate } from "react-router-dom";
 
 const NewList = (props) => {
   const [listName, setListName] = useState("");
   const { addNewList, error, isLoading } = useAddNewList();
+  const navigate = useNavigate();
 
   const handleChange = (e) => {
     setListName(e.target.value);
@@ -16,6 +17,7 @@ const NewList = (props) => {
     addNewList("shoppingLists", listName);
     setListName("");
     props.handleModal(false);
+    navigate(0);
   };
 
   const handleCancel = (e) => {
