@@ -86,6 +86,7 @@ const StyledHome = styled.div`
   }
 
   .userName span {
+    text-transform: capitalize;
     font-size: 1.5rem;
     font-weight: 400;
     color: #ed6d5a;
