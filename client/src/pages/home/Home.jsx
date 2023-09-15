@@ -59,9 +59,9 @@ const Home = () => {
               <ul>
                 {data.map((listItem) => (
                   <li key={listItem._id} className="listItem">
-                    <a href={`/shoppingList/${listItem._id}`}>
+                    <NavLink to={`/shoppingList/${listItem._id}`}>
                       {listItem.listName}
-                    </a>
+                    </NavLink>
                   </li>
                 ))}
               </ul>
