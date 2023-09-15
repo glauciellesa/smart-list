@@ -46,7 +46,7 @@ const MenuShoppingList = () => {
             <div className="actions_menu">
               <NavLink to={`${list._id}`}>{list.listName}</NavLink>
               <div>
-                <Pencil onClick={() => handleEdit(list._id)} />
+                {/* <Pencil onClick={() => handleEdit(list._id)} /> */}
 
                 <Trash
                   onClick={() => {
@@ -96,7 +96,7 @@ const StyledMenu = styled.div`
   }
 
   .actions_menu svg {
-    width: 0.8rem;
+    width: 1.2rem;
     color: #515050d7;
   }
 

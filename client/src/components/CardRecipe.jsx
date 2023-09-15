@@ -66,6 +66,7 @@ const StyleCardReceipe = styled.div`
     font-size: 0.7rem;
     margin: 1rem 0;
     font-weight: 200;
+    text-align: justify;
   }
 
   @media (min-width: 600px) {
