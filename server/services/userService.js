@@ -4,6 +4,7 @@ import { InvalidInputError } from "../errors/invalidInputError.js";
 import { PermissionError } from "../errors/permissionError.js";
 import shoppingListRepository from "../repositories/shoppingListRepository.js";
 import recipeRepository from "../repositories/recipeRepository.js";
+import bcrypt from "bcrypt";
 
 const register = async ({
   first_name,

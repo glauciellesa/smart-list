@@ -1,4 +1,4 @@
-import { Link, NavLink } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 import styled from "styled-components";
 import CarouselComponent from "src/components/CarouselComponent";
 import { useAuthContext } from "src/hooks/useAuthContex";
@@ -141,6 +141,7 @@ const StyledHome = styled.div`
 
   .listItem {
     list-style: none;
+    padding-left: 1rem;
     text-transform: capitalize;
     font-size: 1.2rem;
     line-height: 2rem;
@@ -156,5 +157,8 @@ const StyledHome = styled.div`
   }
 
   @media (min-width: 600px) {
+    .listItem {
+      padding-left: 2rem;
+    }
   }
 `;

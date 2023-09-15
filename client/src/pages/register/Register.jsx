@@ -3,6 +3,7 @@ import { styled } from "styled-components";
 import { Link } from "react-router-dom";
 import { useRegister } from "../../hooks/useRegister";
 import imageTest from "../../img/imageTest.png";
+import { useNavigate } from "react-router-dom";
 
 const initialState = {
   first_name: "",
@@ -16,6 +17,7 @@ const initialState = {
 const Register = () => {
   const [form, setForm] = useState(initialState);
   const { register, error, isLoading } = useRegister();
+  const navigate = useNavigate();
 
   const handleChange = (event) => {
     setForm({
@@ -29,6 +31,7 @@ const Register = () => {
     await register(form);
 
     setForm(initialState);
+    navigate("/");
   };
 
   return (

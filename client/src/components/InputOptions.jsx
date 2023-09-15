@@ -1,10 +1,10 @@
-import { styled } from 'styled-components';
-import { Check } from 'lucide-react';
-import useProducts from 'src/hooks/useProducts';
-import { useState } from 'react';
-import { useAuthContext } from 'src/hooks/useAuthContex';
-import { useAddProductIntoList } from 'src/hooks/useAddProductIntoList';
-import { useNavigate } from 'react-router-dom';
+import { styled } from "styled-components";
+import { Check } from "lucide-react";
+import useProducts from "src/hooks/useProducts";
+import { useState } from "react";
+import { useAuthContext } from "src/hooks/useAuthContex";
+import { useAddProductIntoList } from "src/hooks/useAddProductIntoList";
+import { useNavigate } from "react-router-dom";
 
 const InputOptions = (props) => {
   const [selected, setSelected] = useState(null);
@@ -14,7 +14,7 @@ const InputOptions = (props) => {
 
   const { data, isLoading, error } = useProducts(
     `products?name=${props.inputValue}`,
-    'getProductByName'
+    "getProductByName"
   );
 
   const selectOption = async (id) => {
@@ -26,9 +26,7 @@ const InputOptions = (props) => {
       { product_id: idProductSelected },
       user._id
     );
-    navigate(`/shoppingList/${props.shoppingListId}`, {
-      state: new Date().getTime(),
-    });
+    navigate(".");
   };
 
   return (

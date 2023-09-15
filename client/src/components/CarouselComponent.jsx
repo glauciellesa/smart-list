@@ -68,7 +68,7 @@ const CarouselImage = styled.img`
 const Caption = styled.p`
   position: absolute;
   bottom: 0;
-  left: 0;
+  left: 0rem;
   width: 110%;
   background-color: rgba(255, 255, 255, 0.7);
   color: rgb(113 72 105);
@@ -77,6 +77,7 @@ const Caption = styled.p`
   margin: 0;
 
   @media (min-width: 600px) {
-    left: 1.5rem;
+    width: 90%;
+    left: 5%;
   }
 `;

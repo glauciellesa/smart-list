@@ -31,7 +31,9 @@ const CardProductInList = (props) => {
     await productShoppingList.deleteProductFromLists(
       `shoppingLists/${props.shoppingListId}/products/${idSelected}`
     );
-    navigate(".");
+    navigate(`/shoppingList/${props.shoppingListId}`, {
+      state: new Date().getTime(),
+    });
     props.onDelete(idSelected);
   };
 
@@ -66,12 +68,13 @@ const CardProductInList = (props) => {
             ) : null}
           </div>
         </div>
-        <div className="productDelete">
-          <Trash
-            onClick={() => {
-              handleDelete(props.idProductFromList);
-            }}
-          />
+        <div
+          className="productDelete"
+          onClick={() => {
+            handleDelete(props.idProductFromList);
+          }}
+        >
+          <Trash />
         </div>
       </div>
     </StyledCardProduct>
@@ -130,6 +133,10 @@ const StyledCardProduct = styled.li`
     color: #ed6d5a;
     font-size: 1.2rem;
     margin-left: 5px; /* Add left margin to separate buttons */
+  }
+
+  .productDelete {
+    padding: 1rem 2rem;
   }
 
   .productDelete svg {
