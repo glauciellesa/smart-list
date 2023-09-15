@@ -80,21 +80,21 @@ const StyledHome = styled.div`
 
   .userName {
     font-weight: 100;
-    font-size: 2rem;
+    font-size: 1.5rem;
     padding-top: 2rem;
     color: #704869;
   }
 
   .userName span {
     text-transform: capitalize;
-    font-size: 1.5rem;
+    font-size: 1.3rem;
     font-weight: 400;
     color: #ed6d5a;
   }
 
   .title {
     color: #704869;
-    font-size: 2rem;
+    font-size: 1.5rem;
     font-weight: 400;
     padding: 1.5rem 0;
   }
@@ -121,7 +121,7 @@ const StyledHome = styled.div`
     padding: 2rem 0;
   }
   .userList_home p {
-    font-size: 1.4rem;
+    font-size: 1rem;
     font-weight: 600;
     color: #704869;
     padding: 0.3rem 2rem 0.3rem 0.5rem;
@@ -131,9 +131,9 @@ const StyledHome = styled.div`
   .newList_btn {
     border: none;
     cursor: pointer;
-    font-size: 1.7rem;
-    height: 2rem;
-    width: 2rem;
+    font-size: 1.3rem;
+    height: 1.5rem;
+    width: 1.5rem;
     text-align: center;
     background: #704869;
     border-radius: 50px;
@@ -158,8 +158,30 @@ const StyledHome = styled.div`
   }
 
   @media (min-width: 600px) {
+    .userName {
+      font-size: 2rem;
+    }
+
+    .userName span {
+      font-size: 1.5rem;
+    }
+
     .listItem {
       padding-left: 2rem;
+    }
+
+    .title {
+      font-size: 2rem;
+    }
+
+    .userList_home p {
+      font-size: 1.4rem;
+    }
+
+    .newList_btn {
+      font-size: 1.5rem;
+      height: 2rem;
+      width: 2rem;
     }
   }
 `;
