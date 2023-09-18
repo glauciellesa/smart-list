@@ -18,6 +18,8 @@ Whether you're using a desktop computer or a mobile device, Smart List is design
 
 ## Sneak Peeks in Smart List
 
+<br>
+
 <p align="center">
 <img src="./client/src/img/smart_list_mobile.gif" width="20%" alt="Project's architecture">
 </p>
@@ -27,8 +29,6 @@ Whether you're using a desktop computer or a mobile device, Smart List is design
 <p align="center">
 <img src="./client/src/img/smart-list-desktop.gif" width="70%" alt="Project's architecture">
 </p>
-
-<br>
 
 ## 🚀 Features:
 
