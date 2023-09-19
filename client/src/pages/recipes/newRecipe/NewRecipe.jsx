@@ -35,7 +35,7 @@ const NewRecipe = (props) => {
       instructions,
     };
 
-    addNewRecipe("recipes", { ...recipeData }, user._id);
+    await addNewRecipe("recipes", { ...recipeData }, user._id);
     setName("");
     setPhoto("");
     setTimeToPrepare(0);
