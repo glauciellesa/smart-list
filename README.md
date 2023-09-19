@@ -22,8 +22,6 @@ Whether you're using a desktop computer or a mobile device, Smart List is design
 <img src="./client/src/img/projectPresentation.gif" width="100%" alt="Project's architecture">
 </p>
 
- <p align="center"> <img src="./client/src/img/projectPresentation.gif" width="100%" alt="Project's architecture"> </p>
-
 ## 🚀 Features:
 
 - Login/logout/register User Account
