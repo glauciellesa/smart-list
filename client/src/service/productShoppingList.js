@@ -16,7 +16,7 @@ const getProductFromLists = async (endpoint) => {
   return await axiosInstance.get(`${config.urlBase}${endpoint}`);
 };
 
-const deleteProductFromLists = async (endpoint, userId) => {
+const deleteProductFromLists = async (endpoint) => {
   return await axiosInstance.delete(`${config.urlBase}${endpoint}`, {
     headers: { "Content-Type": "application/json" },
   });

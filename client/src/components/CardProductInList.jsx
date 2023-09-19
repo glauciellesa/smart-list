@@ -25,16 +25,15 @@ const CardProductInList = (props) => {
   const handleDelete = async (id) => {
     setIdSelected(id);
 
-    if (!setIdSelected) {
+    if (setIdSelected) {
+      await productShoppingList.deleteProductFromLists(
+        `shoppingLists/${props.shoppingListId}/products/${id}`
+      );
+      navigate(".");
+      props.onDelete(idSelected);
+    } else {
       return;
     }
-    await productShoppingList.deleteProductFromLists(
-      `shoppingLists/${props.shoppingListId}/products/${idSelected}`
-    );
-    navigate(`/shoppingList/${props.shoppingListId}`, {
-      state: new Date().getTime(),
-    });
-    props.onDelete(idSelected);
   };
 
   return (
@@ -68,12 +67,7 @@ const CardProductInList = (props) => {
             ) : null}
           </div>
         </div>
-        <div
-          className="productDelete"
-          onClick={() => {
-            handleDelete(props.idProductFromList);
-          }}
-        >
+        <div className="productDelete">
           <Trash
             onClick={() => {
               handleDelete(props.idProductFromList);

@@ -12,9 +12,9 @@ const NewList = (props) => {
     setListName(e.target.value);
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    addNewList("shoppingLists", listName);
+    await addNewList("shoppingLists", listName);
     setListName("");
     props.handleModal(false);
     navigate(0);
